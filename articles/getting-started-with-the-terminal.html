@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="../style.css">
+    <title>Getting Started With the Terminal</title>
+</head>
+
+<header id="top">
+    <div class="container text-center">
+        <div class="row">
+            <div class="col">
+                <h2 class="go-to-links"><a href="../">&larr; Go back to posts</a></h2>
+                <h1>Getting Started With the Terminal</h1>
+                <h2 class="article-info">January 12, 2020 | 12 min read</h2>
+            </div>
+        </div>
+    </div>
+</header>
+
+<body>
+    <main>
+        <div class="container text-left">
+            <div class="row">
+                <div class="col margin-left-right">
+                    <article class="article">
+                        <p>
+                            So, you want to learn how to use the Terminal. Great! As a developer, sooner or later,
+                            you’ll want to learn how to use the Terminal. Not only is this a handy tool to have under
+                            your belt, but it will also boost your productivity.
+                        </p>
+
+                        <h3>Before Starting</h3>
+
+                        <p>
+                            Before actually getting started learning commands, it’s useful to think of the directories
+                            (folders) as a hierarchical tree.
+                        </p>
+
+                        <figure class="text-center">
+                            <img class="img-fluid" src="../images/terminal-article/1.png">
+                            <figcaption class="oblique">The root directory is “/” and inside of “/”, you have the
+                                following folders: bin, tmp, usr, and src.
+                            </figcaption>
+                        </figure>
+
+                        <p>
+                            In the illustration above, you can see that the first directory, often referred to as the
+                            “root” directory, is named “/”. That directory (folder) contains other directories such as
+                            bin, tmp, usr, and src. Those directories can have other directories or files and those
+                            child directories can have even more directories or files and so on.
+                        </p>
+
+                        <p>
+                            Of course, the illustration above is just an example, it doesn’t actually reflect the
+                            folders and files that reside in your computer.
+                        </p>
+
+                        <p>
+                            Now, what the terminal allows us to do is to traverse and manage the directory tree. This is
+                            why the terminal is so powerful, it allows us to quickly sift through folders and files in
+                            an efficient manner as well as being able to create, delete, or update a file or directory.
+                        </p>
+
+                        <h3>Opening Your Terminal</h3>
+
+                        <p>
+                            To open your terminal, use the following shortcut: <kbd class="display-inline">⌘</kbd> +
+                            <kbd class="display-inline">Spacebar</kbd>. Now type in "Terminal" and then press the
+                            <kbd class="display-inline">Enter</kbd> key.
+                        </p>
+
+                        <p>Now, you should have something on your screen that looks like</p>
+
+                        <figure>
+                            <img class="img-fluid" src="../images/terminal-article/2.png">
+                        </figure>
+
+                        <p>
+                            For the most part, you should be staring at a black window with white text and a cursor
+                            itching for your next command.
+                        </p>
+
+                        <h3>Important Note</h3>
+
+                        <p>
+                            It’s important to note that every directory on Mac/UNIX/LINUX has two hidden directories,
+                            namely “.” and “..”
+                        </p>
+
+                        <p>
+                            The “.” means the current directory and “..” means previous or parent directory. Keep this
+                            in mind, it will be useful later.
+                        </p>
+
+                        <h3>Commands</h3>
+
+                        <p>
+                            Now that we have a terminal window in front of us, it’s finally time to get to the commands.
+                        </p>
+
+                        <p>
+                            The first command you should type into the terminal should be the pwd (print working
+                            directory) command.
+                        </p>
+
+                        <h5>pwd — print working directory</h5>
+
+                        <kbd>pwd</kbd>
+
+                        <p>This command prints the current directory you’re in onto the terminal.</p>
+
+                        <figure class="text-center">
+                            <img class="img-fluid" src="../images/terminal-article/3.png">
+                            <figcaption class="oblique">
+                                Currently in the “/Users/alanconstantino” directory.
+                            </figcaption>
+                        </figure>
+
+                        <p>Congratulations, you just ran your first command on the terminal!</p>
+
+                        <p>This command is useful for knowing where you currently are within the directory tree.</p>
+
+                        <p>The next command we should try is ls or list.</p>
+
+                        <h5>ls - list</h5>
+
+                        <kbd>ls</kbd>
+
+                        <p>This command lists all the directories and files from your current directory.</p>
+
+                        <figure class="text-center">
+                            <img class="img-fluid" src="../images/terminal-article/4.png">
+                            <figcaption class="oblique">
+                                By typing ls, we can see all of the files and directories within
+                                the current directory.
+                            </figcaption>
+                        </figure>
+
+                        <p>Cool, now we can list all of the files and directories from our current directory.</p>
+
+                        <p>But what if we want to list all the contents from another directory?</p>
+
+                        <p>Simple, just type the following command:</p>
+
+                        <!-- <kbd>ls [directory name]</kbd> -->
+
+                        <figure class="text-center">
+                            <img class="img-fluid" src="../images/terminal-article/5.png">
+                            <figcaption class="oblique">
+                                We list all the files and folders inside of the “Desktop” directory.
+                            </figcaption>
+                        </figure>
+
+                        <p>Now we can list files and folders from our current directory or other directories.</p>
+
+                        <p>
+                            But what if we want to change our current directory? That’s where the cd or change directory
+                            command comes into play.
+                        </p>
+
+                        <h5>cd — change directory</h5>
+
+                        <kbd>cd [directory name]</kbd>
+
+                        <p>
+                            The cd command allows you to change your directory to another directory. This is how you’ll
+                            actually traverse the directory tree.
+                        </p>
+
+                        <p>Example:</p>
+
+                        <kbd>cd /</kbd>
+
+                        <p>The command above changes your current working directory to your root directory.</p>
+
+                        <figure class="text-center">
+                            <img class="img-fluid" src="../images/terminal-article/6.png">
+                            <figcaption class="oblique">
+                                “cd /” changes your current directory to your root directory.
+                            </figcaption>
+                        </figure>
+
+                        <p>Now, how do we back out of a directory or go to the previous/parent directory?</p>
+
+                        <p>We have to use the following command:</p>
+
+                        <kbd>cd ..</kbd>
+
+                        <p>
+                            As I mentioned earlier, the “..” means the parent directory or previous directory.
+                            Effectively, the command above is telling the terminal “Hey, take me back to the previous
+                            directory.”
+                        </p>
+
+                        <figure class="text-center">
+                            <img class="img-fluid" src="../images/terminal-article/7.png">
+                            <figcaption class="oblique">
+                                Changed directory from “/Users/alanconstantino/Desktop” to “/Users/alanconstantino.”
+                            </figcaption>
+                        </figure>
+
+                        <p>
+                            Also, if you use this command in the root directory, nothing happens because there isn’t a
+                            previous or parent directory to go back to, hence the name root.
+                        </p>
+
+                        <p>But what if you want to go back more than one directory?</p>
+
+                        <p>No problem, the following command is just what you need.</p>
+
+                        <kbd>cd ../../</kbd>
+
+                        <p>
+                            The command above tells the terminal “Hey, I want to go back two directories and make it
+                            snappy.” Okay, maybe not so much the snappy part, but it does take you back two directories.
+                        </p>
+
+                        <p>Essentially, every “../” you add takes you back one directory.</p>
+
+                        <p>So the following example will take you back three directories:</p>
+
+                        <kbd>cd ../../../</kbd>
+
+                        <p>
+                            Now that we know how to traverse the directory tree and list its contents, we should move
+                            onto more useful commands.
+                        </p>
+
+                        <p>
+                            Before that though, we should probably clear our terminal screen because by now it may be a
+                            little tough to read.
+                        </p>
+
+                        <h5>clear</h5>
+
+                        <p>
+                            By typing in the following command into the terminal, you are able to clear what’s on
+                            screen.
+                        </p>
+
+                        <kbd class="display-inline-block-margin-botttom">clear</kbd>
+
+                        <figure class="text-center">
+                            <img class="img-fluid" src="../images/terminal-article/8.gif">
+                            <figcaption class="oblique">Clearing the terminal.</figcaption>
+                        </figure>
+
+                        <p>
+                            Now that our screen has been cleared, we can move onto more useful commands, like the mv
+                            (move) command.
+                        </p>
+
+                        <h5>mv - move</h5>
+
+                        <kbd>mv [source] [destination]</kbd>
+
+                        <p>The mv (move) command simply moves a file or directory to another place.</p>
+
+                        <p>
+                            From the skeleton command above, the “source” is what you want to move while the
+                            “destination” is where you want the file to end up.
+                        </p>
+
+                        <p>For example, if I have something like the following:</p>
+
+                        <code class="text-left">
+                            one<br>
+                            ├── myfile.txt<br>
+                            └── two
+                        </code>
+
+                        <p>
+                            Where “one” and “two” are folders, and I want to move, “myfile.txt” to folder “two” I would
+                            simply do the following assuming I was already in the “one” folder location:
+                        </p>
+
+                        <kbd>mv myfile.txt two</kbd>
+
+                        <figure class="text-center">
+                            <img class="img-fluid" src="../images/terminal-article/9.png">
+                            <figcaption class="oblique">We moved “myfile.txt” to the folder “two.”</figcaption>
+                        </figure>
+
+                        <p>
+                            Of course, you could be anywhere in the directory tree to execute this command — and pretty
+                            much any command for that matter — but you just have to make sure you enter the full
+                            location path of the file you want to move and its destination.
+                        </p>
+
+                        <p>
+                            For example, in the following screenshot, I’m in my root directory but I’m still able to
+                            move a file from my Desktop to the “two” folder from the previous example:
+                        </p>
+
+                        <figure class="text-center">
+                            <img class="img-fluid" src="../images/terminal-article/10.png">
+                            <figcaption class="oblique">
+                                We moved “anotherfile.txt” to the “two” folder while in the root directory.
+                            </figcaption>
+                        </figure>
+
+                        <p>
+                            Now, what if we wanted to move a file or folder from wherever it is to our current location
+                            in the directory tree.
+                        </p>
+
+                        <p>
+                            Well, remember earlier how I talked about the “.” being our current directory, we would have
+                            to use “.”
+                        </p>
+
+                        <p>For example:</p>
+
+                        <kbd>mv /somelocation/myfile.txt .</kbd>
+
+                        <p>The example above moves “myfile.txt” to wherever we currently are in the directory tree.</p>
+
+                        <p>Another command that’s similar to mv (move) is cp (copy).</p>
+
+                        <h5>cp — copy</h5>
+
+                        <kbd>cp [source] [destination]</kbd>
+
+                        <p>
+                            The copy command is just like the move command except instead of moving a file or folder, it
+                            makes a copy of it leaving the original file unharmed.
+                        </p>
+
+                        <p>To copy a file you would do the following:</p>
+
+                        <kbd>cp myfile.txt /one</kbd>
+
+                        <figure class="text-center">
+                            <img class="img-fluid" src="../images/terminal-article/11.png">
+                            <figcaption class="oblique">We copied “myfile.txt” to the “one” folder.</figcaption>
+                        </figure>
+
+                        <p>Now to copy a directory you have to add the “-r” option like so:</p>
+
+                        <kbd>cp -r one two</kbd>
+
+                        <figure class="text-center">
+                            <img class="img-fluid" src="../images/terminal-article/12.png">
+                            <figcaption class="oblique">
+                                We copy the contents of the “one” directory into the “two” directory.
+                            </figcaption>
+                        </figure>
+
+                        <p>
+                            All the “-r” option means is that it tells the terminal to copy the files recursively which
+                            is a fancy way of saying everything.
+                        </p>
+
+                        <p>
+                            So by using the “-r” option, we tell the terminal “Please copy all the contents, including
+                            folders and files to our destination.”
+                        </p>
+
+                        <p>
+                            It’s also important to keep in mind that most, if not all, commands can have options and
+                            there are different options for every command. You can also have more than one option.
+                        </p>
+
+                        <p>Now, what if we wanted to open a file or folder from our terminal?</p>
+
+                        <p>We would need to utilize the open command.</p>
+
+                        <h5>open</h5>
+
+                        <kbd>open [file/folder]</kbd>
+
+                        <p>This command lets us open a file with its associated program.</p>
+
+                        <p>For example, if we have a “.txt” file and we do the following command:</p>
+
+                        <kbd>open myfile.txt</kbd>
+
+                        <figure class="text-center">
+                            <img class="img-fluid" src="../images/terminal-article/13.png">
+                            <figcaption class="oblique">We open a file named “myfile.txt.”</figcaption>
+                        </figure>
+
+                        <p>this opens “myfile.txt” with your default text editor like so:</p>
+
+                        <figure class="text-center">
+                            <img class="img-fluid" src="../images/terminal-article/14.png">
+                        </figure>
+
+                        <p>Here’s another example.</p>
+
+                        <p>If you do the following command, it will open the finder window in the root directory.</p>
+
+                        <kbd>open /</kbd>
+
+                        <figure class="text-center">
+                            <img class="img-fluid" src="../images/terminal-article/15.png">
+                            <figcaption class="oblique">
+                                We opened a new finder window at the root directory.
+                            </figcaption>
+                        </figure>
+
+                        <p>The finder window will look something like the following:</p>
+
+                        <figure class="text-center">
+                            <img class="img-fluid" src="../images/terminal-article/16.png">
+                            <figcaption class="oblique">
+                                A finder window showing the contents of the root directory.
+                            </figcaption>
+                        </figure>
+
+                        <p>
+                            It opens the finder window because that’s the program that is associated with the file or in
+                            this case the folder you’re trying to open.
+                        </p>
+
+                        <p>So if we did the following command:</p>
+
+                        <kbd>open .</kbd>
+
+                        <p>
+                            it would open a new finder window from our current location because remember, the “.” means
+                            our current directory.
+                        </p>
+
+                        <p>Now, let’s move onto actually making a directory from the terminal.</p>
+
+                        <h5>mkdir — make directory</h5>
+
+                        <kbd>mkdir [directory name]</kbd>
+
+                        <p>To make a directory, you simply type the command above and give it a name like so:</p>
+
+                        <figure class="text-center">
+                            <img class="img-fluid" src="../images/terminal-article/17.png">
+                            <figcaption class="oblique">We made a directory named “mydirectory.”</figcaption>
+                        </figure>
+
+                        <p>We can also create multiple directories like so:</p>
+
+                        <figure class="text-center">
+                            <img class="img-fluid" src="../images/terminal-article/18.png">
+                            <figcaption class="oblique">
+                                We created two directories, one named “newdirectory” and another named
+                                “anotherdirectory.”
+                            </figcaption>
+                        </figure>
+
+                        <p>What if we wanted to make a file instead of a directory?</p>
+
+                        <p>We would use the touch command.</p>
+
+                        <h5>touch</h5>
+
+                        <kbd>touch [file name]</kbd>
+
+                        <p>This command simply creates an empty file.</p>
+
+                        <p>For example, if we do the following:</p>
+
+                        <kbd>touch myfile.txt</kbd>
+
+                        <p>This creates a file named “myfile.txt” in our current directory.</p>
+
+                        <figure class="text-center">
+                            <img class="img-fluid" src="../images/terminal-article/19.png">
+                            <figcaption class="oblique">We create a file named “myfile.txt.”</figcaption>
+                        </figure>
+
+                        <p>And similar to mkdir, you can create multiple files in one command like so:</p>
+
+                        <figure class="text-center">
+                            <img class="img-fluid" src="../images/terminal-article/20.png">
+                            <figcaption class="oblique">
+                                We create “myfile.txt” in the current directory and “anotherone.txt” in the previous
+                                directory.
+                            </figcaption>
+                        </figure>
+
+                        <p>In the screenshot above, we create two files, “myfile.txt” and “anotherone.txt.”</p>
+
+                        <p>
+                            The “myfile.txt” file is created in the current directory while the “anotherone.txt” file is
+                            created in the previous directory.
+                        </p>
+
+                        <p>Let’s move on to deleting a directory.</p>
+
+                        <h5>rmdir — remove directory</h5>
+
+                        <kbd>rmdir [directory name]</kbd>
+
+                        <p>The rmdir command is self-explanatory, it just deletes a directory.</p>
+
+                        <figure class="text-center">
+                            <img class="img-fluid" src="../images/terminal-article/21.png">
+                            <figcaption class="oblique">
+                                We are deleting an empty directory named “emptydir.”
+                            </figcaption>
+                        </figure>
+
+                        <p>
+                            However, it’s important to note that when using this command, you can only remove an empty
+                            directory.
+                        </p>
+
+                        <p>
+                            If your directory is not empty and you try to use the rmdir command, you’ll get something
+                            like the following:
+                        </p>
+
+                        <figure class="text-center">
+                            <img class="img-fluid" src="../images/terminal-article/22.png">
+                            <figcaption class="oblique">
+                                We failed at removing the directory “folder” because it’s not empty.
+                            </figcaption>
+                        </figure>
+
+                        <p>Now how do we remove the contents of a directory you may be asking?</p>
+
+                        <p>We would have to use the rm (remove) command.</p>
+
+                        <h5>rm — remove</h5>
+
+                        <kbd>rm [file name]</kbd>
+
+                        <p>
+                            This command is probably the most powerful and yet the most dangerous one on this list which
+                            is why I saved it for last.
+                        </p>
+
+                        <p>Once you use this command and delete something, it’s gone forever.</p>
+
+                        <p>
+                            It doesn’t get put into your Trash for you to empty out later. No! Once you type in this
+                            command and hit enter, poof… it’s gone… forever…
+                        </p>
+
+                        <p>This also applies to rmdir, once you remove a directory, it’s gone forever.</p>
+
+                        <p>
+                            But unlike rmdir, the rm command has the ability to remove both a directory as well as a
+                            file.
+                        </p>
+
+                        <p>With this in mind, let’s see it in action.</p>
+
+                        <p>To remove a file, simply do the following:</p>
+
+                        <kbd>rm myfile.txt</kbd>
+
+                        <figure class="text-center">
+                            <img class="img-fluid" src="../images/terminal-article/23.png">
+                            <figcaption class="oblique">We removed a file named “myfile.txt.”</figcaption>
+                        </figure>
+
+                        <p>
+                            And just like some of the previous commands, we can delete multiple things at once by using
+                            the following format:
+                        </p>
+
+                        <kbd>rm [file1] [file2] [etc]</kbd>
+
+                        <figure class="text-center">
+                            <img class="img-fluid" src="../images/terminal-article/24.png">
+                            <figcaption class="oblique">We delete “afile.txt” and “anotherone.txt”</figcaption>
+                        </figure>
+
+                        <p>
+                            In the example above, we delete “afile.txt” from the current directory and subsequently
+                            delete “anotherone.txt” from the previous or parent directory.
+                        </p>
+
+                        <p>
+                            If we wanted to delete only certain files that end in specific extensions (i.e. .txt, .png,
+                            .exe, etc) we would use the asterisk or “*” symbol. This symbol is often referred to as a
+                            wildcard.
+                        </p>
+
+                        <p>
+                            For example, if we were in a directory and we only wanted to delete .txt files, we would do
+                            the following:
+                        </p>
+
+                        <kbd>rm *.txt</kbd>
+
+                        <figure class="text-center">
+                            <img class="img-fluid" src="../images/terminal-article/25.png">
+                            <figcaption class="oblique">We delete various .txt files.</figcaption>
+                        </figure>
+
+                        <p>
+                            As you can see, we deleted all the files that end with the “.txt” extension. If we had other
+                            files such as .png, .gif, etc, those files would be unscathed by the rm command.
+                        </p>
+
+                        <p>
+                            So by using the “*” symbol we effectively tell the terminal to disregard the name of the
+                            file and only look at the extension of the file.
+                        </p>
+
+                        <p>Now let’s get into the danger zone.</p>
+
+                        <p>
+                            Earlier I said that most if not all commands have something called options. These options
+                            are added right after the command like so:
+                        </p>
+
+                        <kbd>[command] [options] [other paramters]</kbd>
+
+                        <p>
+                            Well, the rm command has two options that I’m going to show you which are dangerous if used
+                            without precaution and quite lethal in combination.
+                        </p>
+
+                        <h5>rm -r</h5>
+
+                        <p>
+                            The first is the “-r” option. As you may recall, I said that the “-r” option means do it
+                            recursively, which is just another way of saying all or targeting everything.
+                        </p>
+
+                        <p>If you do the following command:</p>
+
+                        <kbd>rm -r [directory]</kbd>
+
+                        <p>it will delete everything inside of a directory including the folder itself.</p>
+
+                        <p>So if I have the following directory:</p>
+
+                        <code class="text-left">
+                            newfolder<br>
+                            ├── folder1<br>
+                            │&nbsp;&nbsp;&nbsp;└── text1.txt<br>
+                            ├── folder2<br>
+                            │&nbsp;&nbsp;&nbsp;└── text2.txt<br>
+                            └── folder3<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;└── text3.txt
+                        </code>
+
+                        <p>and then I input the following command:</p>
+
+                        <kbd>rm -r newfolder</kbd>
+
+                        <p>It will delete everything within the “newfolder” directory as well as the folder itself.</p>
+
+                        <figure class="text-center">
+                            <img class="img-fluid" src="../images/terminal-article/26.png">
+                            <figcaption class="oblique">
+                                We delete all of the contents of the “newfolder” directory including the folder itself.
+                            </figcaption>
+                        </figure>
+
+                        <p class="oblique">
+                            As a side note, the ‘tree’ command isn’t available by default on Mac, you have to download
+                            and install it seperately.
+                        </p>
+
+                        <p>Now we move onto the other option, “-f.”</p>
+
+                        <h5>rm -f</h5>
+
+                        <kbd>rm -f [file/directory]</kbd>
+
+                        <p>
+                            Sometimes, when you use the rm command, you may get a prompt. This prompt may just be
+                            something like “Are you sure you want to delete the following file or directory?”
+                        </p>
+
+                        <p>By using this option, you avoid having the prompt show up in the first place.</p>
+
+                        <p>
+                            Essentially, this just tells the terminal, “Delete the following file/directory and don’t
+                            give me a prompt.”
+                        </p>
+
+                        <p>Now we move onto the most lethal combination, “-rf.”</p>
+
+                        <h5>rm -rf</h5>
+
+                        <kbd>rm -rf [directory]</kbd>
+
+                        <p>
+                            When you combine both the “r” and the “f” options, you’re telling the terminal “Delete all
+                            of the contents of the directory and don’t show me a prompt, capeesh.”
+                        </p>
+
+                        <p>As you can probably guess, this is quite dangerous.</p>
+
+                        <p>
+                            No need to fret though, as long as you’re cautious and don’t use this command on let’s say,
+                            you’re root directory, you should — for the most part — be fine.
+                        </p>
+
+                        <p>So now that we know what the “r” and “f” options do, let’s run through an example.</p>
+
+                        <p>Here I have a directory which looks something like this:</p>
+
+                        <code>
+                            anotherfolder<br>
+                            └── myfolder<br>
+                                    ├── folder1<br>
+                                    │&nbsp;&nbsp;&nbsp;└── file1.txt<br>
+                                    ├── folder2<br>
+                                    │&nbsp;&nbsp;&nbsp;└── file2.txt<br>
+                                    ├── folder3<br>
+                                    │&nbsp;&nbsp;&nbsp;└── file3.txt<br>
+                                    └── folder4<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;└── file4.txt
+                        </code>
+
+                        <p>
+                            Now if I run the following command (assuming I’m already at the “anotherfolder” location):
+                        </p>
+
+                        <kbd>rm -rf myfolder</kbd>
+
+                        <p>
+                            It should delete all the contents inside the “myfolder” directory including the folder
+                            itself and I shouldn’t see any prompts.
+                        </p>
+
+                        <p>All right, let’s give it a shot.</p>
+
+                        <figure class="text-center">
+                            <img class="img-fluid" src="../images/terminal-article/27.png">
+                            <figcaption class="oblique">
+                                We remove all the contents of “myfolder” including the folder itself.
+                            </figcaption>
+                        </figure>
+
+                        <p>Sure enough, it worked.</p>
+
+                        <p>Now let’s recap what we learned.</p>
+
+                        <h3>Recap</h3>
+
+                        <p>
+                            It’s useful to think of directories as a hierarchical tree with the topmost directory being
+                            the root directory.
+                        </p>
+
+                        <p>The “.” means current directory while “..” means previous or parent directory.</p>
+
+                        <p>We also took a look at the following commands:</p>
+
+                        <ul>
+                            <li>
+                                <kbd>pwd</kbd>
+                                <ul>
+                                    <li>prints the current working directory</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <kbd>ls</kbd>
+                                <ul>
+                                    <li>lists all the contents of the current directory</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <kbd>cd [directory name]</kbd>
+                                <ul>
+                                    <li>changes directory</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <kbd>clear</kbd>
+                                <ul>
+                                    <li>clears the terminal screen</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <kbd>mv [source] [destination]</kbd>
+                                <ul>
+                                    <li>moves files or folders from one place to another</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <kbd>cp [source] [destination]</kbd>
+                                <ul>
+                                    <li>copies files or folders from one place to another</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <kbd>open [file/directory]</kbd>
+                                <ul>
+                                    <li>opens the file or folder with the associated program</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <kbd>mkdir [directory name]</kbd>
+                                <ul>
+                                    <li>makes a new empty directory</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <kbd>touch [file name]</kbd>
+                                <ul>
+                                    <li>creates a new empty file with the name of your choice</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <kbd>rmdir [empty directory]</kbd>
+                                <ul>
+                                    <li>removes an empty directory</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <kbd>rm [file name]</kbd>
+                                <ul>
+                                    <li>removes a file</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <kbd>rm -rf [directory name]</kbd>
+                                <ul>
+                                    <li>removes the folder and its contents without showing any prompts</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                        <p>And this is only scratching the surface of the terminal.</p>
+
+                        <p>
+                            There are many more useful commands but these are just the basics to get you up and running.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/f1446561ad.js" crossorigin="anonymous"></script>
+    <script src="js/article-script.js"></script>
+</body>
+
+<footer>
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-sm">
+                <h2 class="go-to-links"><a href="../">&larr; Go back to posts</a></h2>
+            </div>
+            <div class="col-sm">
+                <h2 class="go-to-links"><a href="#top">&uarr; Go back to top</a></h2>
+            </div>
+            <!-- Uncomment when more articles are written -->
+            <!-- <div class="col-sm">
+                <h2 class="go-to-links"><a href="../">Next Article &rarr;</a></h2>
+            </div> -->
+        </div>
+    </div>
+</footer>
+
+</html>

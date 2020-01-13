@@ -1,0 +1,83 @@
+/* Makes default links appear black */
+a {
+    color: black;
+}
+/* Removes underline when hovering over links and makes them blue */
+a:hover {
+    color:#116FFB;
+    text-decoration: none;
+}
+/* Margin of 10px added to left and right of icons */
+.icons a i{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+/* Controls icon size */
+.icon-size {
+    font-size: 25px;
+}
+/* The header and footer is light grey and has a padding of 30px top and bottom */
+header, footer {
+    background-color: #EEEEEE;
+    padding-bottom: 30px;
+    padding-top: 30px;
+}
+/* Makes 'continue reading' button round with a black border */
+.btn-continue-reading {
+    border: 1px solid black;
+    border-radius: 20px;
+    color: black;
+    outline: none;
+}
+/* Removes the blue outline when a button is clicked */
+.btn, .btn:active, .btn:focus {
+    box-shadow: none !important;
+    outline: none !important;
+}
+/* Margin of 30px above and below the article preview and article */
+.article-preview, .article {
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+/* Go back link and article info will look the same */
+.article-info, .go-to-links a {
+    color: #757575;
+    font-size: 15px;
+    font-weight: normal;
+}
+.go-to-links a:hover {
+    color:#116FFB;
+}
+/* Adds spacing between paragraphs inside of article */
+.article p {
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+/* Default left/right margin is 130px each */
+.margin-left-right {
+    margin-left: 130px;
+    margin-right: 130px;
+}
+/* Anything smaller than 978 pixels will have a left/right margin of 0 */
+@media (max-width: 978px) {
+    .margin-left-right {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+}
+/* Makes text oblique */
+.oblique {
+    font-style: oblique;
+}
+/* Adds a margin to the bottom of an image */
+img {
+    margin-bottom: 10px;
+}
+/* Displays as inline block and adds a margin to the bottom of 30px */
+.display-inline-block-margin-botttom {
+    display: inline-block;
+    margin-bottom: 20px;
+}
+.display-inline {
+    display: inline;
+}
