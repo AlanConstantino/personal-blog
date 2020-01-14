@@ -10,3 +10,9 @@ The icons used are from [Font Awesome](https://fontawesome.com/icons).
 # Technologies
 - Utilized HTML, CSS, and some JavaScript.
 - Also used Bootstrap to make responsive.
+
+# Images
+<img src="images/blog-browser-phone.png">
+<img src="images/index.png">
+<img src="images/terminal-header.png">
+<img src="images/terminal-footer.png">
