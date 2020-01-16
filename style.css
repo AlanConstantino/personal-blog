@@ -81,3 +81,15 @@ img {
 .display-inline {
     display: inline;
 }
+/* Adds a 20px margin to bottom of list items */
+ul li {
+    margin-bottom: 20px;
+}
+.margin-bottom {
+    display: block;
+    margin-bottom: 20px;
+}
+/* Underlines text */
+.underline {
+    text-decoration: underline;
+}
