@@ -2,10 +2,10 @@
 const buttons = [...document.getElementsByTagName('button')];
 
 buttons.forEach(button => {
-    const button = button.id;
+    const buttonId = button.id;
 
     button.addEventListener('click', () => {
-        switch (button) {
+        switch (buttonId) {
             case 'terminal-article':
                 window.location.href = './articles/getting-started-with-the-terminal.html';
                 break;
