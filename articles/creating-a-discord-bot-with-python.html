@@ -31,7 +31,7 @@
             <div class="col">
                 <h2 class="go-to-links"><a href="../">&larr; Go back to posts</a></h2>
                 <h1>Creating a Discord Bot With Python</h1>
-                <h2 class="article-info">February ?, 2020 | ??? min read</h2>
+                <h2 class="article-info">February 1, 2020 | 7 min read</h2>
             </div>
         </div>
     </div>
@@ -43,20 +43,317 @@
             <div class="row">
                 <div class="col margin-left-right">
                     <article class="article" id="main-article">
-                        <p class="oblique">
-                            <a href="https://www.reddit.com/r/learnprogramming/comments/eofiss/getting_started_with_the_terminal/"
-                                class="underline" target="_blank">I’d like to thank the redditors over at
-                                r/learnprogramming for
-                                their suggestions to this article.</a>
-                        </p>
-
                         <p>
-                            So, you want to learn how to use the Terminal. Great! As a developer, sooner or later,
-                            you’ll want to learn how to use the Terminal. Not only is this a handy tool to have under
-                            your belt, but it will also boost your productivity.
+                            In this article we'll create a Discord bot using Python. The bot we'll be creating today
+                            will have a simple purpose, telling jokes. We will give the bot a command and it will return
+                            a random joke. This should be simple enough, let's get started!
                         </p>
 
                         <h3>Before Starting</h3>
+
+                        <p>
+                            I think it'll be useful to understand what an API is before we actually get started. API
+                            stands for Application Prgramming Interface. Simply put, an API is what allows programs or
+                            services to communicate with other programs or services.
+                        </p>
+
+                        <p>
+                            A great metaphor I came across (don't remember the original source) was thinking of an API
+                            as a waiter at a restraunt.
+                        </p>
+
+                        <p>
+                            So you, the customer, talk to a waiter to get your food.
+                            The waiter then talks to the chef who actually makes your food. The chef gives the food to
+                            the waiter. Finally, the waiter then gives the food to you.
+                        </p>
+
+                        <p>
+                            Unpacking this metaphor, the user (customer) sends a request to an API (waiter). The API
+                            (waiter) then talks to the service you want to reach, usually a database (chef). That
+                            database (chef) then sends data (food) back to the API (waiter). And finally, the API
+                            (waiter) then gives you back data (food).
+                        </p>
+
+                        <p>
+                            Great! Now that we know what an API is and have a general understanding of how it works, we
+                            can now move on to using one.
+                        </p>
+
+                        <h3>Acquiring the Jokes</h3>
+
+                        <p>To actually get the jokes, we'll have to use the <a class="underline" target="_blank"
+                                href="https://github.com/15Dkatz/official_joke_api">Official Joke
+                                API</a>. This API is
+                            extremely easy to use, you just use <a class="underline" target="_blank"
+                                href="https://official-joke-api.appspot.com/random_joke">this link</a> and everytime you
+                            call it, it will return a random joke in JSON format. Simple!
+                        </p>
+
+                        <h3>Creating a Discord Application</h3>
+
+                        <p>
+                            To create a Discord bot and invite it into your own Discord server, you can follow <a
+                                class="underline" target="_blank"
+                                href="https://discordpy.readthedocs.io/en/latest/discord.html">these
+                                steps here</a>.
+                        </p>
+
+                        <p>You can name it whatever you'd like but I'll just name it "Jokes-Bot."</p>
+
+                        <figure class="figure">
+                            <img src="../images/discord-python-article/naming-discord-bot.png"
+                                class="figure-img img-fluid rounded" alt="naming-discord-bot.png">
+                        </figure>
+
+                        <p>
+                            Also, under the Settings tab to the left, go to "OAuth2" > "Scopes" and tick the bot option.
+                            Then in the same page, go to "Bot Permissions" and tick the Administrator box.
+                        </p>
+
+                        <figure class="figure">
+                            <img src="../images/discord-python-article/ticked-boxes-bot.png"
+                                class="figure-img img-fluid rounded" alt="ticked-boxes-bot.png">
+                        </figure>
+
+                        <p>
+                            Now copy the link from the "Scopes" section and paste it onto your browser to add the bot to
+                            your Discord server.
+                        </p>
+
+                        <figure class="figure">
+                            <img src="../images/discord-python-article/adding-jokes-bot-to-discord-server.png"
+                                class="figure-img img-fluid rounded" alt="adding-jokes-bot-to-discord-server.png">
+                        </figure>
+
+                        <p>
+                            Cool! Now just take a note of the Discord bot token in the "Bot" tab because we'll be
+                            needing it later.
+                        </p>
+
+                        <h3>Downloading the Discord.py Library</h3>
+
+                        <p>
+                            We'll be using the Discord.py library to create our Discord bot.
+                        </p>
+
+                        <p>
+                            To install this library onto your machine you can follow <a class="underline"
+                                target="_blank"
+                                href="https://discordpy.readthedocs.io/en/latest/intro.html#installing">these steps</a>,
+                            or simply run the following command on the command line.
+                        </p>
+
+                        <kbd>python3 -m pip install -U discord.py</kbd>
+
+                        <p>
+                            If you don't already have Python and pip installed you can go <a class="underline"
+                                target="_blank" href="https://realpython.com/installing-python/">here</a> to install
+                            them.
+                        </p>
+
+                        <h3>Installing the Requests Module</h3>
+
+                        <p>
+                            Finally we need to download and install one more thing. To actually send requests and
+                            receive data from an API using Python we'll need to download and install the python module
+                            <a class="underline" href="https://requests.readthedocs.io/en/master/"
+                                target="_blank">Requests</a>.
+                        </p>
+
+                        <p>Simply type in the following command onto the command line to install this module.</p>
+
+                        <kbd>pip3 install requests</kbd>
+
+                        <p>Now it's finally the time you've all been waiting for, the code.</p>
+
+                        <h3>Testing the Bot</h3>
+
+                        <p>
+                            To test that our bot actually works, copy and paste the following code into your favorite
+                            text editor.
+                        </p>
+
+                        <script
+                            src="https://gist.github.com/AlanConstantino/eec9629d3de15ec939cc4a26388b0004.js"></script>
+
+                        <p>
+                            To learn more about what this code does go <a class="underline" target="_blank"
+                                href="https://discordpy.readthedocs.io/en/latest/quickstart.html#a-minimal-bot">here</a>.
+                        </p>
+
+                        <p>
+                            Now insert your Discord bot token into the last line where it says "your token here." Save
+                            your python file as "discord_joke_bot.py" and then input the following command onto the
+                            terminal to run and test your bot.
+
+                        </p>
+
+                        <kbd>python3 discord_joke_bot.py</kbd>
+
+                        <p>If all went well you should see something like the following:</p>
+
+                        <figure class="figure">
+                            <img src="../images/discord-python-article/discord-bot-test-terminal.png"
+                                class="figure-img img-fluid rounded" alt="discord-bot-test-terminal.png">
+                        </figure>
+
+                        <p>
+                            Now we can type the following command <kbd>$hello</kbd> into our Discord server and the bot
+                            should respond back with "Hello!"
+                        </p>
+
+                        <figure class="figure">
+                            <img src="../images/discord-python-article/discord-bot-hello.png"
+                                class="figure-img img-fluid rounded" alt="discord-bot-hello.png">
+                        </figure>
+
+                        <p>Cool so the bot works.</p>
+
+                        <p>
+                            Also, whenever we make changes to the bot, you'll have to restart the python script by
+                            running it again.
+                        </p>
+
+                        <h3>Making API Requests With Python</h3>
+
+                        <p>
+                            Now let's take a look at how to actually make API requests with Python and the Requests
+                            module.
+                        </p>
+
+                        <p>The following code is what we'll be using to make requests to the Joke API.</p>
+
+                        <script
+                            src="https://gist.github.com/AlanConstantino/2e11886fa6042c449f715055e3682284.js"></script>
+
+                        <p>Let me explain what's going on here.</p>
+
+                        <p>On line 1 we import the Requests module.</p>
+
+                        <p>Line 3 is the url we'll be using and I just defined it in the global scope.</p>
+
+                        <p>
+                            Now on line 6, I define a function named "check_valid_status_code" that will check if
+                            the status code from the API is successful or not.
+                        </p>
+
+                        <p>
+                            If the status code is equal to 200, meaning it's a successful call, it will return back the
+                            request in JSON format. If it's unsucessful, it will just return false.
+                        </p>
+
+                        <p>
+                            Most of the time, whenever you make an API call, the API will return a status code. These
+                            status codes tell you whether an API call was successful or not. To learn more about status
+                            codes check out <a class="underline" target="_blank"
+                                href="https://restfulapi.net/http-status-codes/">this article</a>.
+                        </p>
+
+                        <p>
+                            Now on line 13 I define another function named "get_joke." This function, as implied by its
+                            name will get a joke.
+                        </p>
+
+                        <p>
+                            First it makes a GET request to the url we pass it. Then it will call
+                            "check_valid_response_code" and store whatever it returns into a vairable named "data."
+                            Finally it returns the variable "data."
+                        </p>
+
+                        <h3>Adding the $joke Command</h3>
+
+                        <p>We can finally move on to actually adding in our "$joke" command.</p>
+
+                        <p>
+                            First let's import "joke_api.py" into the "discord_joke_bot.py" file with the
+                            following line:
+                        </p>
+
+                        <code>import joke_api.py</code>
+
+                        <p>
+                            Now, in the file named "discord_joke_bot.py," we can simply replace the if statement
+                            containing the "$hello" parameter on line 16 with the following if statement.
+                        </p>
+
+                        <script
+                            src="https://gist.github.com/AlanConstantino/ad022928a9516927989680b5f3365385.js"></script>
+
+                        <p>Let me explain what's going on here.</p>
+
+                        <p>
+                            So first on line 1, we check if the message we type into Discord starts with the "$joke"
+                            string.
+                        </p>
+
+                        <p>
+                            Then on line 2 we call "get_joke" function from the "joke_api.py" file and save it into a
+                            variable named "joke."
+                        </p>
+
+                        <p>The variable "joke" stores a dictionary with the following keys: id, type, setup, and
+                            punchline.</p>
+
+                        <p>The only dictionary keys we are interested in are "setup" and "punchline."</p>
+
+                        <p>Now on line 4 we check if the variable "joke" is "False." If so we just return an error
+                            message.</p>
+
+                        <p>
+                            Else, if it's not false we return the joke setup with "joke['setup']" adding a newline
+                            character, '\n' and then adding the joke punchline with "joke['punchline']."
+                        </p>
+
+                        <p>Now if we test this in our Discord server with our bot we should receive a joke from our bot.
+                        </p>
+
+                        <figure class="figure">
+                            <img src="../images/discord-python-article/joke-from-bot.png"
+                                class="figure-img img-fluid rounded" alt="joke-from-bot.png">
+                        </figure>
+
+                        <p>Great! It works.</p>
+
+                        <h3>Complete Code</h3>
+
+                        <p>
+                            In total we should have two files. Namely the "discord_joke_bot.py" file and the
+                            "joke_api.py" file.
+                        </p>
+
+                        <p>The following is the "discord_joke_bot.py" file.</p>
+
+                        <script
+                            src="https://gist.github.com/AlanConstantino/512d49c14fae1bf69273bffe22a9bb0a.js"></script>
+
+                        <p>The following is the "joke_api.py" file.</p>
+
+                        <script
+                            src="https://gist.github.com/AlanConstantino/2e11886fa6042c449f715055e3682284.js"></script>
+
+                        <p>Congratulations, you just created your first Discord bot using Python!</p>
+
+                        <p>
+                            You can also find the complete code over at my <a class="underline" target="_blank"
+                                href="https://github.com/AlanConstantino/discord-joke-bot">Github</a>.
+                        </p>
+
+                        <h3>Resources</h3>
+
+                        <p>Here is a list of resources that may be helpful:</p>
+
+                        <ul>
+                            <li><a class="underline" target="_blank"
+                                    href="https://discordpy.readthedocs.io/en/latest/">Discord.py docs</a></li>
+                            <li><a class="underline" target="_blank"
+                                    href="https://requests.readthedocs.io/en/master/">Requests module docs</a></li>
+                            <li><a class="underline" target="_blank"
+                                    href="https://discordapp.com/developers/docs/intro">Discord Bot docs</a></li>
+                            <li><a class="underline" target="_blank"
+                                    href="https://github.com/15Dkatz/official_joke_api">Official Joke API</a></li>
+                        </ul>
+
                     </article>
                 </div>
             </div>
@@ -83,9 +380,9 @@
                 <h2 class="go-to-links"><a href="#top">&uarr; Go back to top</a></h2>
             </div>
             <!-- Uncomment when more articles are written -->
-            <!-- <div class="col-sm">
-                <h2 class="go-to-links"><a href="../">Next Article &rarr;</a></h2>
-            </div> -->
+            <div class="col-sm">
+                <h2 class="go-to-links"><a href="getting-started-with-the-terminal.html">Next Article &rarr;</a></h2>
+            </div>
         </div>
     </div>
 </footer>

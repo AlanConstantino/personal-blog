@@ -10,4 +10,4 @@ function calculateReadingTime(text) {
 
 const article = document.getElementById('main-article').innerText;
 const readingTime = calculateReadingTime(article);
-console.log(readingTime);
+console.log(readingTime + ' minutes');
