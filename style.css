@@ -15,6 +15,10 @@ footer {
     margin-top: auto;
 }
 
+#before-starting {
+    margin-top: 1em;
+}
+
 /* Makes default links appear black */
 a {
     color: black;
