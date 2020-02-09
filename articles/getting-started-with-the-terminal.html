@@ -4,13 +4,13 @@
 <head>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-153173414-2"></script>
-    <script>
+    <!-- <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
 
         gtag('config', 'UA-153173414-2');
-    </script>
+    </script> -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -57,29 +57,64 @@
                         </p>
 
                         <h3>Table of Contents</h3>
-                        <ul>
-                            <li><a href="#before-starting" class="underline">Before Starting</a></li>
-                            <li><a href="#opening-your-terminal" class="underline">Opening Your Terminal</a></li>
-                            <li><a href="#important-notes" class="underline">Important Notes</a></li>
-                            <li>
-                                <a href="#commands" class="underline margin-bottom">Commands</a>
-                                <ul>
-                                    <li><a href="#pwd" class="underline">pwd</a></li>
-                                    <li><a href="#ls" class="underline">ls</a></li>
-                                    <li><a href="#cd" class="underline">cd</a></li>
-                                    <li><a href="#clear" class="underline">clear</a></li>
-                                    <li><a href="#mv" class="underline">mv</a></li>
-                                    <li><a href="#cp" class="underline">cp</a></li>
-                                    <li><a href="#open" class="underline">open</a></li>
-                                    <li><a href="#mkdir" class="underline">mkdir</a></li>
-                                    <li><a href="#touch" class="underline">touch</a></li>
-                                    <li><a href="#rmdir" class="underline">rmdir</a></li>
-                                    <li><a href="#rm" class="underline">rm</a></li>
-                                    <li><a href="#man" class="underline">man</a></li>
+                        <ul class="list-group">
+                            <a href="#before-starting">
+                                <li class="list-group-item">Before Starting</li>
+                            </a>
+                            <a href="#opening-your-terminal">
+                                <li class="list-group-item">Opening Your Terminal</li>
+                            </a>
+                            <a href="#important-notes">
+                                <li class="list-group-item">Important Notes</li>
+                            </a>
+
+                            <li class="list-group-item">
+                                <ul class="list-group">
+                                    <a href="#commands">Commands</a>
+                                    <a href="#pwd">
+                                        <li class="list-group-item">pwd</li>
+                                    </a>
+                                    <a href="#ls">
+                                        <li class="list-group-item">ls</li>
+                                    </a>
+                                    <a href="#cd">
+                                        <li class="list-group-item">cd</li>
+                                    </a>
+                                    <a href="#clear">
+                                        <li class="list-group-item">clear</li>
+                                    </a>
+                                    <a href="#mv">
+                                        <li class="list-group-item">mv</li>
+                                    </a>
+                                    <a href="#cp">
+                                        <li class="list-group-item">cp</li>
+                                    </a>
+                                    <a href="#open">
+                                        <li class="list-group-item">open</li>
+                                    </a>
+                                    <a href="#mkdir">
+                                        <li class="list-group-item">mkdir</li>
+                                    </a>
+                                    <a href="#touch">
+                                        <li class="list-group-item">touch</li>
+                                    </a>
+                                    <a href="#rmdir">
+                                        <li class="list-group-item">rmdir</li>
+                                    </a>
+                                    <a href="#rm">
+                                        <li class="list-group-item">rm</li>
+                                    </a>
+                                    <a href="#man">
+                                        <li class="list-group-item">man</li>
+                                    </a>
                                 </ul>
                             </li>
-                            <li><a href="#recap" class="underline">Recap</a></li>
-                            <li><a href="#where-to-go-from-here" class="underline">Where to Go From Here?</a></li>
+                            <a href="#recap">
+                                <li class="list-group-item">Recap</li>
+                            </a>
+                            <a href="#where-to-go-from-here">
+                                <li class="list-group-item">Where to Go From Here?</li>
+                            </a>
                         </ul>
 
                         <h3 id="before-starting">Before Starting</h3>
@@ -1077,53 +1112,53 @@
 
                         <p>We also took a look at the following commands:</p>
 
-                        <ul>
-                            <li>
+                        <ul class="list-group">
+                            <li class="list-group-item">
                                 <kbd>pwd</kbd> prints the current working directory
                             </li>
-                            <li>
+                            <li class="list-group-item">
                                 <kbd>ls</kbd> lists all the contents of the current directory
                             </li>
-                            <li>
+                            <li class="list-group-item">
                                 <kbd>cd [directory name]</kbd> changes directory
                             </li>
-                            <li>
+                            <li class="list-group-item">
                                 <kbd>clear</kbd> clears the terminal screen
                             </li>
-                            <li>
+                            <li class="list-group-item">
                                 <!-- New -->
                                 <kbd>mv [source] [destination]</kbd> moves files or folders from one place to another
                                 and can rename files or folders
                             </li>
-                            <li>
+                            <li class="list-group-item">
                                 <kbd>cp [source] [destination]</kbd> copies files or folders from one place to another
                             </li>
-                            <li>
+                            <li class="list-group-item">
                                 <kbd>open [file/directory]</kbd> opens the file or folder with the associated program
                                 <!-- New -->
-                                <ul>
-                                    <li class="oblique">"xdg-open" is the equivalent on Linux.</li>
+                                <ul class="list-group">
+                                    <li class="oblique list-group-item">"xdg-open" is the equivalent on Linux.</li>
                                 </ul>
                             </li>
-                            <li>
+                            <li class="list-group-item">
                                 <kbd>mkdir [directory name]</kbd> makes a new empty directory
                             </li>
-                            <li>
+                            <li class="list-group-item">
                                 <!-- New -->
                                 <kbd>touch [file name]</kbd> creates a new empty file with the name of your choice and
                                 can update a file's timestamps
                             </li>
-                            <li>
+                            <li class="list-group-item">
                                 <kbd>rmdir [empty directory]</kbd> removes an empty directory
                             </li>
-                            <li>
+                            <li class="list-group-item">
                                 <kbd>rm [file name]</kbd> removes a file
                             </li>
-                            <li>
+                            <li class="list-group-item">
                                 <kbd>rm -rf [directory name]</kbd> removes the folder and its contents without showing
                                 any prompts
                             </li>
-                            <li>
+                            <li class="list-group-item">
                                 <!-- New -->
                                 <kbd>man [command name]</kbd> brings up the manual for the given command
                             </li>
@@ -1148,33 +1183,33 @@
                         <p>In addition here are some other commands that I didn't go over but are just as useful:</p>
 
                         <!-- New -->
-                        <ul>
-                            <li>
+                        <ul class="list-group">
+                            <li class="list-group-item">
                                 <kbd>cat</kbd> concatenates and prints files to the terminal
                             </li>
-                            <li>
+                            <li class="list-group-item">
                                 <kbd>less</kbd> displays contents of a file
                             </li>
-                            <li>
+                            <li class="list-group-item">
                                 <kbd>grep</kbd> searches files for a certain word or regular expression
                             </li>
-                            <li>
+                            <li class="list-group-item">
                                 <kbd>ls -l</kbd> lists files in long format
                             </li>
-                            <li>
+                            <li class="list-group-item">
                                 <kbd>kill</kbd> can terminate a signal or process
                             </li>
-                            <li>
+                            <li class="list-group-item">
                                 <kbd>chmod</kbd> allows you to change or modify access permissions of a file or folder
                             </li>
-                            <li>
+                            <li class="list-group-item">
                                 <kbd>sudo</kbd> a prefix that allows you to run commands as a superuser with root
                                 privileges
                             </li>
-                            <li>
+                            <li class="list-group-item">
                                 <kbd>mkdir</kbd> you can create multiple directories within the same path
                             </li>
-                            <li>
+                            <li class="list-group-item">
                                 <kbd>w</kbd> tells you who's logged in and what they're doing
                             </li>
                         </ul>
