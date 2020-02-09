@@ -1,3 +1,20 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+footer {
+    margin-top: auto;
+}
+
 /* Makes default links appear black */
 a {
     color: black;
@@ -80,10 +97,6 @@ img {
 }
 .display-inline {
     display: inline;
-}
-/* Adds a 20px margin to bottom of list items */
-ul li {
-    margin-bottom: 20px;
 }
 .margin-bottom {
     display: block;
