@@ -14,6 +14,10 @@ buttons.forEach(button => {
                 window.location.href = './articles/creating-a-discord-bot-with-python.html';
                 break;
 
+            case 'five-apis-to-use':
+                window.location.href = './articles/5-simple-to-use-apis-for-beginners.html';
+                break;
+
             default:
                 window.location.href = './';
         }
