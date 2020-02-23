@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-153173414-2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-153173414-2');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="An article that talks about 5 simple-to-use APIs for beginners.">
+    <meta name="robots" content="index, follow">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="shortcut icon" href="../images/code.png">
+    <link rel="canonical" href="https://blog.alanconstantino.com/keep-the-footer-at-the-bottom.html" />
+    <title>Keeping the Footer at the Bottom | Tutorial Beginner Footer HTML CSS</title>
+</head>
+
+<header id="top">
+    <div class="container text-center">
+        <div class="row">
+            <div class="col">
+                <h2 class="go-to-links"><a href="../">&larr; Go back to posts</a></h2>
+                <h1>Keeping the Footer at the Bottom</h1>
+                <h2 class="article-info">February 22, 2020 | 11 min read</h2>
+            </div>
+        </div>
+    </div>
+</header>
+
+<body>
+    <main>
+        <div class="container text-left">
+            <div class="row">
+                <div class="col margin-left-right">
+                    <article class="article" id="main-article">
+                        <p>
+                        So recently I had to use the <code>&lt;footer&gt;</code> tag for a website I was building.
+                        To be honest, in all of my web development projects that I've made so far,
+                        I've never had the need to use the footer. That was until last week.
+                        </p>
+                        
+                        <p>
+                        What's the big deal? It's just a footer tag that you include before closing out the body tag right? Sure, but the problem with footers is that by default, they don't stay at the bottom. Let me explain.
+                        </p>
+                        
+                        <p>
+                        If your body tag were to contain the following:
+                        </p>
+                        
+                        <code>&lt;body&gt;</code><br>
+                        &emsp;<code>&lt;header&gt;</code>This is my header<code>&lt;/header&gt;</code><br>
+                        &emsp;<code>&lt;main&gt;</code><br>
+                        &emsp;&emsp;<code>&lt;p&gt;</code><br>
+                        &emsp;&emsp;&emsp;Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel eos, minus laborum modi laudantium, nulla<br>
+                        &emsp;&emsp;&emsp;praesentium voluptatum illum mollitia aliquid delectus neque eum. Commodi modi fuga exercitationem ullam<br>
+                        &emsp;&emsp;&emsp;numquam? Totam!<br>
+                        &emsp;&emsp;<code>&lt;/p&gt;</code><br>
+                        &emsp;<code>&lt;main&gt;</code><br>
+                        &emsp;<code>&lt;footer&gt;</code><br>
+                        &emsp;&emsp;&copy;Alan Constantino<br>
+                        &emsp;<code>&lt;/footer&gt;</code><br>
+                        <code>&lt;/body&gt;</code>
+                        
+                        <p>
+                        your footer would be pushed all the way to the top. This happens because there isn't enough content to fill up the page and push the footer down.
+                        </p>
+                        
+                        <figure class="figure">
+                            <img src="../images/footer-article/1-default.png"
+                                class="figure-img img-fluid rounded" alt="Default footer position.">
+                        </figure>
+                        
+                        <p>
+                        For the most part, if your website has enough content to fill up the page, your footer should be pushed down to the bottom. However, on bigger screens, this might still be an issue.
+                        </p>
+                        
+                        <p>
+                        So, how do we keep that pesky footer at the bottom? Well, today I'll be showcasing three solutions to this problem. The first and simplest solution is using flexbox, the second solution is using grid, and the final solution is using a wrapper. Alright, let's get started.
+                        </p>
+                        
+                        <h3>Flex Solution</h3>
+                        
+                        <p>
+                        First, the simplest, and in my opinion, the best solution, using flexbox. I'd say this is the simplest because it isn't that much code to write and it's simple to understand.
+                        </p>
+                        
+                        <p>
+                        This is what our HTML looks like:
+                        </p>
+                        
+                        <script src="https://gist.github.com/AlanConstantino/5a3643a2e3a8f95eb81de697beb2d5d8.js"></script>
+                        
+                        <p>
+                        The HTML is going to look pretty much the same for all of these solutions, I'll be sure to point out the differences along the way.
+                        </p>
+                        
+                        <p>
+                        Very briefly, in our <code>&lt;body&gt;</code>, we have a <code>&lt;header&gt;</code>, a <code>&lt;main&gt;</code>, and a <code>&lt;footer&gt;</code>. Inside our <code>&lt;main&gt;</code>, we have a <code>&lt;p&gt;</code> that just holds some lorem ipsum text.
+                        </p>
+                        
+                        <p>
+                        This is what our CSS looks like:
+                        </p>
+                        
+                        <script src="https://gist.github.com/AlanConstantino/ff639f4799cf40ddffae00cffccdae1e.js"></script>
+                        
+                        <p>
+                        Again very briefly, I remove all the padding and margin for everything. Our body is displayed as flex, has a 'flex-direction' of column, its minimum height is 100vh or 100 viewport height, and its background color is blue. As for the header, I just colored it green. Finally, I gave the footer a background color of red and I set its top margin to auto. This is important because, without this, the footer wouldn't stay at the bottom.
+                        </p>
+                        
+                        <p>
+                        Now our footer looks something like this:
+                        </p>
+                        
+                        <figure class="figure">
+                            <img src="../images/footer-article/2-flex-method.png"
+                                class="figure-img img-fluid rounded" alt="Footer position with flex solution">
+                        </figure>
+                        
+                        <p>
+                        Let me explain how this works. We set our <code>&lt;body&gt;</code> to be displayed as a flex column and set its minimum height to be the full size of the viewport height. You can think of the <code>&lt;body&gt;</code> as a container that expands for the full height of the page. Now by setting our <code>&lt;footer&gt;</code>'s top margin to auto, we're essentially telling it to stay at the bottom of the <code>&lt;body&gt;</code> container. And that's how you use CSS flex to keep the footer at the bottom.
+                        </p>
+                        
+                        <h3>Grid Solution</h3>
+                        
+                        <p>
+                        Let's move on to the second solution, using CSS grid. Now I don't know about you but I don't like grid. I'd much rather use flexbox, but, as much as I hate to admit it, sometimes there is just no avoiding it.
+                        </p>
+                        
+                        <p>
+                        The HTML code will be exactly the same as for the flex solution, the only thing that will differ will be the CSS link tag.
+                        </p>
+                        
+                        <script src="https://gist.github.com/AlanConstantino/6658ce7e99b53f0a16ee70de792bcdc5.js"></script>
+                        
+                        <p>
+                        The CSS for the grid solution looks something like this:
+                        </p>
+                        
+                        <script src="https://gist.github.com/AlanConstantino/9568524fee37bff184a54848557d32ad.js"></script>
+                        
+                        <p>
+                        Just like before, we first remove all the padding and margin for everything. Then we make the html height 100% and I made all the text color white. Next, our body has a minimum height of 100% and is displayed as a grid with 3 rows and has a background color of blue. Those rows will be the header, main, and the footer. The header has a background color of green and will start and end in the first row of the three that we defined for the grid. Finally, our footer will have a background color of red and will start and end at the third row of our grid.
+                        </p>
+                        
+                        <p>
+                        Now let me explain how this works. In the body, we define three rows, the first and last are of size 'auto' while the row in the middle is a set size of 1fr. We use 'auto' for the first and last rows so they only take up the space they need.
+                        </p>
+                        
+                        <p>
+                        We then set our header to be the first row of the grid keeping it at the top while setting our footer to the last row in our grid keeping it at the bottom. That's it!
+                        </p>
+
+                        <figure class="figure">
+                            <img src="../images/footer-article/3-grid-method.png"
+                                class="figure-img img-fluid rounded" alt="Footer position with grid solution.">
+                        </figure>
+                        
+                        <p>
+                        You could manually define main to be in the second row like the following:
+                        </p>
+                        
+                        <code class="pink-text">
+                        main {<br>
+                            &emsp;&emsp;grid-row-start: 2;<br>
+                            &emsp;&emsp;grid-row-end: 2;<br>
+                        }
+                        </code>
+                        
+                        <p>
+                        but I just didn't do that.
+                        </p>
+                        
+                        <h3>Wrapper Solution</h3>
+                        
+                        <p>
+                        Finally, we have reached our last solution which is using a wrapper. The HTML for this solution is as follows:
+                        </p>
+                        
+                        <script src="https://gist.github.com/AlanConstantino/47d89e7f5baaf8c9cd841c9594d6392f.js"></script>
+                        
+                        <p>
+                        The only difference here is that we use a <code>&lt;div&gt;</code> as a wrapper to wrap our <code>&lt;header&gt;</code> and our <code>&lt;main&gt;</code> tags. We also give the <code>&lt;div&gt;</code> a class of "wrapper."
+                        </p>
+                        
+                        <p>
+                        The CSS for the wrapper solution is the following:
+                        </p>
+                        
+                        <script src="https://gist.github.com/AlanConstantino/a5764b31f026011782aca3ed6f8a57ec.js"></script>
+                        
+                        <p>
+                        Just like before, we first remove all the padding and margin from everything. Then we assign background colors to the header, main, and footer. The header is green, the main is blue, and the footer is red. Now, we must define both the html and the body as a height of 100%. Next, we make a class called "wrapper" and give it a minimum height of 100%. Now, this is where things get a little... gross.
+                        </p>
+                        
+                        <p>
+                        In main, we give it a bottom padding of 30px, this will be the size of the footer. Now in our footer, we give it a height of 30px and a top margin of -30px.
+                        </p>
+                        
+                        <p>
+                        Let me explain why it needs to be done this way. So our main has a bottom padding of 30px. This is so that when there is enough content on the screen, it doesn't overflow into our footer like so:
+                        </p>
+                        
+                        <figure class="figure">
+                            <img src="../images/footer-article/4-overflow-into-footer.png"
+                                class="figure-img img-fluid rounded" alt="The contents of main overflows into the footer.">
+                        </figure>
+                        
+                        <p>
+                        The height of the footer should also be the same height as the bottom padding for our main, 30px. This should also be applied to the top margin but as a negative, if not then you end up with something like this:
+                        </p>
+                        
+                        <figure class="figure">
+                            <img src="../images/footer-article/5-main-footer-spacing.png"
+                                class="figure-img img-fluid rounded" alt="The footer isn't visible because of the padding in main.">
+                        </figure>
+                        
+                        <p>
+                        You can see that there is a space towards the bottom of the screen in between our <code>&lt;main&gt;</code> and our <code>&lt;footer&gt;</code> and that's definitely not what we want. That's why we apply the top margin as a negative while making sure it's the same size as the <code>&lt;footer&gt;</code> height and the bottom padding of <code>&lt;main&gt;</code>. Now the footer should be displayed properly:
+                        </p>
+                        
+                        <figure class="figure">
+                            <img src="../images/footer-article/6-main-footer-no-spacing.png"
+                                class="figure-img img-fluid rounded" alt="Footer position with wrapper solution.">
+                        </figure>
+                        
+                        <p>
+                        There we go, much better.
+                        </p>
+                        
+                        <h3>Conclusion</h3>
+                        
+                        <p>
+                        In conclusion, there are many ways to keep the footer at the bottom, however, in this article, I just mentioned three, the flex way, the grid way, and finally the wrapper way.
+                        </p>
+                        
+                        <p>
+                        All of these solutions are great but the best one, in my opinion, is the flex one. It's easy to implement and you don't have to deal with a grid or a wrapper. The grid solution may be best for when you can't use flexbox or you’re stuck using a grid, while the wrapper solution may be best for when you already know how big the size of the footer is going to be.
+                        </p>
+                        
+                        <p>
+                        You should keep these solutions in mind when thinking about how you're going to keep that pesky footer at the bottom of the page. You should choose the solution that best fits your needs.
+                        </p>
+                        
+                        <p>
+                        You can check out the full code <a class="underline" target="_blank" href="https://github.com/AlanConstantino/web-cheat-sheet/tree/master/examples/keep-footer-at-the-bottom">here</a>.
+                        </p>
+                        
+                        <p>
+                        Thanks for reading and have a good one!
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-sm">
+                    <h2 class="go-to-links"><a href="../">&larr; Go back to posts</a></h2>
+                </div>
+                <div class="col-sm">
+                    <h2 class="go-to-links"><a href="#top">&uarr; Go back to top</a></h2>
+                </div>
+                <div class="col-sm">
+                    <h2 class="go-to-links"><a href="./creating-a-discord-bot-with-python.html">Next Article &rarr;</a>
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <script src="../scripts/readingTime.js"></script>
+</body>
+
+</html>

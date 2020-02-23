@@ -124,3 +124,7 @@ pre.code code::before {
     content: counter(listing) ". ";
     display: inline-block;
 }
+
+.pink-text {
+    color: #E6438C;
+}
