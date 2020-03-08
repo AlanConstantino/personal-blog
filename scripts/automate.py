@@ -17,13 +17,13 @@ def read_file(file_path):
             paragraphs.append(line.strip() + "\n")
             continue
 
-        paragraphs.append("<p>\n" + line.strip() + "\n</p>\n")
+        paragraphs.append("<p>\n\t" + line.strip() + "\n</p>\n")
 
     file.close()
 
 
 def get_new_path():
-    print("Enter the path and file name for the new file including its extension")
+    print("\nEnter the path and file name for the new file including its extension")
     new_path_name = input()
     return new_path_name.strip()
 
