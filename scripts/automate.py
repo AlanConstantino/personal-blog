@@ -1,7 +1,7 @@
 paragraphs = []
 
 def get_file_path_from_user():
-    print("Input a file path location:")
+    print("Specify the path location for the file you want to target:")
     path = input()
     return path.strip()
 
@@ -23,7 +23,7 @@ def read_file(file_path):
 
 
 def get_new_path():
-    print("Enter the path and file name for the new file")
+    print("Enter the path and file name for the new file including its extension")
     new_path_name = input()
     return new_path_name.strip()
 
@@ -39,5 +39,5 @@ def create_new_file(new_path_name):
 
 file_path = get_file_path_from_user()
 read_file(file_path)
-new_path_name = get_new_path()
-create_new_file(new_path_name)
+new_file_path = get_new_path()
+create_new_file(new_file_path)
