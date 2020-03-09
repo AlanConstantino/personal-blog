@@ -90,6 +90,14 @@ header, footer {
 .oblique {
     font-style: oblique;
 }
+/* Makes text italic */
+.italic {
+    font-style: italic;
+}
+/* Makes text bold */
+.bold {
+    font-weight: bold;
+}
 /* Adds a margin to the bottom of an image */
 img {
     margin-bottom: 10px;
@@ -127,4 +135,8 @@ pre.code code::before {
 
 .pink-text {
     color: #E6438C;
+}
+
+.amazon-affiliate {
+    margin-top: 20px;
 }
