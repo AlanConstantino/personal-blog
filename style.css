@@ -90,6 +90,10 @@ header, footer {
 .oblique {
     font-style: oblique;
 }
+/* Makes text italic */
+.italic {
+    font-style: italic;
+}
 /* Adds a margin to the bottom of an image */
 img {
     margin-bottom: 10px;
