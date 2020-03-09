@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-153173414-2"></script>
+    <!-- <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-153173414-2');
+    </script> -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="An article that talks about using a Raspberry Pi and Python to water your plants automatically.">
+    <meta name="robots" content="index, follow">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="shortcut icon" href="../images/code.png">
+    <link rel="canonical" href="https://blog.alanconstantino.com/articles/water-your-plant-using-a-raspberry-pi-and-python.html" />
+    <title>Water Your Plant Using a Raspberry Pi and Python</title>
+</head>
+
+<body>
+    <header id="top">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col">
+                    <h2 class="go-to-links"><a href="../">&larr; Go back to posts</a></h2>
+                    <h1>Water Your Plant Using a Raspberry Pi and Python</h1>
+                    <h2 class="article-info">March 9, 2020 | 7 min read</h2>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container text-left">
+            <div class="row">
+                <div class="col margin-left-right">
+                    <article class="article" id="main-article">
+                        <p class="italic">
+                            I'd like to point out that I am by no means an expert in electronics. If you were to ask me to make a circuit diagram or explain the minutiae of how a certain electronic piece works, I'd draw a complete blank. In reality, I completed this project by just tinkering around with electronic components and having a basic understanding of how electricity works. That being said, you should always exercise caution when working with electronics, especially when using external power sources. <span class="bold">Do your own research before attempting to work with electronics and electricity!</span>
+                        </p>
+
+                        <figure class="figure">
+                            <img class="figure-img img-fluid" src="../images/rpi-plant-article/complete-water-pump.jpg" alt="Final product">
+                        </figure>
+
+                        <p>
+                            I suck at taking care of plants, mostly because I forget to water them. So then I started thinking, "I'm sure someone out there has figured out a way to automate this process." Turns out, there are plenty of people who have. Namely in the form of using an Arduino or a Raspberry Pi to automatically water their plants. In this post, I'll be talking about how I used a Raspberry Pi and Python to automatically water my plant.
+                        </p>
+
+                        <p>
+                            The following are the components I used in this project:
+                        </p>
+
+                        <ul class="list-group">
+                            <a href="https://amzn.to/2v4127P" target="_blank">
+                                <li class="list-group-item">Raspberry Pi 3 Starter Kit</li>
+                            </a>
+                            <a href="https://amzn.to/39Ckg3e" target="_blank">
+                                <li class="list-group-item">12v water pump</li>
+                            </a>
+                            <a href="https://amzn.to/3aEaqOE" target="_blank">
+                                <li class="list-group-item">12v power supply</li>
+                            </a>
+                            <a href="https://amzn.to/2v0dfu2" target="_blank">
+                                <li class="list-group-item">5v Relay</li>
+                            </a>
+                            <a href="https://amzn.to/2xm3dnZ" target="_blank">
+                                <li class="list-group-item">An assortment of jumper wires</li>
+                            </a>
+                            <a href="https://amzn.to/2VVQpig" target="_blank">
+                                <li class="list-group-item">Alligator clip jumper wires</li>
+                            </a>
+                            <a href="https://amzn.to/38E2AmR" target="_blank">
+                                <li class="list-group-item">Silicone tubing</li>
+                            </a>
+                        </ul>
+
+                        <p class="italic">
+                            The links above are Amazon Affiliate links. By clicking on a link above and purchasing an item, I earn a little slice of the sale.
+                        </p>
+
+                        <p>
+                            Once I had all the components I needed, it was time to do some research. The following are the resources I used to hookup the electronics and have a basic understanding of how they function:
+                        </p>
+
+                        <ul class="list-group">
+                            <a href="https://www.dummies.com/education/science/science-electronics/electronics-basics-fundamentals-of-electricity/" target="_blank">
+                                <li class="list-group-item">How electricity works</li>
+                            </a>
+                            <a href="https://www.youtube.com/watch?v=5NxVmg8ZFEc" target="_blank">
+                                <li class="list-group-item">How to use a relay</li>
+                            </a>
+                            <a href="https://youtu.be/My1BDB1ei0E?t=173" target="_blank">
+                                <li class="list-group-item">Supplying power to the relay from the Raspberry Pi</li>
+                            </a>
+                            <a href="https://youtu.be/51f3ZazNW-w?t=10" target="_blank">
+                                <li class="list-group-item">Hooking up the 12v power supply to the relay</li>
+                            </a>
+                        </ul>
+
+                        <p>
+                            Here is an image of the GPIO pins on the Raspberry Pi:
+                        </p>
+                        
+                        <figure class="figure">
+                            <img class="figure-img img-fluid" src="../images/rpi-plant-article/gpio-pins.png" alt="GPIO pins on the raspberry pi">
+                        </figure>
+
+                        <p>
+                            First, I started out by hooking up the relay to the Raspberry Pi like so:
+                        </p>
+
+                        <figure class="figure">
+                            <img class="figure-img img-fluid" src="../images/rpi-plant-article/relay-to-rpi.jpg" alt="Relay wiring to Raspberry Pi">
+                        </figure>
+
+                        <p>
+                            The red wire (female to female) leads from the JD_VCC pin on the relay board to the 5V pin (pin 2) on the Raspberry Pi. The orange wire (female to female) leads from the VCC pin on the relay board to the 3.3V pin (pin 1) on the Raspberry Pi.
+                        </p>
+
+                        <figure class="figure">
+                            <img class="figure-img img-fluid" src="../images/rpi-plant-article/relay-closeup-2.jpg" alt="Close up of JD_VCC and VCC pins on relay">
+                        </figure>
+
+                        <p>
+                            By hooking up these wires, we are giving the relay board power. To actually control an individual relay, we need to connect two more pins from the relay board to the Raspberry Pi, the GND (ground) pin and the IN1 pin.
+                        </p>
+
+                        <figure class="figure">
+                            <img class="figure-img img-fluid" src="../images/rpi-plant-article/relay-closeup.jpg" alt="Close up of GND and IN1 pins on relay">
+                        </figure>
+
+                        <p>
+                            The black wire (female to female) is the ground wire and that leads from the GND pin on the relay board to any ground pin on the Raspberry Pi (I used pin 34). The white wire (female to female) leads from the IN1 pin on the relay board to pin 12 on the Raspberry Pi. The white wire is what will allow us to turn on and off the relay with code.
+                        </p>
+
+                        <figure class="figure">
+                            <img class="figure-img img-fluid" src="../images/rpi-plant-article/rpi-pin-closeup.jpg" alt="Pin connections on Raspberry Pi">
+                        </figure>
+
+                        <p>
+                            You can wire up the relay and Raspberry Pi however you wish but just remember to change the pin numbers if you use the code I provide.
+                        </p>
+
+                        <p>
+                            After the relay board and the Raspberry Pi are wired up, I then proceeded to connect the 12V adapter to the individual relay. <span class="bold">DON'T CONNECT THE 12V WALL ADAPTER INTO A WALL OUTLET UNTIL AFTER YOU FINISH WIRING UP EVERYTHING, YOU DON'T WANT TO BE WORKING WITH LIVE POWER.</span>
+                        </p>
+
+                        <figure class="figure">
+                            <img class="figure-img img-fluid" src="../images/rpi-plant-article/12v-adapter-wiring.jpg" alt="12V adapter wiring">
+                        </figure>
+
+                        <p>
+                            The 12V power supply comes with a handy adapter that you can use to connect wires. I wired up the red wire (male to male) to the + sign of the adapter and the brown wire (male to male) to the - sign of the adapter. I then added an alligator clip (female to male) to the brown wire.
+                        </p>
+
+                        <figure class="figure">
+                            <img class="figure-img img-fluid" src="../images/rpi-plant-article/12v-adapter.jpg" alt="12V adapter">
+                        </figure>
+
+                        <p>
+                            The relay board has four individual relays and each relay has three outputs where you can screw in wires. The output in the middle is where you want to connect the positive lead of an external power supply while the output to the left of that is where you want to connect the positive lead of the device you want to power. This is the same for all of the individual relays on the board.
+                        </p>
+
+                        <figure class="figure">
+                            <img class="figure-img img-fluid" src="../images/rpi-plant-article/relay-outputs.jpg" alt="Relay outputs">
+                        </figure>
+                        
+                        <p>
+                            From the 12v adapter, I hooked up the red wire (positive/power) to the relay output in the middle. I then hooked up a new orange wire (male to male) to the leftmost output on the relay and attached an alligator clip (female to male) to the end of the orange wire.
+                        </p>
+                        
+                        <figure class="figure">
+                            <img class="figure-img img-fluid" src="../images/rpi-plant-article/relay-output-wiring.jpg" alt="Relay output wiring">
+                        </figure>
+
+                        <figure class="figure">
+                            <img class="figure-img img-fluid" src="../images/rpi-plant-article/12-adapter-to-wall.jpg" alt="12V adapter to wall adapter">
+                        </figure>
+
+                        <figure class="figure">
+                            <img class="figure-img img-fluid" src="../images/rpi-plant-article/box-in-wiring.jpg" alt="Most of the wiring complete">
+                        </figure>
+                        
+                        <p>
+                            Now we just need to connect the alligator clips to the water pump. It doesn't matter in which order you connect the alligator clips to the pump, all you're doing is just setting the water flow.
+                        </p>
+                        
+                        <p>
+                            The way I set up my water pump, I wanted water to flow from left to right so I connected the black alligator clip to the pin that has a red dot next to it and I connected the other alligator clip to the other pin on the pump. If I were to reverse the way in which the alligator clips are connected, the water would flow would be from right to left.
+                        </p>
+                        
+                        <figure class="figure">
+                            <img class="figure-img img-fluid" src="../images/rpi-plant-article/water-pump-alligator-clips.jpg" alt="Water pump wiring">
+                        </figure>
+
+                        <figure class="figure">
+                            <img class="figure-img img-fluid" src="../images/rpi-plant-article/complete-water-pump.jpg" alt="Final product">
+                            <figcaption class="figure-caption text-center oblique">Water flows in from the left tube, into the pump, out the right tube, and into the plant.</figcaption>
+                        </figure>
+
+                        <p>
+                            Finally, we come to the part I'm actually good at, the code. To interface with the GPIO pins on the Raspberry Pi, I used the <a href="https://gpiozero.readthedocs.io/en/stable/index.html" class="underline" target="_blank">gpiozero library</a>. It's really easy to use and abstracts away a lot of the lower-level operations you'd usually need to learn in order to get started interfacing with the GPIO pins. You can find a link to the documentation <a href="https://gpiozero.readthedocs.io/en/stable/index.html" class="underline" target="_blank">here</a>.
+                        </p>
+
+                        <p>
+                            Before we can actually get started writing code, you have to hook up your Pi to a monitor, mouse, and keyboard or you can
+                            <a href="https://www.raspberrypi.org/documentation/remote-access/ssh/" class="underline" target="_blank">SSH into your Pi</a>.
+                        </p>
+
+                        <p>
+                            Once you have logged into your Pi, navigate to your Desktop and create a folder called "run." Inside of "run," you'll have another folder called "classes." Now within the "classes" folder, create a file called "Hardware.py" which should look something like this:
+                        </p>
+
+                        <script src="https://gist.github.com/AlanConstantino/fc7d5f1bbfa212f0a125900ce48b80de.js"></script>
+
+                        <p>
+                            In this file, I just define a new class called Relay that inherits from the class <a href="https://gpiozero.readthedocs.io/en/stable/api_output.html#outputdevice" class="underline" target="_blank">OutputDevice</a>.
+                        </p>
+
+                        <p>
+                            Next, within the "classes" folder, create a new file called "TimeKeeper.py" which should look like the following:
+                        </p>
+
+                        <script src="https://gist.github.com/AlanConstantino/4a4c9080280d14c387caa6f51b1d67e0.js"></script>
+
+                        <p>
+                            Essentially, the purpose of this class is to keep track of the current time and the last time our plant gets watered.
+                        </p>
+
+                        <p>
+                            Both "Harware.py" and "TimeKeeper.py" are in the folder called "classes." I then created a new file called "water_plant.py" which I placed outside of the "classes" folder.
+                        </p>
+
+                        <p>
+                            The file "water_plant.py" looks something like this:
+                        </p>
+
+                        <script src="https://gist.github.com/AlanConstantino/3136cb51b65833cc914b73d3b69192a9.js"></script>
+
+                        <p>
+                            You can change the value of the "WATERING_TIME" and "SECONDS_TO_WATER" variables to whatever you'd like. The first variable determines at what time during the day the plant should receive water while the latter determines how long the plant will receive water.
+                        </p>
+
+                        <p>
+                            I also set up email reminders so you receive an email whenever your plant gets watered as well as an email every Friday to remind you to check your water level. By default, I've disabled these reminders so the program doesn't crash on start, but if you want to enable them you have to do three things: 1) You have to change lines 26 and 27 to include your Gmail and password 2) You then have to uncomment lines 63, 65, and 68 3) You have to go <a href="https://myaccount.google.com/lesssecureapps?pli=1" class="underline" target="_blank">here</a>, log in with the Gmail you want to receive the reminders on, and toggle the switch to "ON" or else you'll receive an error when you try and send an email using your Gmail account. It's also important to note that the email reminders only work with a Gmail account.
+                        </p>
+
+                        <p>
+                            Now that all the files are set up, you should have something that looks like the following directory tree structure:
+                        </p>
+
+                        <code class="text-left">
+                            run<br>
+                            ├── classes<br>
+                            │&nbsp;&nbsp;&nbsp;├── Hardware.py<br>
+                            │&nbsp;&nbsp;&nbsp;└── TimeKeeper.py<br>
+                            └── water_plant.py
+                        </code>
+
+                        <p>
+                            You can place this "run" folder anywhere on the Raspberry Pi but I just decided to keep it on the Desktop.
+                        </p>
+
+                        <p>
+                            Finally, instead of SSHing into the Pi or hooking it up to a monitor every time we want to run the "water_plant.py" script, I wanted the script to run whenever we turn on the Raspberry Pi so that way we can turn the Pi off and move it anywhere. Once we turn it on, we don't have to SSH into the Pi or connect it to a monitor just to run the script. To do this, we need to use the "crontab" command.
+                        </p>
+
+                        <p>
+                            If you open a terminal window on your Pi, either by hooking it up to a monitor or by SSHing into it and you type in the following command:
+                        </p>
+
+                        <kbd>sudo crontab -e</kbd>
+
+                        <p>
+                            You should see something similar to this:
+                        </p>
+
+                        <figure class="figure">
+                            <img class="figure-img img-fluid" src="../images/rpi-plant-article/pi-terminal.png" alt="Terminal window on Raspberry Pi">
+                        </figure>
+
+                        <p>
+                            In this file, you're going to append the following code snippet:
+                        </p>
+
+                        <code>@reboot python3 /home/pi/Desktop/run/water_plant.py</code>
+
+                        <p>
+                            Then save it by doing <kbd>CTRL+X</kbd> &rarr; <kbd>Y</kbd> &rarr; <kbd>Enter</kbd>
+                        </p>
+
+                        <p>
+                            Essentially, we just told the Pi "Hey whenever you reboot, run the python script 'water_plant.py' inside the 'run' folder located on our Desktop." If you didn't place the 'run' folder on your Desktop, just update the path to wherever you placed your "water_plant.py" script.
+                        </p>
+
+                        <p>
+                            You can view the full code <a href="https://github.com/AlanConstantino/rpi-plant-project" class="underline" target="_blank">here</a> or you can just clone the repository with the following command:
+                        </p>
+
+                        <code>git clone https://github.com/AlanConstantino/rpi-plant-project.git</code>
+
+                        <p>
+                            That's it! Now you should have a working Raspberry Pi that waters your plants every 24 hours! It even sends you email reminders every time your plant gets watered as well as every Friday reminding you to check your water level.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-sm">
+                    <h2 class="go-to-links"><a href="../">&larr; Go back to posts</a></h2>
+                </div>
+                <div class="col-sm">
+                    <h2 class="go-to-links"><a href="#top">&uarr; Go back to top</a></h2>
+                </div>
+                <div class="col-sm">
+                    <h2 class="go-to-links"><a href="./keep-the-footer-at-the-bottom.html">Next Article &rarr;</a>
+                    </h2>
+                </div>
+            </div>
+            <div class="row amazon-affiliate">
+                <div class="col">
+                    <p class="italic">
+                        Alan Constantino is a participant in the Amazon Services LLC Associates Program, an affiliate advertising program designed to provide a means for sites to earn advertising fees by advertising and linking to <a href="https://www.amazon.com/" class="underline" target="_blank">Amazon</a>.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <script src="../scripts/readingTime.js"></script>
+</body>
+
+</html>
