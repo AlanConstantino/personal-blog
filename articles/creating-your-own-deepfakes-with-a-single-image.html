@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-153173414-2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-153173414-2');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description"
+        content="An article that talks about creating your own deepfakes with a single source video and image.">
+    <meta name="robots" content="index, follow">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="shortcut icon" href="../images/code.png">
+    <link rel="canonical"
+        href="https://blog.alanconstantino.com/articles/creating-your-own-deepfakes-with-a-single-image.html" />
+    <title>Creating Your Own Deepfakes With a Single Image</title>
+</head>
+
+<body>
+    <header id="top">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col">
+                    <h2 class="go-to-links"><a href="../">&larr; Go back to posts</a></h2>
+                    <h1>Creating Your Own Deepfakes With a Single Image</h1>
+                    <h2 class="article-info">August 13, 2020 | 6 min read</h2>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container text-left">
+            <div class="row">
+                <div class="col">
+                    <article class="article" id="main-article">
+                        <article class="article" id="main-article">
+                            <h2 id="table-of-contents-">
+                                Table of Contents
+                            </h2>
+                            <ul class="list-group">
+                                <li class="list-group-item"><a href="#background">Background</a></li>
+                                <li class="list-group-item"><a href="#things-youll-need">Things you&#39;ll need</a></li>
+                                <li class="list-group-item"><a href="#before-starting">Before starting</a>
+                                    <ul class="list-group">
+                                        <li class="list-group-item"><a href="#sign-into-your-google-account">Sign into
+                                                your
+                                                Google account</a></li>
+                                        <li class="list-group-item"><a href="#connecting-to-the-google-colab">Connecting
+                                                to
+                                                the Google Colab</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="list-group-item"><a href="#creating-your-own-deepfakes">Creating your own
+                                        deepfakes</a>
+                                    <ul class="list-group">
+                                        <li class="list-group-item"><a href="#step-1-cloning-the-repo">(Step 1) Cloning
+                                                the
+                                                Repo</a></li>
+                                        <li class="list-group-item"><a href="#step-2-change-your-directory">(Step 2)
+                                                Change
+                                                your directory</a></li>
+                                        <li class="list-group-item"><a
+                                                href="#step-3-mounting-your-google-drive-folder-on-colab">(Step 3)
+                                                Mounting
+                                                your Google drive folder
+                                                on Colab</a></li>
+                                        <li class="list-group-item"><a
+                                                href="#step-4-downloading-the-checkpoint-pthtar-files">(Step 4)
+                                                Downloading
+                                                the checkpoint
+                                                (&quot;.pth.tar&quot;) files</a></li>
+                                        <li class="list-group-item"><a
+                                                href="#step-5-create-a-folder-called-first-order-model-motion-in-your-google-drive">(Step
+                                                5) Create a
+                                                folder called &quot;first-order-model-motion&quot; in your Google
+                                                Drive</a>
+                                        </li>
+                                        <li class="list-group-item"><a href="#step-6-loading-your-image-and-video">(Step
+                                                6)
+                                                Loading your image and
+                                                video</a></li>
+                                        <li class="list-group-item"><a
+                                                href="#step-7-creating-the-model-and-loading-the-checkpoints">(Step 7)
+                                                Creating the model and loading
+                                                the checkpoints</a></li>
+                                        <li class="list-group-item"><a href="#step-8-creating-the-deepfake">(Step 8)
+                                                Creating the deepfake</a></li>
+                                        <li class="list-group-item"><a href="#step-9-saving-your-deepfake">(Step 9)
+                                                Saving
+                                                your deepfake</a></li>
+                                    </ul>
+                                </li>
+                                <li class="list-group-item"><a href="#errors">Errors</a></li>
+                                <li class="list-group-item"><a href="#using-your-own-image">Using your own image</a>
+                                </li>
+                                <li class="list-group-item"><a href="#using-your-own-video">Using your own video</a>
+                                </li>
+                                <li class="list-group-item"><a href="#video-tutorials">Video tutorials</a></li>
+                            </ul>
+                            <br>
+
+                            <h2 id="background">Background</h2>
+                            <p>In case you don&#39;t know, deepfakes are faked media that mimic another person&#39;s
+                                likeness, <a class="underline" target="_blank"
+                                    href="https://www.youtube.com/watch?v=_OqMkZNHWPo">like
+                                    so</a>. This
+                                process is
+                                achieved through something
+                                called <a class="underline" target="_blank"
+                                    href="https://en.wikipedia.org/wiki/Deep_learning">&quot;deep
+                                    learning,&quot;</a>
+                                hence the name
+                                <em>deepfake</em>.</p>
+                            <p>Creating your own deepfakes has been possible for a while now but the problem was that it
+                                required a lot of data,
+                                computing power, and time.</p>
+                            <p>But now, thanks to the researchers Aliaksandr Siarohin, Stéphane Lathuilière, Sergey
+                                Tulyakov, Elisa Ricci and Nicu
+                                Sebe, their paper <a class="underline" target="_blank"
+                                    href="https://aliaksandrsiarohin.github.io/first-order-model-website/">&quot;First
+                                    Order
+                                    Motion
+                                    Model for Image Animation,&quot;</a> and their <a class="underline" target="_blank"
+                                    href="https://github.com/AliaksandrSiarohin/first-order-model">implementation</a>,
+                                we
+                                are now able to create a
+                                deepfakes with a single image.</p>
+                            <p>Better yet, not only can we create deepfakes with a single image, but they also don&#39;t
+                                take hours or days to make,
+                                now they take only mere seconds and at most a couple of minutes. In addition, no coding
+                                experience is required.</p>
+                            <p>If you&#39;d like to understand more of how this works, you can watch this <a
+                                    class="underline" target="_blank"
+                                    href="https://www.youtube.com/watch?v=mUfJOQKdtAk">video by Two
+                                    Minute Papers</a>.
+                            </p>
+                            <h2 id="things-youll-need">Things you&#39;ll need</h2>
+
+                            <ul class="list-group">
+                                <li class="list-group-item">A <a class="underline" target="_blank"
+                                        href="https://accounts.google.com/signup?hl=en">Google
+                                        account</a>
+                                </li>
+                                <li class="list-group-item">An image of what you want to animate
+                                    <ul class="list-group">
+                                        <li class="list-group-item">We&#39;ll be using a picture of The Mona Lisa</li>
+                                    </ul>
+                                </li>
+                                <li class="list-group-item">A video to extract the animation from<ul>
+                                        <li class="list-group-item">We&#39;ll be using a video of Leonardo
+                                            DiCaprio&#39;s
+                                            face</li>
+                                    </ul>
+                                </li>
+                                <li class="list-group-item">Some free time</li>
+                            </ul>
+                            <h2 id="before-starting">Before starting</h2>
+                            <h3 id="sign-into-your-google-account">Sign into your Google account</h3>
+                            <p>Once you go to the <a class="underline" target="_blank"
+                                    href="https://colab.research.google.com/github/AliaksandrSiarohin/first-order-model/blob/master/demo.ipynb?authuser=1#scrollTo=UCMFMJV7K-ag">Google
+                                    colab</a>, you&#39;ll be greeted with a page that looks like the following:</p>
+
+                            <img class="figure-img img-fluid"
+                                src="../images/creating-deepfakes-article/google-colab-landing-page.png"
+                                alt="Google Colab">
+
+                            <p>You&#39;ll need to sign in to your Google account to interact with this document.</p>
+                            <p>I&#39;d suggest you create a new <a class="underline" target="_blank"
+                                    href="https://accounts.google.com/signup?hl=en">Google
+                                    account here</a>.</p>
+                            <h3 id="connecting-to-the-google-colab">Connecting to the Google Colab</h3>
+                            <p>After you have signed in, you&#39;ll want to actually connect to the Colab.</p>
+                            <p>To do so click on the connect button at the top right of the page.</p>
+                            <p><img class="figure-img img-fluid"
+                                    src="../images/creating-deepfakes-article/click-connect.png"
+                                    alt="Connecting to the colab"></p>
+                            <p>If you don&#39;t get any error messages, you can skip straight to (Step 3).</p>
+                            <p>If you get the following message, that means that you won&#39;t be able to use
+                                Google&#39;s
+                                GPU which essentially
+                                means you can&#39;t follow the tutorial at this time because all the GPU&#39;s are being
+                                used.</p>
+                            <div class="text-center">
+                                <img class="figure-img img-fluid"
+                                    src="../images/creating-deepfakes-article/connect-to-gpu.png"
+                                    alt="Can&#39;t connect to GPU">
+                            </div>
+                            <p>To fix this, you can either (1) wait and come back later, (2) upgrade to <a
+                                    class="underline" target="_blank"
+                                    href="https://colab.research.google.com/signup">colab pro</a>, (3)
+                                <a class="underline" target="_blank"
+                                    href="https://github.com/AliaksandrSiarohin/first-order-model">run
+                                    this
+                                    repository</a>
+                                locally on your own
+                                machine (not covered in this tutorial but you can go <a class="underline"
+                                    target="_blank" href="https://www.youtube.com/watch?v=ICvNnrWKHmc">here</a>
+                                to follow a tutorial), or (4) create another Google account and try again.</p>
+                            <p>If you click &quot;Connect Without GPU&quot; then later on you&#39;ll encounter the
+                                following
+                                error:</p>
+
+                            <p><img class="figure-img img-fluid"
+                                    src="../images/creating-deepfakes-article/no-gpu-error.png" alt="Error, no GPU">
+                            </p>
+
+                            <h2 id="creating-your-own-deepfakes">Creating your own deepfakes</h2>
+                            <p>Let&#39;s get started creating our own deepfakes.</p>
+                            <h3 id="step-1-cloning-the-repo">(Step 1) Cloning the Repo</h3>
+                            <p>Once you are signed in, you&#39;ll want to hover over the brackets under the &quot;Clone
+                                Repository&quot; header.</p>
+                            <p><img class="figure-img img-fluid"
+                                    src="../images/creating-deepfakes-article/play-button-highlighted.png"
+                                    alt="Play button">
+                            </p>
+                            <p>You&#39;ll want to click on that play button to clone their repository.</p>
+                            <h3 id="step-2-change-your-directory">(Step 2) Change your directory</h3>
+                            <p>Once you finish cloning the repository, you&#39;ll want to change your current directory
+                                to
+                                &quot;first-order-model&quot; by clicking on the next play button like so:</p>
+                            <p><img class="figure-img img-fluid"
+                                    src="../images/creating-deepfakes-article/cd-first-order-model.png"
+                                    alt="cd into first-order-model"></p>
+                            <h3 id="step-3-mounting-your-google-drive-folder-on-colab">(Step 3) Mounting your Google
+                                drive
+                                folder on Colab</h3>
+                            <p>Next, you&#39;ll want to mount your google drive folder on the colab by clicking the next
+                                play button.</p>
+                            <p><img class="figure-img img-fluid" src="../images/creating-deepfakes-article/mounting.png"
+                                    alt="mounting"></p>
+                            <p>Before this can actually happen however, you have to click the link allowing the
+                                permission
+                                to do so:</p>
+                            <p><img class="figure-img img-fluid"
+                                    src="../images/creating-deepfakes-article/click-auth-link.png"
+                                    alt="Click on the link">
+                            </p>
+                            <p>Then you&#39;ll be prompted to sign into your Google account again. Sign into the same
+                                google
+                                account you originally
+                                signed into since starting this tutorial.</p>
+                            <p>You will then see the following page:</p>
+                            <p><img class="figure-img img-fluid"
+                                    src="../images/creating-deepfakes-article/auth-code.png" alt="Auth code"></p>
+                            <p>Copy and paste the authorization code into the colab like so and hit enter:</p>
+                            <p><img class="figure-img img-fluid"
+                                    src="../images/creating-deepfakes-article/paste-auth-code.png"
+                                    alt="Pasting auth code">
+                            </p>
+                            <h3 id="step-4-downloading-the-checkpoint-pthtar-files">(Step 4) Downloading the checkpoint
+                                (&quot;.pth.tar&quot;) files
+                            </h3>
+                            <p>Now you&#39;ll want to click on the following link:</p>
+                            <p><img class="figure-img img-fluid"
+                                    src="../images/creating-deepfakes-article/click-model-link.png"
+                                    alt="Link for downloading .pth.tar files"></p>
+                            <p>You&#39;ll then get sent to a Google drive that will have several files.</p>
+                            <p><img class="figure-img img-fluid"
+                                    src="../images/creating-deepfakes-article/google-drive-tar-files.png"
+                                    alt="Drive with .tar files"></p>
+                            <p>You only need to download the files called &quot;vox-adv-cpk.pth.tar&quot; and
+                                &quot;vox-cpk.pth.tar&quot; but I
+                                would also suggest you download a video and an image from here too.</p>
+                            <p>For the purposes of this tutorial I&#39;ll be downloading the aformentioned files as well
+                                as
+                                &quot;05.png,&quot;
+                                which is an image of The Mona Lisa, and &quot;10.mp4,&quot; which is a video of Leonardo
+                                DiCaprio&#39;s face.</p>
+                            <p><em>Downloading the files may take some time so just be patient.</em></p>
+                            <h3 id="step-5-create-a-folder-called-first-order-model-motion-in-your-google-drive">(Step
+                                5)
+                                Create a folder called
+                                &quot;first-order-model-motion&quot; in your Google Drive</h3>
+                            <p>Now you&#39;ll want to navigate to your Google Drive and create a folder called
+                                &quot;first-order-motion-model&quot;
+                                like so:</p>
+                            <p><img class="figure-img img-fluid"
+                                    src="../images/creating-deepfakes-article/google-drive-model-folder.png"
+                                    alt="Creating a folder in your Google Drive">
+                            </p>
+                            <p>It&#39;s in this folder that you&#39;ll want to upload the files you just downloaded.</p>
+                            <p><em>Note: You can also upload your own video and images but just make sure they are
+                                    cropped
+                                    to 256px by 256px.</em>
+                            </p>
+                            <p><em>For the purposes of this tutorial, we&#39;ll just be using an image of The Mona Lisa
+                                    and
+                                    a video of Leonardo
+                                    DiCaprio&#39;s face.</em></p>
+                            <p><img class="figure-img img-fluid"
+                                    src="../images/creating-deepfakes-article/google-drive-files.png"
+                                    alt="Uploaded files">
+                            </p>
+                            <p><em>This will also take some time so just be patient.</em></p>
+                            <h3 id="step-6-loading-your-image-and-video">(Step 6) Loading your image and video</h3>
+                            <p>Now you want to go back to the Google Colab and under the &quot;Load driving video and
+                                source
+                                image&quot; header,
+                                make sure that &#39;source_image&#39; and &#39;driving_video&#39; point to the image and
+                                video you uploaded to your
+                                google drive.</p>
+                            <p><img class="figure-img img-fluid"
+                                    src="../images/creating-deepfakes-article/check-paths.png" alt="Checking paths"></p>
+                            <p><em>Just make sure that the ending of the path has the correct name, i.e.
+                                    &#39;.../your_image_file.png&#39; and
+                                    &#39;.../your_video_file.mp4&#39;</em></p>
+                            <p>Now you want to go ahead and click the play button.</p>
+                            <p><img class="figure-img img-fluid"
+                                    src="../images/creating-deepfakes-article/loading-video-and-image.png"
+                                    alt="Loading your own video and image"></p>
+                            <p>This will take a couple of seconds but once that&#39;s done, scroll down and you should
+                                see
+                                something like this</p>
+
+                            <div class="text-center">
+                                <p><img class="figure-img img-fluid"
+                                        src="../images/creating-deepfakes-article/image-and-video.png"
+                                        alt="Mona Lisa and DiCaprio"></p>
+                            </div>
+
+
+                            <h3 id="step-7-creating-the-model-and-loading-the-checkpoints">(Step 7) Creating the model
+                                and
+                                loading the checkpoints
+                            </h3>
+                            <p>If you scroll down a bit further you should see the the following:</p>
+                            <p><img class="figure-img img-fluid"
+                                    src="../images/creating-deepfakes-article/create-a-model.png"
+                                    alt="Creating the model">
+                            </p>
+                            <p><em>In the image above you see a square icon because I was already running it but you
+                                    should
+                                    see a play icon.</em>
+                            </p>
+                            <p>Click on the play button and wait for it to finish.</p>
+                            <h3 id="step-8-creating-the-deepfake">(Step 8) Creating the deepfake</h3>
+                            <p>Now is the moment you&#39;ve been waiting for, actually creating the deepfake.</p>
+                            <p>Scroll down until you see the header &quot;Perform image animation&quot; and click on the
+                                play button like so:</p>
+                            <p><img class="figure-img img-fluid"
+                                    src="../images/creating-deepfakes-article/perform-image-animation.png"
+                                    alt="Creating the deepfake"></p>
+                            <p>Now you&#39;ll have to wait a little more but once that finished you should see something
+                                like the following:</p>
+                            <div class="text-center">
+                                <p><img class="figure-img img-fluid"
+                                        src="../images/creating-deepfakes-article/final-product.gif" alt="Deepfake"></p>
+                            </div>
+                            <p>Congrats! You just created your first deepfake!</p>
+                            <h3 id="step-9-saving-your-deepfake">(Step 9) Saving your deepfake</h3>
+                            <p>Now to actually save it, hover over the video and you should see an icon with three
+                                vertical
+                                dots.</p>
+                            <div class="text-center">
+                                <p><img class="figure-img img-fluid"
+                                        src="../images/creating-deepfakes-article/dotted-icon.png" alt="Dotted icon">
+                                </p>
+                            </div>
+                            <p>Click on the icon with three vertical dots and then click download.</p>
+                            <div class="text-center">
+                                <p><img class="figure-img img-fluid"
+                                        src="../images/creating-deepfakes-article/downloading-final-product.png"
+                                        alt="Downloading the deepfake"></p>
+                            </div>
+                            <p>And voila, you&#39;re done!</p>
+                            <h2 id="errors">Errors</h2>
+                            <p>If you encounter any errors, you can try to reset the runtime by doing the following:</p>
+                            <p>Click on the &quot;Runtime&quot; tab.</p>
+                            <p><img class="figure-img img-fluid"
+                                    src="../images/creating-deepfakes-article/highlight-runtime.png" alt="Runtime 1">
+                            </p>
+                            <p>Click on &quot;Factory reset runtime.&quot;</p>
+                            <p><img class="figure-img img-fluid"
+                                    src="../images/creating-deepfakes-article/factory-reset-runtime.png"
+                                    alt="Runtime 2">
+                            </p>
+                            <p>Click &quot;Yes&quot; and reload the page.</p>
+                            <p><img class="figure-img img-fluid"
+                                    src="../images/creating-deepfakes-article/click-yes-reset-runtime.png"
+                                    alt="Runtime 3">
+                            </p>
+                            <p>If you still encounter errors you can watch this video <a class="underline"
+                                    target="_blank" href="https://www.youtube.com/watch?v=YsghMCWSa90">here</a>.</p>
+                            <h2 id="using-your-own-image">Using your own image</h2>
+                            <p>To use your own image, simply grab any facial image and crop it to 256px by 256px.</p>
+                            <p>Also make sure it&#39;s saved in the &quot;.png&quot; format.</p>
+                            <p><em>Other image types may work, such as .jpg, but .png will give you the best results, at
+                                    least in my exprience.</em>
+                            </p>
+                            <h2 id="using-your-own-video">Using your own video</h2>
+                            <p>If you want to use your own video you also have to crop it to 256px by 256px.</p>
+                            <p>The Google colab provides a tool for you to do this.</p>
+                            <p><em>Before we can actually crop our own video, we have to upload our video to our Google
+                                    drive.</em></p>
+                            <p>Scroll down to the header that says &quot;Running on your data&quot;</p>
+                            <p><img class="figure-img img-fluid"
+                                    src="../images/creating-deepfakes-article/running-on-your-data.png"
+                                    alt="Running on your data"></p>
+                            <p>You&#39;ll want to paste the following line making sure you replace
+                                &quot;.../my_video_file.mp4&quot; to match your
+                                file name.</p>
+                            <pre><code>!ffmpeg -i /content/gdrive/My\ Drive/first-order-motion-model/my_video_file.mp4 -s 256x256 -c:a copy /content/gdrive/My\ Drive/first-order-motion-model/result.mp4</code></pre>
+                            <p>Then you should see a video called &quot;result.mp4&quot; in your google drive.</p>
+                            <p>You can then use this video in step 6 and onward making sure that you use the name
+                                &quot;result.mp4&quot; for the
+                                video.</p>
+                            <p><em>The video result can be a hit or miss. I&#39;d suggest you crop the video yourself
+                                    using
+                                    video editing
+                                    software.</em></p>
+                            <h2 id="video-tutorials">Video tutorials</h2>
+                            <p><a class="underline" target="_blank"
+                                    href="https://www.youtube.com/watch?v=peOKeRBU_uQ">6-minute video
+                                    tutorial</a>.</p>
+                            <ul class="list-group">
+                                <li class="list-group-item"><em>In this tutorial, he makes you paste the following line
+                                        of code: "!pip
+                                        install
+                                        PyYAML==5.3.1" at the
+                                        beginning of Step 1. This line is not necessary.</em></li>
+                            </ul>
+                            <p><a class="underline" target="_blank"
+                                    href="https://www.youtube.com/watch?v=zZr3EHLBm4g">20-minute video
+                                    tutorial</a>.</p>
+                            <p><a class="underline" target="_blank"
+                                    href="https://www.youtube.com/watch?v=ICvNnrWKHmc">Creating a
+                                    deepfake without using
+                                    Google Colab</a>.</p>
+                        </article>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-sm">
+                    <h2 class="go-to-links"><a href="../">&larr; Go back to posts</a></h2>
+                </div>
+                <div class="col-sm">
+                    <h2 class="go-to-links"><a href="#top">&uarr; Go back to top</a></h2>
+                </div>
+                <div class="col-sm">
+                    <h2 class="go-to-links"><a href="./water-your-plant-using-a-raspberry-pi-and-python.html">Next
+                            Article &rarr;</a>
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
