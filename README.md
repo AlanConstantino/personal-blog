@@ -1,5 +1,5 @@
-# [Personal-blog](https://blog.alanconstantino.com/)
-This is my [personal blog](https://blog.alanconstantino.com/) where I talk about coding and web development.
+# [Personal-blog](https://blog.alanjc.com/)
+This is my [personal blog](https://blog.alanjc.com/) where I talk about coding and web development.
 
 This blog was built using Bootstrap, HTML, CSS, and a little bit of JavaScript.
 
