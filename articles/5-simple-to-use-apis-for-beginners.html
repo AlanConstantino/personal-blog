@@ -1,361 +1,484 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-153173414-2"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'UA-153173414-2');
-    </script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no, user-scalable=no">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="description" content="An article that talks about 5 simple-to-use APIs for beginners.">
-    <meta name="robots" content="index, follow">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="../style.css">
-    <link rel="shortcut icon" href="../images/code.png">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, shrink-to-fit=no, user-scalable=no"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta
+      name="description"
+      content="An article that talks about 5 simple-to-use APIs for beginners."
+    />
+    <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://blog.alanjc.com/" />
+    <link rel="stylesheet" href="../css/normalize.css" />
+    <link rel="stylesheet" href="../css/skeleton.css" />
+    <link rel="stylesheet" href="../css/styles.css" />
+    <!-- change this... maybe... i dunno -->
+    <link rel="canonical" href="https://blog.alanjc.com/" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="../images/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="../images/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="../images/favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="../images/favicon/site.webmanifest" />
+    <link
+      rel="mask-icon"
+      href="../images/favicon/safari-pinned-tab.svg"
+      color="#5bbad5"
+    />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ffffff" />
     <title>5 Simple-To-Use APIs for Beginners</title>
-</head>
+  </head>
 
-
-<body>
+  <body>
     <header id="top">
-        <div class="container text-center">
-            <div class="row">
-                <div class="col">
-                    <h2 class="go-to-links"><a href="../">&larr; Go back to posts</a></h2>
-                    <h1>5 Simple-To-Use APIs for Beginners</h1>
-                    <h2 class="article-info">February 9, 2020 | 6 min read</h2>
-                </div>
-            </div>
-        </div>
+      <div class="container">
+        <h1>5 Simple-To-Use APIs for Beginners</h1>
+        <h6>February 9, 2020 | 6 min read</h6>
+      </div>
     </header>
 
     <main>
-        <div class="container text-left">
-            <div class="row">
-                <div class="col margin-left-right">
-                    <article class="article" id="main-article">
-                        <p>
-                            <a href="https://www.patreon.com/alanjc" target="_blank" class="underline italic">
-                                If you found this article useful consider donating.
-                            </a>
-                        </p>
-                        <hr>
+      <div class="container">
+        <div class="row">
+          <p class="center">
+            <a href="../donate.html">
+              <em>If you've found this article useful consider donating.</em>
+            </a>
+          </p>
 
-                        <p>
-                            Hello! In this article I'll be talking about five simple-to-use APIs to help inspire project
-                            ideas. The goal of this post is to inspire you to create a project, whether it be simple or
-                            complex, and start using APIs.
-                        </p>
+          <hr />
 
-                        <h3>What Is an API?</h3>
+          <p>
+            Hello! In this article I'll be talking about five simple-to-use APIs
+            to help inspire project ideas. The goal of this post is to inspire
+            you to create a project, whether it be simple or complex, and start
+            using APIs.
+          </p>
 
-                        <p>
-                            Before talking about APIs you can use, I think we should understand what an API
-                            actually is and what it does.
-                        </p>
+          <h3>What Is an API?</h3>
 
-                        <p>
-                            API stands for Application Programming Interface. Simply put, an API is what allows programs
-                            or services to communicate with other programs or services.
-                        </p>
+          <p>
+            Before talking about APIs you can use, I think we should understand
+            what an API actually is and what it does.
+          </p>
 
-                        <p>
-                            A great example I came across (don't remember the original source) was thinking of an API as
-                            a waiter at a restaurant.
-                        </p>
+          <p>
+            API stands for Application Programming Interface. Simply put, an API
+            is what allows programs or services to communicate with other
+            programs or services.
+          </p>
 
-                        <p>
-                            So you, the customer, talk to a waiter to get your food. The waiter then talks to the chef
-                            who actually makes your food. The chef gives the food to the waiter. Finally, the waiter
-                            then gives the food to you.
-                        </p>
+          <p>
+            A great example I came across (don't remember the original source)
+            was thinking of an API as a waiter at a restaurant.
+          </p>
 
-                        <p>
-                            Unpacking this example, the user (customer) sends a request to an API (waiter). The API
-                            (waiter) then talks to the service you want to reach, usually a database (chef). That
-                            database (chef) then sends data (food) back to the API (waiter). And finally, the API
-                            (waiter) then gives you back data (food).
-                        </p>
+          <p>
+            So you, the customer, talk to a waiter to get your food. The waiter
+            then talks to the chef who actually makes your food. The chef gives
+            the food to the waiter. Finally, the waiter then gives the food to
+            you.
+          </p>
 
-                        <p>
-                            Great! Now that we know what an API is and have a general understanding of how it works, we
-                            can now move on to talking about simple APIs you can use.
-                        </p>
+          <p>
+            Unpacking this example, the user (customer) sends a request to an
+            API (waiter). The API (waiter) then talks to the service you want to
+            reach, usually a database (chef). That database (chef) then sends
+            data (food) back to the API (waiter). And finally, the API (waiter)
+            then gives you back data (food).
+          </p>
 
-                        <h3><a class="underline" href="https://github.com/15Dkatz/official_joke_api"
-                                target="_blank">Official Joke API</a></h3>
+          <p>
+            Great! Now that we know what an API is and have a general
+            understanding of how it works, we can now move on to talking about
+            simple APIs you can use.
+          </p>
 
-                        <p>
-                            The first API I'll be talking about will the simplest one on the list: <a class="underline"
-                                href="https://github.com/15Dkatz/official_joke_api" target="_blank"> The Official Joke
-                                API</a>.
-                        </p>
+          <h3>
+            <a
+              class="underline"
+              href="https://github.com/15Dkatz/official_joke_api"
+              target="_blank"
+              >Official Joke API</a
+            >
+          </h3>
 
-                        <p>
-                            This API is extremely simple to use, you basically use a URL to connect to one of the API's
-                            endpoints and it returns back data in JSON format. Easy! No need for pesky API keys.
-                        </p>
+          <p>
+            The first API I'll be talking about will the simplest one on the
+            list:
+            <a
+              class="underline"
+              href="https://github.com/15Dkatz/official_joke_api"
+              target="_blank"
+            >
+              The Official Joke API</a
+            >.
+          </p>
 
-                        <p>
-                            For example, if we wanted a random joke from this API, we would simply use this URL:
-                            <code>https://official-joke-api.appspot.com/random_joke</code> and it would return one
-                            random joke.
-                        </p>
+          <p>
+            This API is extremely simple to use, you basically use a URL to
+            connect to one of the API's endpoints and it returns back data in
+            JSON format. Easy! No need for pesky API keys.
+          </p>
 
-                        <p>
-                            You can also grab more than one joke by using the following URL:
-                            <code>https://official-joke-api.appspot.com/random_ten</code>. Now, the API will return 10
-                            random jokes instead of just one.
-                        </p>
+          <p>
+            For example, if we wanted a random joke from this API, we would
+            simply use this URL:
+            <code>https://official-joke-api.appspot.com/random_joke</code>
+            and it would return one random joke.
+          </p>
 
-                        <p>
-                            You can check out the full list of endpoints <a
-                                href="https://github.com/15Dkatz/official_joke_api#endpoints" class="underline"
-                                target="_blank">here</a>.
-                        </p>
+          <p>
+            You can also grab more than one joke by using the following URL:
+            <code>https://official-joke-api.appspot.com/random_ten</code>. Now,
+            the API will return 10 random jokes instead of just one.
+          </p>
 
-                        <p>
-                            I built a simple Discord bot using this API. Basically, whenever you give the bot the
-                            following command, $joke, it returns one joke. You can check out the source code and images
-                            of the bot <a href="https://github.com/alanjc/discord-joke-bot" class="underline"
-                                target="_blank">here</a>. You can also check out a step-by-step guide on how to create
-                            the exact same Discord bot <a
-                                href="https://blog.alanjc.com/articles/creating-a-discord-bot-with-python.html"
-                                class="underline" target="_blank">here</a>.
-                        </p>
+          <p>
+            You can check out the full list of endpoints
+            <a
+              href="https://github.com/15Dkatz/official_joke_api#endpoints"
+              class="underline"
+              target="_blank"
+              >here</a
+            >.
+          </p>
 
-                        <h3><a href="https://shibe.online/" class="underline" target="_blank">Shibe.Online API</a></h3>
+          <p>
+            I built a simple Discord bot using this API. Basically, whenever you
+            give the bot the following command, $joke, it returns one joke. You
+            can check out the source code and images of the bot
+            <a
+              href="https://github.com/alanjc/discord-joke-bot"
+              class="underline"
+              target="_blank"
+              >here</a
+            >. You can also check out a step-by-step guide on how to create the
+            exact same Discord bot
+            <a
+              href="https://blog.alanjc.com/articles/creating-a-discord-bot-with-python.html"
+              class="underline"
+              target="_blank"
+              >here</a
+            >.
+          </p>
 
-                        <p>
-                            The next API I'll be talking about will be the shibes.online API. This is similar to the
-                            Jokes API I previously mentioned except instead of giving you back jokes it gives you back
-                            shibes. And who doesn't like shibes, am I right?
-                        </p>
+          <h3>
+            <a href="https://shibe.online/" class="underline" target="_blank"
+              >Shibe.Online API</a
+            >
+          </h3>
 
-                        <p>
-                            You can find more info about this API <a href="https://shibe.online/" class="underline"
-                                target="_blank">here</a>.
-                        </p>
+          <p>
+            The next API I'll be talking about will be the shibes.online API.
+            This is similar to the Jokes API I previously mentioned except
+            instead of giving you back jokes it gives you back shibes. And who
+            doesn't like shibes, am I right?
+          </p>
 
-                        <p>
-                            To use this API you simply have to use this URL:
-                            <code>http://shibe.online/api/shibes?count=[1-100]&urls=[true/false]&httpsUrls=[true/false]</code>
-                            and replace every "[]" with a parameter.
-                        </p>
+          <p>
+            You can find more info about this API
+            <a href="https://shibe.online/" class="underline" target="_blank"
+              >here</a
+            >.
+          </p>
 
-                        <p>
-                            An example query would be something like the following:
-                            <code>http://shibe.online/api/shibes?count=100&urls=true&httpsUrls=true</code>
-                        </p>
+          <p>
+            To use this API you simply have to use this URL:
+            <code
+              >http://shibe.online/api/shibes?count=[1-100]&urls=[true/false]&httpsUrls=[true/false]</code
+            >
+            and replace every "[]" with a parameter.
+          </p>
 
-                        <p>
-                            The URL above would give me 100 links to shibe images in JSON format. It would also make
-                            sure that all images are URLs and that those URLs use https instead of http because of the
-                            true parameters we pass it.
-                        </p>
+          <p>
+            An example query would be something like the following:
+            <code
+              >http://shibe.online/api/shibes?count=100&urls=true&httpsUrls=true</code
+            >
+          </p>
 
-                        <p>
-                            I created a simple website that generates shapes based on user input and I used this API to
-                            embed images of shibes inside of those shapes. You can find the source code and images of
-                            the website I built <a href="https://github.com/alanjc/shiba-shapes"
-                                class="underline" target="_blank">here</a>.
-                        </p>
+          <p>
+            The URL above would give me 100 links to shibe images in JSON
+            format. It would also make sure that all images are URLs and that
+            those URLs use https instead of http because of the true parameters
+            we pass it.
+          </p>
 
-                        <p>
-                            A similar project idea would be to create a random number of circles on a page and have
-                            shibe images embedded within each of those circles every time a user visits the site. You
-                            can also have those circles move around and bounce off the edge of the screen. And if you
-                            think that was too easy, you can try adding collision detection between those circles so
-                            they bounce off of each other as well as the sides of the screen.
-                        </p>
+          <p>
+            I created a simple website that generates shapes based on user input
+            and I used this API to embed images of shibes inside of those
+            shapes. You can find the source code and images of the website I
+            built
+            <a
+              href="https://github.com/alanjc/shiba-shapes"
+              class="underline"
+              target="_blank"
+              >here</a
+            >.
+          </p>
 
-                        <h3><a href="https://wheretheiss.at/w/developer" class="underline" target="_blank">
-                                Where the ISS At? API
-                            </a>
-                        </h3>
+          <p>
+            A similar project idea would be to create a random number of circles
+            on a page and have shibe images embedded within each of those
+            circles every time a user visits the site. You can also have those
+            circles move around and bounce off the edge of the screen. And if
+            you think that was too easy, you can try adding collision detection
+            between those circles so they bounce off of each other as well as
+            the sides of the screen.
+          </p>
 
-                        <p>
-                            This API is probably the coolest on this list in my opinion just because you're' able to
-                            track the ISS with it. Yes, you read that right, the International Space Station!
-                        </p>
+          <h3>
+            <a
+              href="https://wheretheiss.at/w/developer"
+              class="underline"
+              target="_blank"
+            >
+              Where the ISS At? API
+            </a>
+          </h3>
 
-                        <p>
-                            You can find more info about the API <a href="https://wheretheiss.at/w/developer"
-                                class="underline" target="_blank">here</a>.
-                        </p>
+          <p>
+            This API is probably the coolest on this list in my opinion just
+            because you're' able to track the ISS with it. Yes, you read that
+            right, the International Space Station!
+          </p>
 
-                        <p>
-                            This API gives you back data about the ISS in JSON format. You use the following URL
-                            <code>https://api.wheretheiss.at/v1/satellites/25544</code> to get back data about the ISS
-                            like latitude, longitude, altitude, velocity, etc.
-                        </p>
+          <p>
+            You can find more info about the API
+            <a
+              href="https://wheretheiss.at/w/developer"
+              class="underline"
+              target="_blank"
+              >here</a
+            >.
+          </p>
 
-                        <p>
-                            I built a website that tracks the ISS in real-time every couple of seconds and updates its
-                            location marker on a map. You can find images and the source code <a
-                                href="https://github.com/alanjc/iss-tracker" class="underline"
-                                target="_blank">here</a>. You can also visit the website itself <a
-                                href="https://iss.alanjc.com/" class="underline" target="_blank">here</a>.
-                        </p>
+          <p>
+            This API gives you back data about the ISS in JSON format. You use
+            the following URL
+            <code>https://api.wheretheiss.at/v1/satellites/25544</code> to get
+            back data about the ISS like latitude, longitude, altitude,
+            velocity, etc.
+          </p>
 
-                        <p>
-                            A cooler project you can build with this API is to make a website that notifies you whenever
-                            the ISS is overhead your current location.
-                        </p>
+          <p>
+            I built a website that tracks the ISS in real-time every couple of
+            seconds and updates its location marker on a map. You can find
+            images and the source code
+            <a
+              href="https://github.com/alanjc/iss-tracker"
+              class="underline"
+              target="_blank"
+              >here</a
+            >. You can also visit the website itself
+            <a href="https://iss.alanjc.com/" class="underline" target="_blank"
+              >here</a
+            >.
+          </p>
 
-                        <p>
-                            A similar API you can use if you don't like "Where the ISS At?" is the
-                            <a href="http://open-notify.org/Open-Notify-API/" class="underline" target="_blank">Open
-                                Notify API</a>. It's a little less accurate but it gives you more information like
-                            people aboard the ISS as well as its pass times.
-                        </p>
+          <p>
+            A cooler project you can build with this API is to make a website
+            that notifies you whenever the ISS is overhead your current
+            location.
+          </p>
 
-                        <h3><a href="https://pokeapi.co/" class="underline" target="_blank">PokeAPI</a></h3>
+          <p>
+            A similar API you can use if you don't like "Where the ISS At?" is
+            the
+            <a
+              href="http://open-notify.org/Open-Notify-API/"
+              class="underline"
+              target="_blank"
+              >Open Notify API</a
+            >. It's a little less accurate but it gives you more information
+            like people aboard the ISS as well as its pass times.
+          </p>
 
-                        <p>
-                            Do you like Pokemon? Did you ever want the power of the pokedex right at your fingertips?
-                            Well now you can with this API.
-                        </p>
+          <h3>
+            <a href="https://pokeapi.co/" class="underline" target="_blank"
+              >PokeAPI</a
+            >
+          </h3>
 
-                        <p>
-                            This API gives you back data about Pokemon, their move sets, encounters, evolutions, items,
-                            and much more. You can check out the full documentation
-                            <a href="https://pokeapi.co/docs/v2.html/#info" class="underline" target="_blank">here</a>.
-                        </p>
+          <p>
+            Do you like Pokemon? Did you ever want the power of the pokedex
+            right at your fingertips? Well now you can with this API.
+          </p>
 
-                        <p>
-                            You can think of this API as a real-life pokedex that contains all the information about
-                            Pokemon that you'd ever want.
-                        </p>
+          <p>
+            This API gives you back data about Pokemon, their move sets,
+            encounters, evolutions, items, and much more. You can check out the
+            full documentation
+            <a
+              href="https://pokeapi.co/docs/v2.html/#info"
+              class="underline"
+              target="_blank"
+              >here</a
+            >.
+          </p>
 
-                        <p>
-                            To use this API and get information about Pokemon, you can use the following URL
-                            <code>https://pokeapi.co/api/v2/pokemon/[pokemon_name]</code>. Now you just replace
-                            <code>"[pokemon_name]"</code> with a Pokemon name or its respective pokedex id and you'll
-                            receive back information about that Pokemon.
-                        </p>
+          <p>
+            You can think of this API as a real-life pokedex that contains all
+            the information about Pokemon that you'd ever want.
+          </p>
 
-                        <p>
-                            The project I built using this API was quite simple. I wanted to learn a little bit of
-                            jQuery and I also wanted to learn about CSS grid. So, I created a website that gets the
-                            original 151 Pokemon using jQuery and displays them on the screen using CSS grid. You can
-                            find the source code and and an image of the website <a
-                                href="https://github.com/alanjc/pokemon-jquery" class="underline"
-                                target="_blank">here</a>.
-                        </p>
+          <p>
+            To use this API and get information about Pokemon, you can use the
+            following URL
+            <code>https://pokeapi.co/api/v2/pokemon/[pokemon_name]</code>. Now
+            you just replace <code>"[pokemon_name]"</code> with a Pokemon name
+            or its respective pokedex id and you'll receive back information
+            about that Pokemon.
+          </p>
 
-                        <h3>
-                            <a href="https://opentdb.com/api_config.php" class="underline" target="_blank">
-                                Open Trivia Database API
-                            </a>
-                        </h3>
+          <p>
+            The project I built using this API was quite simple. I wanted to
+            learn a little bit of jQuery and I also wanted to learn about CSS
+            grid. So, I created a website that gets the original 151 Pokemon
+            using jQuery and displays them on the screen using CSS grid. You can
+            find the source code and and an image of the website
+            <a
+              href="https://github.com/alanjc/pokemon-jquery"
+              class="underline"
+              target="_blank"
+              >here</a
+            >.
+          </p>
 
-                        <p>
-                            Finally we get to the final API on this list, the Open Trivia Database API. The Open Trivia
-                            Database is an assortment of trivia questions and answers and it has an API you can use for
-                            your own projects.
-                        </p>
+          <h3>
+            <a
+              href="https://opentdb.com/api_config.php"
+              class="underline"
+              target="_blank"
+            >
+              Open Trivia Database API
+            </a>
+          </h3>
 
-                        <p>
-                            To use this API, you can go <a href="https://opentdb.com/api_config.php" class="underline"
-                                target="_blank">here</a> and fill out their API helper to help you generate a link and
-                            get back the data you want.
-                        </p>
+          <p>
+            Finally we get to the final API on this list, the Open Trivia
+            Database API. The Open Trivia Database is an assortment of trivia
+            questions and answers and it has an API you can use for your own
+            projects.
+          </p>
 
-                        <p>
-                            To get up and running quickly using this API, you can use the following URL:
-                            <code>https://opentdb.com/api.php?amount=10</code> to get back 10 random questions and
-                            answers based on different categories.
-                        </p>
+          <p>
+            To use this API, you can go
+            <a
+              href="https://opentdb.com/api_config.php"
+              class="underline"
+              target="_blank"
+              >here</a
+            >
+            and fill out their API helper to help you generate a link and get
+            back the data you want.
+          </p>
 
-                        <p>
-                            I created a Quiz Game which you can visit and play
-                            <a href="https://quiz.alanjc.com/" class="underline" target="_blank">here</a>.
-                            Essentially, whenever you click on a category, it will give you 10 questions based on that
-                            category and it keeps track of your overall score. At the end, it tells you how many
-                            questions you got right out of 10. You can view the source code and images of this project
-                            <a href="https://github.com/alanjc/quiz-game" class="underline"
-                                target="_blank">here</a>.
-                        </p>
+          <p>
+            To get up and running quickly using this API, you can use the
+            following URL:
+            <code>https://opentdb.com/api.php?amount=10</code> to get back 10
+            random questions and answers based on different categories.
+          </p>
 
-                        <h3>More APIs</h3>
+          <p>
+            I created a Quiz Game which you can visit and play
+            <a href="https://quiz.alanjc.com/" class="underline" target="_blank"
+              >here</a
+            >. Essentially, whenever you click on a category, it will give you
+            10 questions based on that category and it keeps track of your
+            overall score. At the end, it tells you how many questions you got
+            right out of 10. You can view the source code and images of this
+            project
+            <a
+              href="https://github.com/alanjc/quiz-game"
+              class="underline"
+              target="_blank"
+              >here</a
+            >.
+          </p>
 
-                        <p>
-                            Excited about finding more APIs and possibly even trying out more complex APIs, you can head
-                            over to this <a href="https://github.com/public-apis/public-apis#index" class="underline"
-                                target="_blank">GitHub repo</a> to check and see a plethora of APIs that are open-source
-                            and free to use.
-                        </p>
+          <h3>More APIs</h3>
 
-                        <h3>Conclusion</h3>
+          <p>
+            Excited about finding more APIs and possibly even trying out more
+            complex APIs, you can head over to this
+            <a
+              href="https://github.com/public-apis/public-apis#index"
+              class="underline"
+              target="_blank"
+              >GitHub repo</a
+            >
+            to check and see a plethora of APIs that are open-source and free to
+            use.
+          </p>
 
-                        <p>
-                            Well that was it for this post. You can use one of the aforementioned APIs to create a
-                            project whether it be simple or complex.
-                        </p>
+          <h3>Conclusion</h3>
 
-                        <p>
-                            Keep in mind that not all APIs are this easy to use. Some require that you dig through their
-                            respective documentation to get a hang of how to make API calls. Others require that you use
-                            an API key in order to connect to the API.
-                        </p>
+          <p>
+            Well that was it for this post. You can use one of the
+            aforementioned APIs to create a project whether it be simple or
+            complex.
+          </p>
 
-                        <p>
-                            The APIs I mentioned here don't really require much documentation reading and certainly
-                            don't require any pesky API keys which are perfect for beginners.
-                        </p>
+          <p>
+            Keep in mind that not all APIs are this easy to use. Some require
+            that you dig through their respective documentation to get a hang of
+            how to make API calls. Others require that you use an API key in
+            order to connect to the API.
+          </p>
 
-                        <p>
-                            I hope this post inspired you to pick up an API and create a project with it. As always,
-                            thanks for reading and good luck!
-                        </p>
-                        <hr>
-                        <p>
-                            <a href="https://www.patreon.com/alanjc" target="_blank" class="underline italic">
-                                If you found this article useful consider donating.
-                            </a>
-                        </p>
-                    </article>
-                </div>
-            </div>
+          <p>
+            The APIs I mentioned here don't really require much documentation
+            reading and certainly don't require any pesky API keys which are
+            perfect for beginners.
+          </p>
+
+          <p>
+            I hope this post inspired you to pick up an API and create a project
+            with it. As always, thanks for reading and good luck!
+          </p>
+
+          <hr />
+
+          <p class="center">
+            <a href="../donate.html">
+              <em>If you've found this article useful consider donating.</em>
+            </a>
+          </p>
         </div>
+      </div>
     </main>
 
     <footer>
-        <div class="container text-center">
-            <div class="row">
-                <div class="col-sm">
-                    <h2 class="go-to-links"><a href="../">&larr; Go back to posts</a></h2>
-                </div>
-                <div class="col-sm">
-                    <h2 class="go-to-links"><a href="#top">&uarr; Go back to top</a></h2>
-                </div>
-                <div class="col-sm">
-                    <h2 class="go-to-links"><a href="./creating-a-discord-bot-with-python.html">Next Article &rarr;</a>
-                    </h2>
-                </div>
-            </div>
+      <div class="container">
+        <div class="row">
+          <a href="../index.html">&#8592; Back</a>
+          <a href="#top">&#8593; Top &#8593;</a>
+          <a href="./creating-a-discord-bot-with-python.html">Next &#8594;</a>
         </div>
+        <div class="row">
+          <p>&copy; AlanJC. All rights reserved.</p>
+        </div>
+      </div>
     </footer>
-
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-        crossorigin="anonymous"></script>
-</body>
-
+  </body>
 </html>

@@ -1,1263 +1,1483 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-153173414-2"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'UA-153173414-2');
-    </script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no, user-scalable=no">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="description"
-        content="A 16 minute article written by Alan Constantino talking about how to use the terminal on Mac OS X.">
-    <meta name="robots" content="index, follow">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="../style.css">
-    <link rel="shortcut icon" href="../images/code.png">
-    <link rel="canonical" href="https://blog.alanjc.com/getting-started-with-the-terminal.html" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, shrink-to-fit=no, user-scalable=no"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta
+      name="description"
+      content="A 16 minute article written by Alan Constantino talking about how to use the terminal on Mac OS X."
+    />
+    <meta name="robots" content="index, follow" />
+    <link rel="stylesheet" href="../css/normalize.css" />
+    <link rel="stylesheet" href="../css/skeleton.css" />
+    <link rel="stylesheet" href="../css/styles.css" />
+    <!-- change this... maybe... i dunno -->
+    <link rel="canonical" href="https://blog.alanjc.com/" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="../images/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="../images/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="../images/favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="../images/favicon/site.webmanifest" />
+    <link
+      rel="mask-icon"
+      href="../images/favicon/safari-pinned-tab.svg"
+      color="#5bbad5"
+    />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ffffff" />
+    <link
+      rel="canonical"
+      href="https://blog.alanjc.com/getting-started-with-the-terminal.html"
+    />
     <title>Getting Started With the Terminal</title>
-</head>
+  </head>
 
-
-<body>
+  <body>
     <header id="top">
-        <div class="container text-center">
-            <div class="row">
-                <div class="col">
-                    <h2 class="go-to-links"><a href="../">&larr; Go back to posts</a></h2>
-                    <h1>Getting Started With the Terminal</h1>
-                    <h2 class="article-info">January 12, 2020 | 16 min read</h2>
-                </div>
-            </div>
-        </div>
+      <div class="container">
+        <h1>Getting Started With the Terminal</h1>
+        <h6>January 12, 2020 | 16 min read</h6>
+      </div>
     </header>
 
     <main>
-        <div class="container text-left">
-            <div class="row">
-                <div class="col margin-left-right">
-                    <article class="article" id="main-article">
-                        <p>
-                            <a href="https://www.patreon.com/alanjc" target="_blank" class="underline italic">
-                                If you found this article useful consider donating.
-                            </a>
-                        </p>
-                        <hr>
-
-                        <p class="oblique">
-                            <a href="https://www.reddit.com/r/learnprogramming/comments/eofiss/getting_started_with_the_terminal/"
-                                class="underline" target="_blank">I’d like to thank the redditors over at
-                                r/learnprogramming for
-                                their suggestions to this article.</a>
-                        </p>
-
-                        <p>
-                            So, you want to learn how to use the Terminal. Great! As a developer, sooner or later,
-                            you’ll want to learn how to use the Terminal. Not only is this a handy tool to have under
-                            your belt, but it will also boost your productivity.
-                        </p>
-
-                        <h3>Table of Contents</h3>
-                        <ul class="list-group">
-                            <a href="#before-starting">
-                                <li class="list-group-item">Before Starting</li>
-                            </a>
-                            <a href="#opening-your-terminal">
-                                <li class="list-group-item">Opening Your Terminal</li>
-                            </a>
-                            <a href="#important-notes">
-                                <li class="list-group-item">Important Notes</li>
-                            </a>
-
-                            <li class="list-group-item">
-                                <ul class="list-group">
-                                    <a href="#commands">Commands</a>
-                                    <a href="#pwd">
-                                        <li class="list-group-item">pwd</li>
-                                    </a>
-                                    <a href="#ls">
-                                        <li class="list-group-item">ls</li>
-                                    </a>
-                                    <a href="#cd">
-                                        <li class="list-group-item">cd</li>
-                                    </a>
-                                    <a href="#clear">
-                                        <li class="list-group-item">clear</li>
-                                    </a>
-                                    <a href="#mv">
-                                        <li class="list-group-item">mv</li>
-                                    </a>
-                                    <a href="#cp">
-                                        <li class="list-group-item">cp</li>
-                                    </a>
-                                    <a href="#open">
-                                        <li class="list-group-item">open</li>
-                                    </a>
-                                    <a href="#mkdir">
-                                        <li class="list-group-item">mkdir</li>
-                                    </a>
-                                    <a href="#touch">
-                                        <li class="list-group-item">touch</li>
-                                    </a>
-                                    <a href="#rmdir">
-                                        <li class="list-group-item">rmdir</li>
-                                    </a>
-                                    <a href="#rm">
-                                        <li class="list-group-item">rm</li>
-                                    </a>
-                                    <a href="#man">
-                                        <li class="list-group-item">man</li>
-                                    </a>
-                                </ul>
-                            </li>
-                            <a href="#recap">
-                                <li class="list-group-item">Recap</li>
-                            </a>
-                            <a href="#where-to-go-from-here">
-                                <li class="list-group-item">Where to Go From Here?</li>
-                            </a>
-                        </ul>
-
-                        <h3 id="before-starting">Before Starting</h3>
-
-                        <!-- New -->
-                        <p>
-                            While most of the commands I'll be talking about apply to both Mac and Linux, this article
-                            was written assuming you're using a Mac. Therefore, some commands, like the open command,
-                            may not work if you're using Linux.
-                        </p>
-
-                        <!-- New -->
-                        <p>
-                            Now, before actually getting started learning commands, it’s useful to think of the
-                            directories (folders) as a hierarchical tree.
-                        </p>
-
-                        <figure class="text-center">
-                            <img class="img-fluid" src="../images/terminal-article/1.png" alt="1.png">
-                            <figcaption class="oblique">The root directory is “/” and inside of “/”, you have the
-                                following folders: bin, tmp, usr, and src.
-                            </figcaption>
-                        </figure>
-
-                        <p>
-                            In the illustration above, you can see that the first directory, often referred to as the
-                            “root” directory, is named “/”. That directory (folder) contains other directories such as
-                            bin, tmp, usr, and src. Those directories can have other directories or files and those
-                            child directories can have even more directories or files and so on.
-                        </p>
-
-                        <p>
-                            Of course, the illustration above is just an example, it doesn’t actually reflect the
-                            folders and files that reside in your computer.
-                        </p>
-
-                        <p>
-                            Now, what the terminal allows us to do is to traverse and manage the directory tree. This is
-                            why the terminal is so powerful, it allows us to quickly sift through folders and files in
-                            an efficient manner as well as being able to create, delete, or update a file or directory.
-                        </p>
-
-                        <h3 id="opening-your-terminal">Opening Your Terminal</h3>
-
-                        <p>
-                            To open your terminal, use the following shortcut: <kbd class="display-inline">⌘</kbd> +
-                            <kbd class="display-inline">Spacebar</kbd>. Now type in "Terminal" and then press the
-                            <kbd class="display-inline">Enter</kbd> key.
-                        </p>
-
-                        <p>Now, you should have something on your screen that looks like</p>
-
-                        <figure>
-                            <img class="img-fluid" src="../images/terminal-article/2.png" alt="2.png">
-                        </figure>
-
-                        <p>
-                            For the most part, you should be staring at a black window with white text and a cursor
-                            itching for your next command.
-                        </p>
-
-                        <h3 id="important-notes">Important Notes</h3>
-
-                        <p>
-                            It’s important to note that every directory on Mac/UNIX/LINUX has two hidden directories,
-                            namely “.” and “..”
-                        </p>
-
-                        <p>
-                            The “.” means the current directory and “..” means previous or parent directory. Keep this
-                            in mind, it will be useful later.
-                        </p>
-
-                        <!-- New -->
-                        <p class="oblique">
-                            Don't worry if you don't understand what the commands in the following screenshots do quite
-                            yet, just take note of the tab and arrow key functionality.
-                        </p>
-
-                        <!-- New -->
-                        <p>
-                            Another thing, when you type a command, path, or filename, you can use "tab" to
-                            auto-complete the name.
-                        </p>
-
-                        <!-- New -->
-                        <figure class="text-center">
-                            <img class="img-fluid" src="../images/terminal-article/tab-auto-complete.gif"
-                                alt="tab-auto-complete.gif">
-                            <figcaption class="oblique">Tab auto-completion.</figcaption>
-
-                        </figure>
-
-                        <!-- New -->
-                        <p>
-                            You can also cycle through your previous commands with the arrow ↑ and arrow↓ keys. In
-                            addition, you can use the arrow ← or arrow → to move the cursor.
-                        </p>
-
-                        <!-- New -->
-                        <figure class="text-center">
-                            <img class="img-fluid" src="../images/terminal-article/up-down-left-right.gif"
-                                alt="up-down-left-right.gif">
-                            <figcaption class="oblique">Arrow key functionality.</figcaption>
-                        </figure>
-
-                        <!-- New -->
-                        <p>Now, the actual program you will be interacting with is called the shell.</p>
-
-                        <!-- New -->
-                        <p>
-                            The following doesn't affect the commands we'll be going over but if you plan on writing
-                            shell scripts, make a note of which shell you are going to use. There are many shells but
-                            the most common one is BASH (Bourne-Again SHell). This used to be the standard for Apple but
-                            now they have upgraded to ZSH (Z-SHell).
-                        </p>
-
-                        <h3 id="commands">Commands</h3>
-
-                        <p>
-                            Now that we have a terminal window in front of us, it’s finally time to get to the commands.
-                        </p>
-
-                        <p>
-                            The first command you should type into the terminal should be the pwd (print working
-                            directory) command.
-                        </p>
-
-                        <h5 id="pwd">pwd — print working directory</h5>
-
-                        <kbd>pwd</kbd>
-
-                        <p>This command prints the current directory you’re in onto the terminal.</p>
-
-                        <figure class="text-center">
-                            <img class="img-fluid" src="../images/terminal-article/3.png" alt="3.png">
-                            <figcaption class="oblique">
-                                Currently in the “/Users/alanjc” directory.
-                            </figcaption>
-                        </figure>
-
-                        <p>Congratulations, you just ran your first command on the terminal!</p>
-
-                        <p>This command is useful for knowing where you currently are within the directory tree.</p>
-
-                        <p>The next command we should try is ls or list.</p>
-
-                        <h5 id="ls">ls - list</h5>
-
-                        <kbd>ls</kbd>
-
-                        <p>This command lists all the directories and files from your current directory.</p>
-
-                        <figure class="text-center">
-                            <img class="img-fluid" src="../images/terminal-article/4.png" alt="4.png">
-                            <figcaption class="oblique">
-                                By typing ls, we can see all of the files and directories within
-                                the current directory.
-                            </figcaption>
-                        </figure>
-
-                        <p>Cool, now we can list all of the files and directories from our current directory.</p>
-
-                        <p>But what if we want to list all the contents from another directory?</p>
-
-                        <p>Simple, just type the following command:</p>
-
-                        <kbd class="display-inline-block-margin-botttom">ls [directory name]</kbd>
-
-                        <figure class="text-center">
-                            <img class="img-fluid" src="../images/terminal-article/5.png" alt="5.png">
-                            <figcaption class="oblique">
-                                We list all the files and folders inside of the “Desktop” directory.
-                            </figcaption>
-                        </figure>
-
-                        <p>Now we can list files and folders from our current directory or other directories.</p>
-
-                        <!-- New -->
-                        <p>We can also list hidden files with the "-a" option:</p>
-
-                        <!-- New -->
-                        <kbd>ls -a</kbd>
-
-                        <!-- New -->
-                        <p>
-                            All the "-a" option means is to show all files including the ones that start with the "."
-                            prefix also known as hidden files.
-                        </p>
-
-                        <!-- New -->
-                        <p>
-                            A hidden file or directory is just like a normal file or directory except it starts with the
-                            "." prefix and is hidden from the user.
-                        </p>
-
-                        <!-- New -->
-                        <p>
-                            It's also important to keep in mind that most, if not all commands can have options and
-                            there are different options for every command. You can also have multiple options in one
-                            command.
-                        </p>
-
-                        <!-- New -->
-                        <p>
-                            Now, notice in the following screenshot how just doing the ls command doesn't show hidden
-                            files but when we add the "-a" option, it will list everything including hidden files.
-                        </p>
-
-                        <!-- New -->
-                        <figure class="text-center">
-                            <img class="img-fluid" src="../images/terminal-article/hidden-files.png"
-                                alt="hidden-files.png">
-                            <figcaption class="oblique">Listing hidden files with the "-a" option.</figcaption>
-
-                        </figure>
-
-                        <!-- New -->
-                        <p>
-                            As you can see, in the directory named "example" we have a hidden file named ".myfile.txt"
-                            and a hidden directory named ".mydirectory."
-                        </p>
-
-                        <!-- New -->
-                        <p>
-                            As you may recall from earlier, "." means our current directory and ".." means our parent
-                            directory. Every folder within your Mac/UNIX/Linux machine contains these two extra hidden
-                            files.
-                        </p>
-
-                        <!-- New -->
-                        <p>
-                            Moving on from the ls command, what if we want to change our current directory? That's where
-                            the cd or change directory command comes into play.
-                        </p>
-
-                        <h5 id="cd">cd — change directory</h5>
-
-                        <kbd>cd [directory name]</kbd>
-
-                        <p>
-                            The cd command allows you to change your directory to another directory. This is how you’ll
-                            actually traverse the directory tree.
-                        </p>
-
-                        <p>Example:</p>
-
-                        <kbd>cd /</kbd>
-
-                        <p>The command above changes your current working directory to your root directory.</p>
-
-                        <figure class="text-center">
-                            <img class="img-fluid" src="../images/terminal-article/6.png" alt="6.png">
-                            <figcaption class="oblique">
-                                “cd /” changes your current directory to your root directory.
-                            </figcaption>
-                        </figure>
-
-                        <!-- New -->
-                        <p>Another useful cd command to keep in mind is</p>
-
-                        <!-- New -->
-                        <kbd>cd ~</kbd>
-
-                        <!-- New -->
-                        <p>which changes your current directory to your home directory like so:</p>
-
-                        <!-- New -->
-                        <figure class="text-center">
-                            <img class="img-fluid" src="../images/terminal-article/cd ~.png" alt="cd ~.png">
-                            <figcaption class="oblique">We are now in the home directory.</figcaption>
-                        </figure>
-
-                        <p>Now, how do we back out of a directory or go to the previous/parent directory?</p>
-
-                        <p>We have to use the following command:</p>
-
-                        <kbd>cd ..</kbd>
-
-                        <p>
-                            As I mentioned earlier, the “..” means the parent directory or previous directory.
-                            Effectively, the command above is telling the terminal “Hey, take me back to the previous
-                            directory.”
-                        </p>
-
-                        <figure class="text-center">
-                            <img class="img-fluid" src="../images/terminal-article/7.png" alt="7.png">
-                            <figcaption class="oblique">
-                                Changed directory from “/Users/alanjc/Desktop” to “/Users/alanjc.”
-                            </figcaption>
-                        </figure>
-
-                        <p>
-                            Also, if you use this command in the root directory, nothing happens because there isn’t a
-                            previous or parent directory to go back to, hence the name root.
-                        </p>
-
-                        <p>But what if you want to go back more than one directory?</p>
-
-                        <p>No problem, the following command is just what you need.</p>
-
-                        <kbd>cd ../../</kbd>
-
-                        <p>
-                            The command above tells the terminal “Hey, I want to go back two directories and make it
-                            snappy.” Okay, maybe not so much the snappy part, but it does take you back two directories.
-                        </p>
-
-                        <p>Essentially, every “../” you add takes you back one directory.</p>
-
-                        <p>So the following example will take you back three directories:</p>
-
-                        <kbd>cd ../../../</kbd>
-
-                        <!-- New -->
-                        <p>Finally, another useful-to-know "cd" command is</p>
-
-                        <!-- New -->
-                        <kbd>cd -</kbd>
-
-                        <!-- New -->
-                        <p>With the above command, you'll return to your previous working directory.</p>
-
-                        <!-- New -->
-                        <p>So for example, let's say I was in the</p>
-
-                        <!-- New -->
-                        <code>/Users/alanjc/Desktop/</code>
-
-                        <!-- New -->
-                        <p>directory. Then I navigate to</p>
-
-                        <!-- New -->
-                        <code>/Users/alanjc/Desktop/myFolder/anotherFolder/</code>
-
-                        <!-- New -->
-                        <p>If I do the "cd -" command, I'll be back at</p>
-
-                        <!-- New -->
-                        <code>/Users/alanjc/Desktop/</code>
-
-                        <!-- New -->
-                        <p>If I type in the "cd -" command once more, I'll be at the</p>
-
-                        <!-- New -->
-                        <code>/Users/alanjc/Desktop/myFolder/anotherFolder/</code>
-
-                        <p>
-                            Now that we know how to traverse the directory tree and list its contents, we should move
-                            onto more useful commands.
-                        </p>
-
-                        <p>
-                            Before that though, we should probably clear our terminal screen because by now it may be a
-                            little tough to read.
-                        </p>
-
-                        <h5 id="clear">clear</h5>
-
-                        <p>
-                            By typing in the following command into the terminal, you are able to clear what’s on
-                            screen.
-                        </p>
-
-                        <kbd class="display-inline-block-margin-botttom">clear</kbd>
-
-                        <figure class="text-center">
-                            <img class="img-fluid" src="../images/terminal-article/8.gif" alt="8.gif">
-                            <figcaption class="oblique">Clearing the terminal.</figcaption>
-                        </figure>
-
-                        <p>
-                            Now that our screen has been cleared, we can move onto more useful commands, like the mv
-                            (move) command.
-                        </p>
-
-                        <h5 id="mv">mv - move</h5>
-
-                        <kbd>mv [source] [destination]</kbd>
-
-                        <!-- New -->
-                        <p>
-                            The mv (move) command has two uses, the first is just as the name implies, you can move
-                            things from one place to another. The second use is for renaming a file.
-                        </p>
-
-                        <!-- New -->
-                        <p>Lets' take a look at the former.</p>
-
-                        <!-- Delete -->
-                        <!-- <p>The mv (move) command simply moves a file or directory to another place.</p> -->
-
-                        <p>
-                            From the skeleton command above, the “source” is what you want to move while the
-                            “destination” is where you want the file to end up.
-                        </p>
-
-                        <p>For example, if I have something like the following:</p>
-
-                        <code class="text-left">
-                            one<br>
-                            ├── myfile.txt<br>
-                            └── two
-                        </code>
-
-                        <p>
-                            Where “one” and “two” are folders, and I want to move, “myfile.txt” to folder “two” I would
-                            simply do the following assuming I was already in the “one” folder location:
-                        </p>
-
-                        <kbd>mv myfile.txt two</kbd>
-
-                        <figure class="text-center">
-                            <img class="img-fluid" src="../images/terminal-article/9.png" alt="9.png">
-                            <figcaption class="oblique">We moved “myfile.txt” to the folder “two.”</figcaption>
-                        </figure>
-
-                        <p>
-                            Of course, you could be anywhere in the directory tree to execute this command — and pretty
-                            much any command for that matter — but you just have to make sure you enter the full
-                            location path of the file you want to move and its destination.
-                        </p>
-
-                        <p>
-                            For example, in the following screenshot, I’m in my root directory but I’m still able to
-                            move a file from my Desktop to the “two” folder from the previous example:
-                        </p>
-
-                        <figure class="text-center">
-                            <img class="img-fluid" src="../images/terminal-article/10.png" alt="10.png">
-                            <figcaption class="oblique">
-                                We moved “anotherfile.txt” to the “two” folder while in the root directory.
-                            </figcaption>
-                        </figure>
-
-                        <p>
-                            Now, what if we wanted to move a file or folder from wherever it is to our current location
-                            in the directory tree.
-                        </p>
-
-                        <p>
-                            Well, remember earlier how I talked about the “.” being our current directory, we would have
-                            to use “.”
-                        </p>
-
-                        <p>For example:</p>
-
-                        <kbd>mv /somelocation/myfile.txt .</kbd>
-
-                        <p>The example above moves “myfile.txt” to wherever we currently are in the directory tree.</p>
-
-                        <!-- New -->
-                        <p>
-                            Now let's take a quick look at the second use of the mv command which is for renaming files.
-                        </p>
-
-                        <!-- New -->
-                        <p>To rename a file, you can do the following:</p>
-
-                        <!-- New -->
-                        <kbd>mv [old file name] [new file name]</kbd>
-
-                        <!-- New -->
-                        <p>
-                            So if I have a file called "myfile.txt" and I want to rename it to something else, I would
-                            do the following:
-                        </p>
-
-                        <!-- New -->
-                        <kbd>mv myfile.txt newname.txt</kbd>
-
-                        <!-- New -->
-                        <p>And that's it! Now "myfile.txt" gets renamed to "newname.txt."</p>
-
-                        <p>Another command that’s similar to mv (move) is cp (copy).</p>
-
-                        <h5 id="cp">cp — copy</h5>
-
-                        <kbd>cp [source] [destination]</kbd>
-
-                        <p>
-                            The copy command is just like the move command except instead of moving a file or folder, it
-                            makes a copy of it leaving the original file unharmed.
-                        </p>
-
-                        <p>To copy a file you would do the following:</p>
-
-                        <kbd>cp myfile.txt /one</kbd>
-
-                        <figure class="text-center">
-                            <img class="img-fluid" src="../images/terminal-article/11.png" alt="11.png">
-                            <figcaption class="oblique">We copied “myfile.txt” to the “one” folder.</figcaption>
-                        </figure>
-
-                        <p>Now to copy a directory you have to add the “-r” option like so:</p>
-
-                        <kbd>cp -r one two</kbd>
-
-                        <figure class="text-center">
-                            <img class="img-fluid" src="../images/terminal-article/12.png" alt="12.png">
-                            <figcaption class="oblique">
-                                We copy the contents of the “one” directory into the “two” directory.
-                            </figcaption>
-                        </figure>
-
-                        <p>
-                            All the “-r” option means is that it tells the terminal to copy the files recursively which
-                            is a fancy way of saying everything.
-                        </p>
-
-                        <p>
-                            So by using the “-r” option, we tell the terminal “Please copy all the contents, including
-                            folders and files to our destination.”
-                        </p>
-
-                        <!-- Delete -->
-                        <!-- <p>
-                            It's also important to keep in mind that most, if not all, commands can have options and
-                            there are different options for every command. You can also have more than one option.
-                        </p> -->
-
-                        <p>Now, what if we wanted to open a file or folder from our terminal?</p>
-
-                        <p>We would need to utilize the open command.</p>
-
-                        <h5 id="open">open</h5>
-
-                        <p class="oblique">
-                            Note: The Linux equivalent of this command seems to be "xdg-open" but this may differ from
-                            distro to distro.
-                        </p>
-
-                        <kbd>open [file/folder]</kbd>
-
-                        <p>This command lets us open a file with its associated program.</p>
-
-                        <p>For example, if we have a “.txt” file and we do the following command:</p>
-
-                        <kbd>open myfile.txt</kbd>
-
-                        <figure class="text-center">
-                            <img class="img-fluid" src="../images/terminal-article/13.png" alt="13.png">
-                            <figcaption class="oblique">We open a file named “myfile.txt.”</figcaption>
-                        </figure>
-
-                        <p>this opens “myfile.txt” with your default text editor like so:</p>
-
-                        <figure class="text-center">
-                            <img class="img-fluid" src="../images/terminal-article/14.png" alt="14.png">
-                        </figure>
-
-                        <p>Here’s another example.</p>
-
-                        <p>If you do the following command, it will open the finder window in the root directory.</p>
-
-                        <kbd>open /</kbd>
-
-                        <figure class="text-center">
-                            <img class="img-fluid" src="../images/terminal-article/15.png" alt="15.png">
-                            <figcaption class="oblique">
-                                We opened a new finder window at the root directory.
-                            </figcaption>
-                        </figure>
-
-                        <p>The finder window will look something like the following:</p>
-
-                        <figure class="text-center">
-                            <img class="img-fluid" src="../images/terminal-article/16.png" alt="16.png">
-                            <figcaption class="oblique">
-                                A finder window showing the contents of the root directory.
-                            </figcaption>
-                        </figure>
-
-                        <p>
-                            It opens the finder window because that’s the program that is associated with the file or in
-                            this case the folder you’re trying to open.
-                        </p>
-
-                        <p>So if we did the following command:</p>
-
-                        <kbd>open .</kbd>
-
-                        <p>
-                            it would open a new finder window from our current location because remember, the “.” means
-                            our current directory.
-                        </p>
-
-                        <p>Now, let’s move onto actually making a directory from the terminal.</p>
-
-                        <h5 id="mkdir">mkdir — make directory</h5>
-
-                        <kbd>mkdir [directory name]</kbd>
-
-                        <p>To make a directory, you simply type the command above and give it a name like so:</p>
-
-                        <figure class="text-center">
-                            <img class="img-fluid" src="../images/terminal-article/17.png" alt="17.png">
-                            <figcaption class="oblique">We made a directory named “mydirectory.”</figcaption>
-                        </figure>
-
-                        <p>We can also create multiple directories like so:</p>
-
-                        <figure class="text-center">
-                            <img class="img-fluid" src="../images/terminal-article/18.png" alt="18.png">
-                            <figcaption class="oblique">
-                                We created two directories, one named “newdirectory” and another named
-                                “anotherdirectory.”
-                            </figcaption>
-                        </figure>
-
-                        <p>What if we wanted to make a file instead of a directory?</p>
-
-                        <p>We would use the touch command.</p>
-
-                        <h5 id="touch">touch</h5>
-
-                        <kbd>touch [file name]</kbd>
-
-                        <!-- Delete -->
-                        <!-- <p>This command simply creates an empty file.</p> -->
-
-                        <!-- New -->
-                        <p>This command has two uses but I'll only talk about its main use and mention the second.</p>
-
-                        <!-- New -->
-                        <p>Its main use is for creating an empty file.</p>
-
-                        <!-- New -->
-                        <p>
-                            Its other use is for updating timestamps of a file but we won't get into that for the sake
-                            of simplicity.
-                        </p>
-
-                        <p>So if we do the following:</p>
-
-                        <kbd>touch myfile.txt</kbd>
-
-                        <p>This creates a file named “myfile.txt” in our current directory.</p>
-
-                        <figure class="text-center">
-                            <img class="img-fluid" src="../images/terminal-article/19.png" alt="19.png">
-                            <figcaption class="oblique">We create a file named “myfile.txt.”</figcaption>
-                        </figure>
-
-                        <p>And similar to mkdir, you can create multiple files in one command like so:</p>
-
-                        <figure class="text-center">
-                            <img class="img-fluid" src="../images/terminal-article/20.png" alt="20.png">
-                            <figcaption class="oblique">
-                                We create “myfile.txt” in the current directory and “anotherone.txt” in the previous
-                                directory.
-                            </figcaption>
-                        </figure>
-
-                        <p>In the screenshot above, we create two files, “myfile.txt” and “anotherone.txt.”</p>
-
-                        <p>
-                            The “myfile.txt” file is created in the current directory while the “anotherone.txt” file is
-                            created in the previous directory.
-                        </p>
-
-                        <p>Let’s move on to deleting a directory.</p>
-
-                        <h5 id="rmdir">rmdir — remove directory</h5>
-
-                        <kbd>rmdir [directory name]</kbd>
-
-                        <p>The rmdir command is self-explanatory, it just deletes a directory.</p>
-
-                        <figure class="text-center">
-                            <img class="img-fluid" src="../images/terminal-article/21.png" alt="21.png">
-                            <figcaption class="oblique">
-                                We are deleting an empty directory named “emptydir.”
-                            </figcaption>
-                        </figure>
-
-                        <p>
-                            However, it’s important to note that when using this command, you can only remove an empty
-                            directory.
-                        </p>
-
-                        <p>
-                            If your directory is not empty and you try to use the rmdir command, you’ll get something
-                            like the following:
-                        </p>
-
-                        <figure class="text-center">
-                            <img class="img-fluid" src="../images/terminal-article/22.png" alt="22.png">
-                            <figcaption class="oblique">
-                                We failed at removing the directory “folder” because it’s not empty.
-                            </figcaption>
-                        </figure>
-
-                        <p>Now how do we remove the contents of a directory you may be asking?</p>
-
-                        <p>We would have to use the rm (remove) command.</p>
-
-                        <h5 id="rm">rm — remove</h5>
-
-                        <kbd>rm [file name]</kbd>
-
-                        <p>
-                            This command is probably the most powerful and yet the most dangerous one on this list which
-                            is why I saved it for last.
-                        </p>
-
-                        <p>Once you use this command and delete something, it’s gone forever.</p>
-
-                        <p>
-                            It doesn’t get put into your Trash for you to empty out later. No! Once you type in this
-                            command and hit enter, poof… it’s gone… forever…
-                        </p>
-
-                        <p>This also applies to rmdir, once you remove a directory, it’s gone forever.</p>
-
-                        <!-- New -->
-                        <p>
-                            But unlike rmdir, the rm command has the ability to remove both a directory as well as a
-                            file which makes this command better than rmdir.
-                        </p>
-
-                        <p>With this in mind, let’s see it in action.</p>
-
-                        <p>To remove a file, simply do the following:</p>
-
-                        <kbd>rm myfile.txt</kbd>
-
-                        <figure class="text-center">
-                            <img class="img-fluid" src="../images/terminal-article/23.png" alt="23.png">
-                            <figcaption class="oblique">We removed a file named “myfile.txt.”</figcaption>
-                        </figure>
-
-                        <p>
-                            And just like some of the previous commands, we can delete multiple things at once by using
-                            the following format:
-                        </p>
-
-                        <kbd>rm [file1] [file2] [etc]</kbd>
-
-                        <figure class="text-center">
-                            <img class="img-fluid" src="../images/terminal-article/24.png" alt="24.png">
-                            <figcaption class="oblique">We delete “afile.txt” and “anotherone.txt”</figcaption>
-                        </figure>
-
-                        <p>
-                            In the example above, we delete “afile.txt” from the current directory and subsequently
-                            delete “anotherone.txt” from the previous or parent directory.
-                        </p>
-
-                        <p>
-                            If we wanted to delete only certain files that end in specific extensions (i.e. .txt, .png,
-                            .exe, etc) we would use the asterisk or “*” symbol. This symbol is often referred to as a
-                            wildcard.
-                        </p>
-
-                        <p>
-                            For example, if we were in a directory and we only wanted to delete .txt files, we would do
-                            the following:
-                        </p>
-
-                        <kbd>rm *.txt</kbd>
-
-                        <figure class="text-center">
-                            <img class="img-fluid" src="../images/terminal-article/25.png" alt="25.png">
-                            <figcaption class="oblique">We delete various .txt files.</figcaption>
-                        </figure>
-
-                        <p>
-                            As you can see, we deleted all the files that end with the “.txt” extension. If we had other
-                            files such as .png, .gif, etc, those files would be unscathed by the rm command.
-                        </p>
-
-                        <p>
-                            So by using the “*” symbol we effectively tell the terminal to disregard the name of the
-                            file and only look at the extension of the file.
-                        </p>
-
-                        <p>Now let’s get into the danger zone.</p>
-
-                        <p>
-                            Earlier I said that most if not all commands have something called options. These options
-                            are added right after the command like so:
-                        </p>
-
-                        <kbd>[command] [options] [other paramters]</kbd>
-
-                        <p>
-                            Well, the rm command has two options that I’m going to show you which are dangerous if used
-                            without precaution and quite lethal in combination.
-                        </p>
-
-                        <h5>rm -r</h5>
-
-                        <p>
-                            The first is the “-r” option. As you may recall, I said that the “-r” option means do it
-                            recursively, which is just another way of saying all or targeting everything.
-                        </p>
-
-                        <p>If you do the following command:</p>
-
-                        <kbd>rm -r [directory]</kbd>
-
-                        <p>it will delete everything inside of a directory including the folder itself.</p>
-
-                        <p>So if I have the following directory:</p>
-
-                        <code class="text-left">
-                            newfolder<br>
-                            ├── folder1<br>
-                            │&nbsp;&nbsp;&nbsp;└── text1.txt<br>
-                            ├── folder2<br>
-                            │&nbsp;&nbsp;&nbsp;└── text2.txt<br>
-                            └── folder3<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;└── text3.txt
-                        </code>
-
-                        <p>and then I input the following command:</p>
-
-                        <kbd>rm -r newfolder</kbd>
-
-                        <p>It will delete everything within the “newfolder” directory as well as the folder itself.</p>
-
-                        <figure class="text-center">
-                            <img class="img-fluid" src="../images/terminal-article/26.png" alt="26.png">
-                            <figcaption class="oblique">
-                                We delete all of the contents of the “newfolder” directory including the folder itself.
-                            </figcaption>
-                        </figure>
-
-                        <p class="oblique">
-                            As a side note, the ‘tree’ command isn’t available by default on Mac, you have to download
-                            and install it seperately.
-                        </p>
-
-                        <p>Now we move onto the other option, “-f.”</p>
-
-                        <h5>rm -f</h5>
-
-                        <kbd>rm -f [file/directory]</kbd>
-
-                        <p>
-                            Sometimes, when you use the rm command, you may get a prompt. This prompt may just be
-                            something like “Are you sure you want to delete the following file or directory?”
-                        </p>
-
-                        <p>By using this option, you avoid having the prompt show up in the first place.</p>
-
-                        <p>
-                            Essentially, this just tells the terminal, “Delete the following file/directory and don’t
-                            give me a prompt.”
-                        </p>
-
-                        <p>Now we move onto the most lethal combination, “-rf.”</p>
-
-                        <h5>rm -rf</h5>
-
-                        <kbd>rm -rf [directory]</kbd>
-
-                        <p>
-                            When you combine both the “r” and the “f” options, you’re telling the terminal “Delete all
-                            of the contents of the directory and don’t show me a prompt, capeesh.”
-                        </p>
-
-                        <p>As you can probably guess, this is quite dangerous.</p>
-
-                        <p>
-                            No need to fret though, as long as you’re cautious and don’t use this command on let’s say,
-                            you’re root directory, you should—for the most part—be fine.
-                        </p>
-
-                        <!-- New -->
-                        <p>
-                            It's also important to note that on Linux if you run this command on your root directory,
-                            it'll remove it without a moment's hesitation.
-                        </p>
-
-                        <!-- New -->
-                        <p>
-                            You won't get a prompt or a warning saying "Hey my dude, are you sure you want to delete
-                            your root directory?" No! Instead, Linux will just be like "Okay sure, say no more" and will
-                            go ahead and delete everything inside your root directory essentially destroying your
-                            system.
-                        </p>
-
-                        <!-- New -->
-                        <p>
-                            Alright, so now that we know what the “r” and “f” options do, let’s run through an example.
-                        </p>
-
-                        <p>Here I have a directory which looks something like this:</p>
-
-                        <code>
-                            anotherfolder<br>
-                            └── myfolder<br>
-                                    ├── folder1<br>
-                                    │&nbsp;&nbsp;&nbsp;└── file1.txt<br>
-                                    ├── folder2<br>
-                                    │&nbsp;&nbsp;&nbsp;└── file2.txt<br>
-                                    ├── folder3<br>
-                                    │&nbsp;&nbsp;&nbsp;└── file3.txt<br>
-                                    └── folder4<br>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;└── file4.txt
-                        </code>
-
-                        <p>
-                            Now if I run the following command (assuming I’m already at the “anotherfolder” location):
-                        </p>
-
-                        <kbd>rm -rf myfolder</kbd>
-
-                        <p>
-                            It should delete all the contents inside the “myfolder” directory including the folder
-                            itself and I shouldn’t see any prompts.
-                        </p>
-
-                        <p>All right, let’s give it a shot.</p>
-
-                        <figure class="text-center">
-                            <img class="img-fluid" src="../images/terminal-article/27.png" alt="27.png">
-                            <figcaption class="oblique">
-                                We remove all the contents of “myfolder” including the folder itself.
-                            </figcaption>
-                        </figure>
-
-                        <p>Sure enough, it worked.</p>
-
-                        <!-- New -->
-                        <p>Finally, I want to talk about one more useful command called man or manual.</p>
-
-                        <!-- New -->
-                        <h5 id="man">man - manual</h5>
-
-                        <!-- New -->
-                        <kbd>man [command name]</kbd>
-
-                        <!-- New -->
-                        <p>
-                            This command lets you look up what other commands do. So let's say for some reason you
-                            remember a command but forget what it does, you can use man to look up its functionality.
-                        </p>
-
-                        <!-- New -->
-                        <p>For example, if I forgot what mv did, I would do the following:</p>
-
-                        <!-- New -->
-                        <kbd class="display-inline-block-margin-botttom">man mv</kbd>
-
-                        <!-- New -->
-                        <figure class="text-center">
-                            <img class="img-fluid" src="../images/terminal-article/man mv.png" alt="man mv.png">
-                            <figcaption class="oblique">The functionality for the mv command.</figcaption>
-                        </figure>
-
-                        <!-- New -->
-                        <p>
-                            You can use the arrow ↑ or arrow↓ keys on your keyboard to read through its functionality
-                            and once you're done you can press "Q" to quit and return back to your previous page.
-                        </p>
-
-                        <!-- New -->
-                        <p>
-                            The man commands also gives you a list of options associated with the command you looked up
-                            like so:
-                        </p>
-
-                        <!-- New -->
-                        <figure class="text-center">
-                            <img class="img-fluid" src="../images/terminal-article/man mv options.png"
-                                alt="man mv options.png">
-                            <figcaption class="oblique">The options associated with the mv command.</figcaption>
-                        </figure>
-
-                        <p>Now let’s recap what we learned.</p>
-
-                        <h3 id="recap">Recap</h3>
-
-                        <p>
-                            It’s useful to think of directories as a hierarchical tree with the topmost directory being
-                            the root directory.
-                        </p>
-
-                        <p>The “.” means current directory while “..” means previous or parent directory.</p>
-
-                        <!-- New -->
-                        <p>The actual program you are interacting with is called the shell.</p>
-
-                        <!-- New -->
-                        <p>You can use tab to autocomplete commands, paths, or file names.</p>
-
-                        <!-- New -->
-                        <p>
-                            You can also use the arrow ↑ and arrow↓ keys to cycle through previous commands as well as
-                            the arrow ← or arrow → to move the cursor.
-                        </p>
-
-                        <p>We also took a look at the following commands:</p>
-
-                        <ul class="list-group">
-                            <li class="list-group-item">
-                                <kbd>pwd</kbd> prints the current working directory
-                            </li>
-                            <li class="list-group-item">
-                                <kbd>ls</kbd> lists all the contents of the current directory
-                            </li>
-                            <li class="list-group-item">
-                                <kbd>cd [directory name]</kbd> changes directory
-                            </li>
-                            <li class="list-group-item">
-                                <kbd>clear</kbd> clears the terminal screen
-                            </li>
-                            <li class="list-group-item">
-                                <!-- New -->
-                                <kbd>mv [source] [destination]</kbd> moves files or folders from one place to another
-                                and can rename files or folders
-                            </li>
-                            <li class="list-group-item">
-                                <kbd>cp [source] [destination]</kbd> copies files or folders from one place to another
-                            </li>
-                            <li class="list-group-item">
-                                <kbd>open [file/directory]</kbd> opens the file or folder with the associated program
-                                <!-- New -->
-                                <ul class="list-group">
-                                    <li class="oblique list-group-item">"xdg-open" is the equivalent on Linux.</li>
-                                </ul>
-                            </li>
-                            <li class="list-group-item">
-                                <kbd>mkdir [directory name]</kbd> makes a new empty directory
-                            </li>
-                            <li class="list-group-item">
-                                <!-- New -->
-                                <kbd>touch [file name]</kbd> creates a new empty file with the name of your choice and
-                                can update a file's timestamps
-                            </li>
-                            <li class="list-group-item">
-                                <kbd>rmdir [empty directory]</kbd> removes an empty directory
-                            </li>
-                            <li class="list-group-item">
-                                <kbd>rm [file name]</kbd> removes a file
-                            </li>
-                            <li class="list-group-item">
-                                <kbd>rm -rf [directory name]</kbd> removes the folder and its contents without showing
-                                any prompts
-                            </li>
-                            <li class="list-group-item">
-                                <!-- New -->
-                                <kbd>man [command name]</kbd> brings up the manual for the given command
-                            </li>
-                        </ul>
-
-                        <p>And this is only scratching the surface of the terminal.</p>
-
-                        <p>
-                            There are many more useful commands but these are just the basics to get you up and running.
-                        </p>
-
-                        <!-- New -->
-                        <h3 id="where-to-go-from-here">Where to Go From Here?</h3>
-
-                        <!-- New -->
-                        <p>
-                            If you want to learn more about the commands we went over, I highly suggest you look up
-                            every command we talked about using man, including the man command itself.
-                        </p>
-
-                        <!-- New -->
-                        <p>In addition here are some other commands that I didn't go over but are just as useful:</p>
-
-                        <!-- New -->
-                        <ul class="list-group">
-                            <li class="list-group-item">
-                                <kbd>cat</kbd> concatenates and prints files to the terminal
-                            </li>
-                            <li class="list-group-item">
-                                <kbd>less</kbd> displays contents of a file
-                            </li>
-                            <li class="list-group-item">
-                                <kbd>grep</kbd> searches files for a certain word or regular expression
-                            </li>
-                            <li class="list-group-item">
-                                <kbd>ls -l</kbd> lists files in long format
-                            </li>
-                            <li class="list-group-item">
-                                <kbd>kill</kbd> can terminate a signal or process
-                            </li>
-                            <li class="list-group-item">
-                                <kbd>chmod</kbd> allows you to change or modify access permissions of a file or folder
-                            </li>
-                            <li class="list-group-item">
-                                <kbd>sudo</kbd> a prefix that allows you to run commands as a superuser with root
-                                privileges
-                            </li>
-                            <li class="list-group-item">
-                                <kbd>mkdir</kbd> you can create multiple directories within the same path
-                            </li>
-                            <li class="list-group-item">
-                                <kbd>w</kbd> tells you who's logged in and what they're doing
-                            </li>
-                        </ul>
-
-                        <p>Thank you for reading and I hope this helps!</p>
-
-                        <hr>
-                        <p>
-                            <a href="https://www.patreon.com/alanjc" target="_blank" class="underline italic">
-                                If you found this article useful consider donating.
-                            </a>
-                        </p>
-                    </article>
-                </div>
-            </div>
+      <div class="container">
+        <div class="row">
+          <p class="center">
+            <a href="../donate.html">
+              <em>If you've found this article useful consider donating.</em>
+            </a>
+          </p>
+
+          <hr />
+
+          <p class="oblique">
+            <a
+              href="https://www.reddit.com/r/learnprogramming/comments/eofiss/getting_started_with_the_terminal/"
+              class="underline"
+              target="_blank"
+              >I’d like to thank the redditors over at r/learnprogramming for
+              their suggestions to this article.</a
+            >
+          </p>
+
+          <p>
+            So, you want to learn how to use the Terminal. Great! As a
+            developer, sooner or later, you’ll want to learn how to use the
+            Terminal. Not only is this a handy tool to have under your belt, but
+            it will also boost your productivity.
+          </p>
+
+          <h3>Table of Contents</h3>
+          <ul class="list-group">
+            <a href="#before-starting">
+              <li class="list-group-item">Before Starting</li>
+            </a>
+            <a href="#opening-your-terminal">
+              <li class="list-group-item">Opening Your Terminal</li>
+            </a>
+            <a href="#important-notes">
+              <li class="list-group-item">Important Notes</li>
+            </a>
+
+            <ul class="list-group">
+              <a href="#commands">Commands</a>
+              <a href="#pwd">
+                <li class="list-group-item">pwd</li>
+              </a>
+              <a href="#ls">
+                <li class="list-group-item">ls</li>
+              </a>
+              <a href="#cd">
+                <li class="list-group-item">cd</li>
+              </a>
+              <a href="#clear">
+                <li class="list-group-item">clear</li>
+              </a>
+              <a href="#mv">
+                <li class="list-group-item">mv</li>
+              </a>
+              <a href="#cp">
+                <li class="list-group-item">cp</li>
+              </a>
+              <a href="#open">
+                <li class="list-group-item">open</li>
+              </a>
+              <a href="#mkdir">
+                <li class="list-group-item">mkdir</li>
+              </a>
+              <a href="#touch">
+                <li class="list-group-item">touch</li>
+              </a>
+              <a href="#rmdir">
+                <li class="list-group-item">rmdir</li>
+              </a>
+              <a href="#rm">
+                <li class="list-group-item">rm</li>
+              </a>
+              <a href="#man">
+                <li class="list-group-item">man</li>
+              </a>
+            </ul>
+            <a href="#recap">
+              <li class="list-group-item">Recap</li>
+            </a>
+            <a href="#where-to-go-from-here">
+              <li class="list-group-item">Where to Go From Here?</li>
+            </a>
+          </ul>
+
+          <h3 id="before-starting">Before Starting</h3>
+
+          <p>
+            While most of the commands I'll be talking about apply to both Mac
+            and Linux, this article was written assuming you're using a Mac.
+            Therefore, some commands, like the open command, may not work if
+            you're using Linux.
+          </p>
+
+          <p>
+            Now, before actually getting started learning commands, it’s useful
+            to think of the directories (folders) as a hierarchical tree.
+          </p>
+
+          <figure class="text-center">
+            <img
+              class="u-max-full-width"
+              src="../images/terminal-article/1.png"
+              alt="1.png"
+            />
+            <figcaption class="oblique">
+              The root directory is “/” and inside of “/”, you have the
+              following folders: bin, tmp, usr, and src.
+            </figcaption>
+          </figure>
+
+          <p>
+            In the illustration above, you can see that the first directory,
+            often referred to as the “root” directory, is named “/”. That
+            directory (folder) contains other directories such as bin, tmp, usr,
+            and src. Those directories can have other directories or files and
+            those child directories can have even more directories or files and
+            so on.
+          </p>
+
+          <p>
+            Of course, the illustration above is just an example, it doesn’t
+            actually reflect the folders and files that reside in your computer.
+          </p>
+
+          <p>
+            Now, what the terminal allows us to do is to traverse and manage the
+            directory tree. This is why the terminal is so powerful, it allows
+            us to quickly sift through folders and files in an efficient manner
+            as well as being able to create, delete, or update a file or
+            directory.
+          </p>
+
+          <h3 id="opening-your-terminal">Opening Your Terminal</h3>
+
+          <p>
+            To open your terminal, use the following shortcut:
+            <code class="display-inline">⌘</code> +
+            <code class="display-inline">Spacebar</code>. Now type in "Terminal"
+            and then press the <code class="display-inline">Enter</code> key.
+          </p>
+
+          <p>Now, you should have something on your screen that looks like</p>
+
+          <figure>
+            <img
+              class="u-max-full-width"
+              src="../images/terminal-article/2.png"
+              alt="2.png"
+            />
+          </figure>
+
+          <p>
+            For the most part, you should be staring at a black window with
+            white text and a cursor itching for your next command.
+          </p>
+
+          <h3 id="important-notes">Important Notes</h3>
+
+          <p>
+            It’s important to note that every directory on Mac/UNIX/LINUX has
+            two hidden directories, namely “.” and “..”
+          </p>
+
+          <p>
+            The “.” means the current directory and “..” means previous or
+            parent directory. Keep this in mind, it will be useful later.
+          </p>
+
+          <p class="oblique">
+            Don't worry if you don't understand what the commands in the
+            following screenshots do quite yet, just take note of the tab and
+            arrow key functionality.
+          </p>
+
+          <p>
+            Another thing, when you type a command, path, or filename, you can
+            use "tab" to auto-complete the name.
+          </p>
+
+          <figure class="text-center">
+            <img
+              class="u-max-full-width"
+              src="../images/terminal-article/tab-auto-complete.gif"
+              alt="tab-auto-complete.gif"
+            />
+            <figcaption class="oblique">Tab auto-completion.</figcaption>
+          </figure>
+
+          <p>
+            You can also cycle through your previous commands with the arrow ↑
+            and arrow↓ keys. In addition, you can use the arrow ← or arrow → to
+            move the cursor.
+          </p>
+
+          <figure class="text-center">
+            <img
+              class="u-max-full-width"
+              src="../images/terminal-article/up-down-left-right.gif"
+              alt="up-down-left-right.gif"
+            />
+            <figcaption class="oblique">Arrow key functionality.</figcaption>
+          </figure>
+
+          <p>
+            Now, the actual program you will be interacting with is called the
+            shell.
+          </p>
+
+          <p>
+            The following doesn't affect the commands we'll be going over but if
+            you plan on writing shell scripts, make a note of which shell you
+            are going to use. There are many shells but the most common one is
+            BASH (Bourne-Again SHell). This used to be the standard for Apple
+            but now they have upgraded to ZSH (Z-SHell).
+          </p>
+
+          <h3 id="commands">Commands</h3>
+
+          <p>
+            Now that we have a terminal window in front of us, it’s finally time
+            to get to the commands.
+          </p>
+
+          <p>
+            The first command you should type into the terminal should be the
+            pwd (print working directory) command.
+          </p>
+
+          <h5 id="pwd">pwd — print working directory</h5>
+
+          <code>pwd</code>
+
+          <p>
+            This command prints the current directory you’re in onto the
+            terminal.
+          </p>
+
+          <figure class="text-center">
+            <img
+              class="u-max-full-width"
+              src="../images/terminal-article/3.png"
+              alt="3.png"
+            />
+            <figcaption class="oblique">
+              Currently in the “/Users/alanjc” directory.
+            </figcaption>
+          </figure>
+
+          <p>
+            Congratulations, you just ran your first command on the terminal!
+          </p>
+
+          <p>
+            This command is useful for knowing where you currently are within
+            the directory tree.
+          </p>
+
+          <p>The next command we should try is ls or list.</p>
+
+          <h5 id="ls">ls - list</h5>
+
+          <code>ls</code>
+
+          <p>
+            This command lists all the directories and files from your current
+            directory.
+          </p>
+
+          <figure class="text-center">
+            <img
+              class="u-max-full-width"
+              src="../images/terminal-article/4.png"
+              alt="4.png"
+            />
+            <figcaption class="oblique">
+              By typing ls, we can see all of the files and directories within
+              the current directory.
+            </figcaption>
+          </figure>
+
+          <p>
+            Cool, now we can list all of the files and directories from our
+            current directory.
+          </p>
+
+          <p>
+            But what if we want to list all the contents from another directory?
+          </p>
+
+          <p>Simple, just type the following command:</p>
+
+          <code class="display-inline-block-margin-botttom"
+            >ls [directory name]</code
+          >
+
+          <figure class="text-center">
+            <img
+              class="u-max-full-width"
+              src="../images/terminal-article/5.png"
+              alt="5.png"
+            />
+            <figcaption class="oblique">
+              We list all the files and folders inside of the “Desktop”
+              directory.
+            </figcaption>
+          </figure>
+
+          <p>
+            Now we can list files and folders from our current directory or
+            other directories.
+          </p>
+
+          <p>We can also list hidden files with the "-a" option:</p>
+
+          <code>ls -a</code>
+
+          <p>
+            All the "-a" option means is to show all files including the ones
+            that start with the "." prefix also known as hidden files.
+          </p>
+
+          <p>
+            A hidden file or directory is just like a normal file or directory
+            except it starts with the "." prefix and is hidden from the user.
+          </p>
+
+          <p>
+            It's also important to keep in mind that most, if not all commands
+            can have options and there are different options for every command.
+            You can also have multiple options in one command.
+          </p>
+
+          <p>
+            Now, notice in the following screenshot how just doing the ls
+            command doesn't show hidden files but when we add the "-a" option,
+            it will list everything including hidden files.
+          </p>
+
+          <figure class="text-center">
+            <img
+              class="u-max-full-width"
+              src="../images/terminal-article/hidden-files.png"
+              alt="hidden-files.png"
+            />
+            <figcaption class="oblique">
+              Listing hidden files with the "-a" option.
+            </figcaption>
+          </figure>
+
+          <p>
+            As you can see, in the directory named "example" we have a hidden
+            file named ".myfile.txt" and a hidden directory named
+            ".mydirectory."
+          </p>
+
+          <p>
+            As you may recall from earlier, "." means our current directory and
+            ".." means our parent directory. Every folder within your
+            Mac/UNIX/Linux machine contains these two extra hidden files.
+          </p>
+
+          <p>
+            Moving on from the ls command, what if we want to change our current
+            directory? That's where the cd or change directory command comes
+            into play.
+          </p>
+
+          <h5 id="cd">cd — change directory</h5>
+
+          <code>cd [directory name]</code>
+
+          <p>
+            The cd command allows you to change your directory to another
+            directory. This is how you’ll actually traverse the directory tree.
+          </p>
+
+          <p>Example:</p>
+
+          <code>cd /</code>
+
+          <p>
+            The command above changes your current working directory to your
+            root directory.
+          </p>
+
+          <figure class="text-center">
+            <img
+              class="u-max-full-width"
+              src="../images/terminal-article/6.png"
+              alt="6.png"
+            />
+            <figcaption class="oblique">
+              “cd /” changes your current directory to your root directory.
+            </figcaption>
+          </figure>
+
+          <p>Another useful cd command to keep in mind is</p>
+
+          <code>cd ~</code>
+
+          <p>
+            which changes your current directory to your home directory like so:
+          </p>
+
+          <figure class="text-center">
+            <img
+              class="u-max-full-width"
+              src="../images/terminal-article/cd ~.png"
+              alt="cd ~.png"
+            />
+            <figcaption class="oblique">
+              We are now in the home directory.
+            </figcaption>
+          </figure>
+
+          <p>
+            Now, how do we back out of a directory or go to the previous/parent
+            directory?
+          </p>
+
+          <p>We have to use the following command:</p>
+
+          <code>cd ..</code>
+
+          <p>
+            As I mentioned earlier, the “..” means the parent directory or
+            previous directory. Effectively, the command above is telling the
+            terminal “Hey, take me back to the previous directory.”
+          </p>
+
+          <figure class="text-center">
+            <img
+              class="u-max-full-width"
+              src="../images/terminal-article/7.png"
+              alt="7.png"
+            />
+            <figcaption class="oblique">
+              Changed directory from “/Users/alanjc/Desktop” to “/Users/alanjc.”
+            </figcaption>
+          </figure>
+
+          <p>
+            Also, if you use this command in the root directory, nothing happens
+            because there isn’t a previous or parent directory to go back to,
+            hence the name root.
+          </p>
+
+          <p>But what if you want to go back more than one directory?</p>
+
+          <p>No problem, the following command is just what you need.</p>
+
+          <code>cd ../../</code>
+
+          <p>
+            The command above tells the terminal “Hey, I want to go back two
+            directories and make it snappy.” Okay, maybe not so much the snappy
+            part, but it does take you back two directories.
+          </p>
+
+          <p>Essentially, every “../” you add takes you back one directory.</p>
+
+          <p>So the following example will take you back three directories:</p>
+
+          <code>cd ../../../</code>
+
+          <p>Finally, another useful-to-know "cd" command is</p>
+
+          <code>cd -</code>
+
+          <p>
+            With the above command, you'll return to your previous working
+            directory.
+          </p>
+
+          <p>So for example, let's say I was in the</p>
+
+          <code>/Users/alanjc/Desktop/</code>
+
+          <p>directory. Then I navigate to</p>
+
+          <code>/Users/alanjc/Desktop/myFolder/anotherFolder/</code>
+
+          <p>If I do the "cd -" command, I'll be back at</p>
+
+          <code>/Users/alanjc/Desktop/</code>
+
+          <p>If I type in the "cd -" command once more, I'll be at the</p>
+
+          <code>/Users/alanjc/Desktop/myFolder/anotherFolder/</code>
+
+          <p>
+            Now that we know how to traverse the directory tree and list its
+            contents, we should move onto more useful commands.
+          </p>
+
+          <p>
+            Before that though, we should probably clear our terminal screen
+            because by now it may be a little tough to read.
+          </p>
+
+          <h5 id="clear">clear</h5>
+
+          <p>
+            By typing in the following command into the terminal, you are able
+            to clear what’s on screen.
+          </p>
+
+          <code class="display-inline-block-margin-botttom">clear</code>
+
+          <figure class="text-center">
+            <img
+              class="u-max-full-width"
+              src="../images/terminal-article/8.gif"
+              alt="8.gif"
+            />
+            <figcaption class="oblique">Clearing the terminal.</figcaption>
+          </figure>
+
+          <p>
+            Now that our screen has been cleared, we can move onto more useful
+            commands, like the mv (move) command.
+          </p>
+
+          <h5 id="mv">mv - move</h5>
+
+          <code>mv [source] [destination]</code>
+
+          <p>
+            The mv (move) command has two uses, the first is just as the name
+            implies, you can move things from one place to another. The second
+            use is for renaming a file.
+          </p>
+
+          <p>Lets' take a look at the former.</p>
+
+          <p>
+            From the skeleton command above, the “source” is what you want to
+            move while the “destination” is where you want the file to end up.
+          </p>
+
+          <p>For example, if I have something like the following:</p>
+
+          <pre><code class="text-left">one
+├── myfile.txt
+└── two
+</code></pre>
+
+          <p>
+            Where “one” and “two” are folders, and I want to move, “myfile.txt”
+            to folder “two” I would simply do the following assuming I was
+            already in the “one” folder location:
+          </p>
+
+          <code>mv myfile.txt two</code>
+
+          <figure class="text-center">
+            <img
+              class="u-max-full-width"
+              src="../images/terminal-article/9.png"
+              alt="9.png"
+            />
+            <figcaption class="oblique">
+              We moved “myfile.txt” to the folder “two.”
+            </figcaption>
+          </figure>
+
+          <p>
+            Of course, you could be anywhere in the directory tree to execute
+            this command — and pretty much any command for that matter — but you
+            just have to make sure you enter the full location path of the file
+            you want to move and its destination.
+          </p>
+
+          <p>
+            For example, in the following screenshot, I’m in my root directory
+            but I’m still able to move a file from my Desktop to the “two”
+            folder from the previous example:
+          </p>
+
+          <figure class="text-center">
+            <img
+              class="u-max-full-width"
+              src="../images/terminal-article/10.png"
+              alt="10.png"
+            />
+            <figcaption class="oblique">
+              We moved “anotherfile.txt” to the “two” folder while in the root
+              directory.
+            </figcaption>
+          </figure>
+
+          <p>
+            Now, what if we wanted to move a file or folder from wherever it is
+            to our current location in the directory tree.
+          </p>
+
+          <p>
+            Well, remember earlier how I talked about the “.” being our current
+            directory, we would have to use “.”
+          </p>
+
+          <p>For example:</p>
+
+          <code>mv /somelocation/myfile.txt .</code>
+
+          <p>
+            The example above moves “myfile.txt” to wherever we currently are in
+            the directory tree.
+          </p>
+
+          <p>
+            Now let's take a quick look at the second use of the mv command
+            which is for renaming files.
+          </p>
+
+          <p>To rename a file, you can do the following:</p>
+
+          <code>mv [old file name] [new file name]</code>
+
+          <p>
+            So if I have a file called "myfile.txt" and I want to rename it to
+            something else, I would do the following:
+          </p>
+
+          <code>mv myfile.txt newname.txt</code>
+
+          <p>And that's it! Now "myfile.txt" gets renamed to "newname.txt."</p>
+
+          <p>Another command that’s similar to mv (move) is cp (copy).</p>
+
+          <h5 id="cp">cp — copy</h5>
+
+          <code>cp [source] [destination]</code>
+
+          <p>
+            The copy command is just like the move command except instead of
+            moving a file or folder, it makes a copy of it leaving the original
+            file unharmed.
+          </p>
+
+          <p>To copy a file you would do the following:</p>
+
+          <code>cp myfile.txt /one</code>
+
+          <figure class="text-center">
+            <img
+              class="u-max-full-width"
+              src="../images/terminal-article/11.png"
+              alt="11.png"
+            />
+            <figcaption class="oblique">
+              We copied “myfile.txt” to the “one” folder.
+            </figcaption>
+          </figure>
+
+          <p>
+            Now to copy a directory you have to add the “-r” option like so:
+          </p>
+
+          <code>cp -r one two</code>
+
+          <figure class="text-center">
+            <img
+              class="u-max-full-width"
+              src="../images/terminal-article/12.png"
+              alt="12.png"
+            />
+            <figcaption class="oblique">
+              We copy the contents of the “one” directory into the “two”
+              directory.
+            </figcaption>
+          </figure>
+
+          <p>
+            All the “-r” option means is that it tells the terminal to copy the
+            files recursively which is a fancy way of saying everything.
+          </p>
+
+          <p>
+            So by using the “-r” option, we tell the terminal “Please copy all
+            the contents, including folders and files to our destination.”
+          </p>
+
+          <p>
+            Now, what if we wanted to open a file or folder from our terminal?
+          </p>
+
+          <p>We would need to utilize the open command.</p>
+
+          <h5 id="open">open</h5>
+
+          <p class="oblique">
+            Note: The Linux equivalent of this command seems to be "xdg-open"
+            but this may differ from distro to distro.
+          </p>
+
+          <code>open [file/folder]</code>
+
+          <p>This command lets us open a file with its associated program.</p>
+
+          <p>
+            For example, if we have a “.txt” file and we do the following
+            command:
+          </p>
+
+          <code>open myfile.txt</code>
+
+          <figure class="text-center">
+            <img
+              class="u-max-full-width"
+              src="../images/terminal-article/13.png"
+              alt="13.png"
+            />
+            <figcaption class="oblique">
+              We open a file named “myfile.txt.”
+            </figcaption>
+          </figure>
+
+          <p>this opens “myfile.txt” with your default text editor like so:</p>
+
+          <figure class="text-center">
+            <img
+              class="u-max-full-width"
+              src="../images/terminal-article/14.png"
+              alt="14.png"
+            />
+          </figure>
+
+          <p>Here’s another example.</p>
+
+          <p>
+            If you do the following command, it will open the finder window in
+            the root directory.
+          </p>
+
+          <code>open /</code>
+
+          <figure class="text-center">
+            <img
+              class="u-max-full-width"
+              src="../images/terminal-article/15.png"
+              alt="15.png"
+            />
+            <figcaption class="oblique">
+              We opened a new finder window at the root directory.
+            </figcaption>
+          </figure>
+
+          <p>The finder window will look something like the following:</p>
+
+          <figure class="text-center">
+            <img
+              class="u-max-full-width"
+              src="../images/terminal-article/16.png"
+              alt="16.png"
+            />
+            <figcaption class="oblique">
+              A finder window showing the contents of the root directory.
+            </figcaption>
+          </figure>
+
+          <p>
+            It opens the finder window because that’s the program that is
+            associated with the file or in this case the folder you’re trying to
+            open.
+          </p>
+
+          <p>So if we did the following command:</p>
+
+          <code>open .</code>
+
+          <p>
+            it would open a new finder window from our current location because
+            remember, the “.” means our current directory.
+          </p>
+
+          <p>
+            Now, let’s move onto actually making a directory from the terminal.
+          </p>
+
+          <h5 id="mkdir">mkdir — make directory</h5>
+
+          <code>mkdir [directory name]</code>
+
+          <p>
+            To make a directory, you simply type the command above and give it a
+            name like so:
+          </p>
+
+          <figure class="text-center">
+            <img
+              class="u-max-full-width"
+              src="../images/terminal-article/17.png"
+              alt="17.png"
+            />
+            <figcaption class="oblique">
+              We made a directory named “mydirectory.”
+            </figcaption>
+          </figure>
+
+          <p>We can also create multiple directories like so:</p>
+
+          <figure class="text-center">
+            <img
+              class="u-max-full-width"
+              src="../images/terminal-article/18.png"
+              alt="18.png"
+            />
+            <figcaption class="oblique">
+              We created two directories, one named “newdirectory” and another
+              named “anotherdirectory.”
+            </figcaption>
+          </figure>
+
+          <p>What if we wanted to make a file instead of a directory?</p>
+
+          <p>We would use the touch command.</p>
+
+          <h5 id="touch">touch</h5>
+
+          <code>touch [file name]</code>
+
+          <p>
+            This command has two uses but I'll only talk about its main use and
+            mention the second.
+          </p>
+
+          <p>Its main use is for creating an empty file.</p>
+
+          <p>
+            Its other use is for updating timestamps of a file but we won't get
+            into that for the sake of simplicity.
+          </p>
+
+          <p>So if we do the following:</p>
+
+          <code>touch myfile.txt</code>
+
+          <p>
+            This creates a file named “myfile.txt” in our current directory.
+          </p>
+
+          <figure class="text-center">
+            <img
+              class="u-max-full-width"
+              src="../images/terminal-article/19.png"
+              alt="19.png"
+            />
+            <figcaption class="oblique">
+              We create a file named “myfile.txt.”
+            </figcaption>
+          </figure>
+
+          <p>
+            And similar to mkdir, you can create multiple files in one command
+            like so:
+          </p>
+
+          <figure class="text-center">
+            <img
+              class="u-max-full-width"
+              src="../images/terminal-article/20.png"
+              alt="20.png"
+            />
+            <figcaption class="oblique">
+              We create “myfile.txt” in the current directory and
+              “anotherone.txt” in the previous directory.
+            </figcaption>
+          </figure>
+
+          <p>
+            In the screenshot above, we create two files, “myfile.txt” and
+            “anotherone.txt.”
+          </p>
+
+          <p>
+            The “myfile.txt” file is created in the current directory while the
+            “anotherone.txt” file is created in the previous directory.
+          </p>
+
+          <p>Let’s move on to deleting a directory.</p>
+
+          <h5 id="rmdir">rmdir — remove directory</h5>
+
+          <code>rmdir [directory name]</code>
+
+          <p>
+            The rmdir command is self-explanatory, it just deletes a directory.
+          </p>
+
+          <figure class="text-center">
+            <img
+              class="u-max-full-width"
+              src="../images/terminal-article/21.png"
+              alt="21.png"
+            />
+            <figcaption class="oblique">
+              We are deleting an empty directory named “emptydir.”
+            </figcaption>
+          </figure>
+
+          <p>
+            However, it’s important to note that when using this command, you
+            can only remove an empty directory.
+          </p>
+
+          <p>
+            If your directory is not empty and you try to use the rmdir command,
+            you’ll get something like the following:
+          </p>
+
+          <figure class="text-center">
+            <img
+              class="u-max-full-width"
+              src="../images/terminal-article/22.png"
+              alt="22.png"
+            />
+            <figcaption class="oblique">
+              We failed at removing the directory “folder” because it’s not
+              empty.
+            </figcaption>
+          </figure>
+
+          <p>
+            Now how do we remove the contents of a directory you may be asking?
+          </p>
+
+          <p>We would have to use the rm (remove) command.</p>
+
+          <h5 id="rm">rm — remove</h5>
+
+          <code>rm [file name]</code>
+
+          <p>
+            This command is probably the most powerful and yet the most
+            dangerous one on this list which is why I saved it for last.
+          </p>
+
+          <p>
+            Once you use this command and delete something, it’s gone forever.
+          </p>
+
+          <p>
+            It doesn’t get put into your Trash for you to empty out later. No!
+            Once you type in this command and hit enter, poof… it’s gone…
+            forever…
+          </p>
+
+          <p>
+            This also applies to rmdir, once you remove a directory, it’s gone
+            forever.
+          </p>
+
+          <p>
+            But unlike rmdir, the rm command has the ability to remove both a
+            directory as well as a file which makes this command better than
+            rmdir.
+          </p>
+
+          <p>With this in mind, let’s see it in action.</p>
+
+          <p>To remove a file, simply do the following:</p>
+
+          <code>rm myfile.txt</code>
+
+          <figure class="text-center">
+            <img
+              class="u-max-full-width"
+              src="../images/terminal-article/23.png"
+              alt="23.png"
+            />
+            <figcaption class="oblique">
+              We removed a file named “myfile.txt.”
+            </figcaption>
+          </figure>
+
+          <p>
+            And just like some of the previous commands, we can delete multiple
+            things at once by using the following format:
+          </p>
+
+          <code>rm [file1] [file2] [etc]</code>
+
+          <figure class="text-center">
+            <img
+              class="u-max-full-width"
+              src="../images/terminal-article/24.png"
+              alt="24.png"
+            />
+            <figcaption class="oblique">
+              We delete “afile.txt” and “anotherone.txt”
+            </figcaption>
+          </figure>
+
+          <p>
+            In the example above, we delete “afile.txt” from the current
+            directory and subsequently delete “anotherone.txt” from the previous
+            or parent directory.
+          </p>
+
+          <p>
+            If we wanted to delete only certain files that end in specific
+            extensions (i.e. .txt, .png, .exe, etc) we would use the asterisk or
+            “*” symbol. This symbol is often referred to as a wildcard.
+          </p>
+
+          <p>
+            For example, if we were in a directory and we only wanted to delete
+            .txt files, we would do the following:
+          </p>
+
+          <code>rm *.txt</code>
+
+          <figure class="text-center">
+            <img
+              class="u-max-full-width"
+              src="../images/terminal-article/25.png"
+              alt="25.png"
+            />
+            <figcaption class="oblique">
+              We delete various .txt files.
+            </figcaption>
+          </figure>
+
+          <p>
+            As you can see, we deleted all the files that end with the “.txt”
+            extension. If we had other files such as .png, .gif, etc, those
+            files would be unscathed by the rm command.
+          </p>
+
+          <p>
+            So by using the “*” symbol we effectively tell the terminal to
+            disregard the name of the file and only look at the extension of the
+            file.
+          </p>
+
+          <p>Now let’s get into the danger zone.</p>
+
+          <p>
+            Earlier I said that most if not all commands have something called
+            options. These options are added right after the command like so:
+          </p>
+
+          <code>[command] [options] [other paramters]</code>
+
+          <p>
+            Well, the rm command has two options that I’m going to show you
+            which are dangerous if used without precaution and quite lethal in
+            combination.
+          </p>
+
+          <h5>rm -r</h5>
+
+          <p>
+            The first is the “-r” option. As you may recall, I said that the
+            “-r” option means do it recursively, which is just another way of
+            saying all or targeting everything.
+          </p>
+
+          <p>If you do the following command:</p>
+
+          <code>rm -r [directory]</code>
+
+          <p>
+            it will delete everything inside of a directory including the folder
+            itself.
+          </p>
+
+          <p>So if I have the following directory:</p>
+
+          <pre><code class="text-left">newfolder
+├── folder1
+│&nbsp;&nbsp;&nbsp;└── text1.txt
+├── folder2
+│&nbsp;&nbsp;&nbsp;└── text2.txt
+└── folder3
+&nbsp;&nbsp;&nbsp;&nbsp;└── text3.txt</code></pre>
+
+          <p>and then I input the following command:</p>
+
+          <code>rm -r newfolder</code>
+
+          <p>
+            It will delete everything within the “newfolder” directory as well
+            as the folder itself.
+          </p>
+
+          <figure class="text-center">
+            <img
+              class="u-max-full-width"
+              src="../images/terminal-article/26.png"
+              alt="26.png"
+            />
+            <figcaption class="oblique">
+              We delete all of the contents of the “newfolder” directory
+              including the folder itself.
+            </figcaption>
+          </figure>
+
+          <p class="oblique">
+            As a side note, the ‘tree’ command isn’t available by default on
+            Mac, you have to download and install it seperately.
+          </p>
+
+          <p>Now we move onto the other option, “-f.”</p>
+
+          <h5>rm -f</h5>
+
+          <code>rm -f [file/directory]</code>
+
+          <p>
+            Sometimes, when you use the rm command, you may get a prompt. This
+            prompt may just be something like “Are you sure you want to delete
+            the following file or directory?”
+          </p>
+
+          <p>
+            By using this option, you avoid having the prompt show up in the
+            first place.
+          </p>
+
+          <p>
+            Essentially, this just tells the terminal, “Delete the following
+            file/directory and don’t give me a prompt.”
+          </p>
+
+          <p>Now we move onto the most lethal combination, “-rf.”</p>
+
+          <h5>rm -rf</h5>
+
+          <code>rm -rf [directory]</code>
+
+          <p>
+            When you combine both the “r” and the “f” options, you’re telling
+            the terminal “Delete all of the contents of the directory and don’t
+            show me a prompt, capeesh.”
+          </p>
+
+          <p>As you can probably guess, this is quite dangerous.</p>
+
+          <p>
+            No need to fret though, as long as you’re cautious and don’t use
+            this command on let’s say, you’re root directory, you should—for the
+            most part—be fine.
+          </p>
+
+          <p>
+            It's also important to note that on Linux if you run this command on
+            your root directory, it'll remove it without a moment's hesitation.
+          </p>
+
+          <p>
+            You won't get a prompt or a warning saying "Hey my dude, are you
+            sure you want to delete your root directory?" No! Instead, Linux
+            will just be like "Okay sure, say no more" and will go ahead and
+            delete everything inside your root directory essentially destroying
+            your system.
+          </p>
+
+          <p>
+            Alright, so now that we know what the “r” and “f” options do, let’s
+            run through an example.
+          </p>
+
+          <p>Here I have a directory which looks something like this:</p>
+
+          <pre><code>anotherfolder
+└── myfolder
+├── folder1
+│&nbsp;&nbsp;&nbsp;└── file1.txt
+├── folder2
+│&nbsp;&nbsp;&nbsp;└── file2.txt
+├── folder3
+│&nbsp;&nbsp;&nbsp;└── file3.txt
+└── folder4
+&nbsp;&nbsp;&nbsp;&nbsp;└── file4.txt
+</code>
+          </pre>
+
+          <p>
+            Now if I run the following command (assuming I’m already at the
+            “anotherfolder” location):
+          </p>
+
+          <code>rm -rf myfolder</code>
+
+          <p>
+            It should delete all the contents inside the “myfolder” directory
+            including the folder itself and I shouldn’t see any prompts.
+          </p>
+
+          <p>All right, let’s give it a shot.</p>
+
+          <figure class="text-center">
+            <img
+              class="u-max-full-width"
+              src="../images/terminal-article/27.png"
+              alt="27.png"
+            />
+            <figcaption class="oblique">
+              We remove all the contents of “myfolder” including the folder
+              itself.
+            </figcaption>
+          </figure>
+
+          <p>Sure enough, it worked.</p>
+
+          <p>
+            Finally, I want to talk about one more useful command called man or
+            manual.
+          </p>
+
+          <h5 id="man">man - manual</h5>
+
+          <code>man [command name]</code>
+
+          <p>
+            This command lets you look up what other commands do. So let's say
+            for some reason you remember a command but forget what it does, you
+            can use man to look up its functionality.
+          </p>
+
+          <p>For example, if I forgot what mv did, I would do the following:</p>
+
+          <code class="display-inline-block-margin-botttom">man mv</code>
+
+          <figure class="text-center">
+            <img
+              class="u-max-full-width"
+              src="../images/terminal-article/man mv.png"
+              alt="man mv.png"
+            />
+            <figcaption class="oblique">
+              The functionality for the mv command.
+            </figcaption>
+          </figure>
+
+          <p>
+            You can use the arrow ↑ or arrow↓ keys on your keyboard to read
+            through its functionality and once you're done you can press "Q" to
+            quit and return back to your previous page.
+          </p>
+
+          <p>
+            The man commands also gives you a list of options associated with
+            the command you looked up like so:
+          </p>
+
+          <figure class="text-center">
+            <img
+              class="u-max-full-width"
+              src="../images/terminal-article/man mv options.png"
+              alt="man mv options.png"
+            />
+            <figcaption class="oblique">
+              The options associated with the mv command.
+            </figcaption>
+          </figure>
+
+          <p>Now let’s recap what we learned.</p>
+
+          <h3 id="recap">Recap</h3>
+
+          <p>
+            It’s useful to think of directories as a hierarchical tree with the
+            topmost directory being the root directory.
+          </p>
+
+          <p>
+            The “.” means current directory while “..” means previous or parent
+            directory.
+          </p>
+
+          <p>
+            The actual program you are interacting with is called the shell.
+          </p>
+
+          <p>You can use tab to autocomplete commands, paths, or file names.</p>
+
+          <p>
+            You can also use the arrow ↑ and arrow↓ keys to cycle through
+            previous commands as well as the arrow ← or arrow → to move the
+            cursor.
+          </p>
+
+          <p>We also took a look at the following commands:</p>
+
+          <ul class="list-group">
+            <li class="list-group-item">
+              <code>pwd</code> prints the current working directory
+            </li>
+            <li class="list-group-item">
+              <code>ls</code> lists all the contents of the current directory
+            </li>
+            <li class="list-group-item">
+              <code>cd [directory name]</code> changes directory
+            </li>
+            <li class="list-group-item">
+              <code>clear</code> clears the terminal screen
+            </li>
+            <li class="list-group-item">
+              <code>mv [source] [destination]</code> moves files or folders from
+              one place to another and can rename files or folders
+            </li>
+            <li class="list-group-item">
+              <code>cp [source] [destination]</code> copies files or folders
+              from one place to another
+            </li>
+            <li class="list-group-item">
+              <code>open [file/directory]</code> opens the file or folder with
+              the associated program
+
+              <ul class="list-group">
+                <li class="oblique list-group-item">
+                  "xdg-open" is the equivalent on Linux.
+                </li>
+              </ul>
+            </li>
+            <li class="list-group-item">
+              <code>mkdir [directory name]</code> makes a new empty directory
+            </li>
+            <li class="list-group-item">
+              <code>touch [file name]</code> creates a new empty file with the
+              name of your choice and can update a file's timestamps
+            </li>
+            <li class="list-group-item">
+              <code>rmdir [empty directory]</code> removes an empty directory
+            </li>
+            <li class="list-group-item">
+              <code>rm [file name]</code> removes a file
+            </li>
+            <li class="list-group-item">
+              <code>rm -rf [directory name]</code> removes the folder and its
+              contents without showing any prompts
+            </li>
+            <li class="list-group-item">
+              <code>man [command name]</code> brings up the manual for the given
+              command
+            </li>
+          </ul>
+
+          <p>And this is only scratching the surface of the terminal.</p>
+
+          <p>
+            There are many more useful commands but these are just the basics to
+            get you up and running.
+          </p>
+
+          <h3 id="where-to-go-from-here">Where to Go From Here?</h3>
+
+          <p>
+            If you want to learn more about the commands we went over, I highly
+            suggest you look up every command we talked about using man,
+            including the man command itself.
+          </p>
+
+          <p>
+            In addition here are some other commands that I didn't go over but
+            are just as useful:
+          </p>
+
+          <ul class="list-group">
+            <li class="list-group-item">
+              <code>cat</code> concatenates and prints files to the terminal
+            </li>
+            <li class="list-group-item">
+              <code>less</code> displays contents of a file
+            </li>
+            <li class="list-group-item">
+              <code>grep</code> searches files for a certain word or regular
+              expression
+            </li>
+            <li class="list-group-item">
+              <code>ls -l</code> lists files in long format
+            </li>
+            <li class="list-group-item">
+              <code>kill</code> can terminate a signal or process
+            </li>
+            <li class="list-group-item">
+              <code>chmod</code> allows you to change or modify access
+              permissions of a file or folder
+            </li>
+            <li class="list-group-item">
+              <code>sudo</code> a prefix that allows you to run commands as a
+              superuser with root privileges
+            </li>
+            <li class="list-group-item">
+              <code>mkdir</code> you can create multiple directories within the
+              same path
+            </li>
+            <li class="list-group-item">
+              <code>w</code> tells you who's logged in and what they're doing
+            </li>
+          </ul>
+
+          <p>Thank you for reading and I hope this helps!</p>
+
+          <hr />
+
+          <p class="center">
+            <a href="../donate.html">
+              <em>If you've found this article useful consider donating.</em>
+            </a>
+          </p>
         </div>
+      </div>
     </main>
 
     <footer>
-        <div class="container text-center">
-            <div class="row">
-                <div class="col-sm">
-                    <h2 class="go-to-links"><a href="../">&larr; Go back to posts</a></h2>
-                </div>
-                <div class="col-sm">
-                    <h2 class="go-to-links"><a href="#top">&uarr; Go back to top</a></h2>
-                </div>
-            </div>
+      <div class="container">
+        <div class="row">
+          <a href="../index.html">&#8592; Back</a>
+          <a href="#top">&#8593; Top &#8593;</a>
         </div>
+        <div class="row">
+          <p>&copy; AlanJC. All rights reserved.</p>
+        </div>
+      </div>
     </footer>
-
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-        crossorigin="anonymous"></script>
-</body>
-
+  </body>
 </html>

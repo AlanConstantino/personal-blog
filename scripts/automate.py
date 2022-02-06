@@ -1,3 +1,4 @@
+# Forgot what this script does, figure it out later...
 paragraphs = []
 
 def get_file_path_from_user():

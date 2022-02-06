@@ -1,214 +1,241 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <link
+      href="//fonts.googleapis.com/css?family=Raleway:400,300,600"
+      rel="stylesheet"
+      type="text/css"
+    /> -->
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/skeleton.css" />
+    <link rel="stylesheet" href="css/styles.css" />
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no, user-scalable=no">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="description" content="Alan Constantino's blog that contains useful articles about coding.">
-    <meta name="robots" content="index, follow">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
-    <link rel="shortcut icon" href="images/code.png">
-    <link rel="canonical" href="https://blog.alanjc.com/" />
-    <title>Alan's Blog | Coding Programming Blog</title>
-</head>
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./images/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="./images/favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="./images/favicon/site.webmanifest" />
+    <link
+      rel="mask-icon"
+      href="./images/favicon/safari-pinned-tab.svg"
+      color="#5bbad5"
+    />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ffffff" />
 
-
-<body>
+    <title>Alan's Blog</title>
+  </head>
+  <body>
     <header id="top">
-        <div class="container text-center">
-            <div class="row">
-                <div class="col">
-                    <h1><a href="https://alanjc.com" target="_blank">Alan Constantino</a></h1>
-                    <p>Web Developer</p>
-                    <div class="icons">
-                        <a href="https://twitter.com/alan_j_c" target="_blank"><i
-                                class="fab fa-twitter icon-size"></i></a>
-                        <a href="https://github.com/AlanConstantino" target="_blank"><i
-                                class="fab fa-github icon-size"></i></a>
-                        <a href="https://medium.com/@alanjc" target="_blank"><i
-                                class="fab fa-medium-m icon-size"></i></a>
-                        <a href="https://dev.to/alanjc" target="_blank"><i
-                                class="fab fa-dev icon-size"></i></a>
-                        <a href="https://www.linkedin.com/in/alan-constantino-a93648183/" target="_blank"><i
-                                class="fab fa-linkedin-in icon-size"></i></a>
-                        <a href="https://www.patreon.com/alanjc" target="_blank"><i
-                                class="fab fa-patreon icon-size"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
+      <div class="container">
+        <h1>
+          <a href="https://alanjc.com" target="_blank">Alan Constantino</a>
+        </h1>
+        <h5>Web Developer</h5>
+        <ul>
+          <li>
+            <a href="https://github.com/AlanConstantino" target="_blank"
+              ><img
+                class="icon"
+                src="./images/socials/github-brands.svg"
+                alt="GitHub Icon"
+            /></a>
+          </li>
+          <li>
+            <a href="https://dev.to/alanjc" target="_blank"
+              ><img
+                class="icon"
+                src="./images/socials/dev-brands.svg"
+                alt="Dev.to Icon"
+            /></a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com/alan_j_c/" target="_blank"
+              ><img
+                class="icon"
+                src="./images/socials/instagram-brands.svg"
+                alt="Instagram Icon"
+            /></a>
+          </li>
+          <li>
+            <a
+              href="https://www.linkedin.com/in/alan-constantino-a93648183/"
+              target="_blank"
+              ><img
+                class="icon"
+                src="./images/socials/linkedin-in-brands.svg"
+                alt="LinkedIn Icon"
+            /></a>
+          </li>
+          <li>
+            <a href="https://twitter.com/alan_j_c" target="_blank"
+              ><img
+                class="icon"
+                src="./images/socials/twitter-brands.svg"
+                alt="Twitter Icon"
+            /></a>
+          </li>
+          <li>
+            <a href="https://alanjc.medium.com/" target="_blank"
+              ><img
+                class="icon"
+                src="./images/socials/medium-m-brands.svg"
+                alt="Medium Icon"
+            /></a>
+          </li>
+          <li>
+            <a href="./donate.html" target="_blank"
+              ><img
+                class="icon"
+                src="./images/crypto/bitcoin-black-and-white.svg"
+                alt="Bitcoin icon"
+            /></a>
+          </li>
+        </ul>
+      </div>
     </header>
-
     <main>
-        <div class="container text-left">
-            <div class="row">
-                <div class="col margin-left-right">
-                    <article class="article-preview">
-                        <h1><a href="./articles/creating-aliases-on-linux-and-mac.html">
-                                Creating Aliases on Linux and Mac
-                            </a>
-                        </h1>
-                        <h2 class="article-info">January 12, 2021 | 2 min read</h2>
-                        <p>
-                            Are you tired of typing long commands into the terminal? Did you misremember a flag causing an error making you pull
-                            out your hair for 2 minutes only to realize that flag doesn&#39;t exist? Well worry no more because I&#39;ll be
-                            showing you how to create aliases for all of those pesky hard-to-remember commands.
-                        </p>
-                        <a href="./articles/creating-aliases-on-linux-and-mac.html"
-                            class="btn btn-outline-primary btn-continue-reading">Continue reading →</a>
-                    </article>
-                </div>
-            </div>
+      <div class="container">
+        <div class="row center">
+          <div>
+            <a
+              class="card"
+              href="./articles/creating-aliases-on-linux-and-mac.html"
+            >
+              <section>
+                <h3>Creating Aliases on Linux and Mac</h3>
+                <p>January 12, 2021 | 2 min read</p>
+                <p>
+                  Are you tired of typing long commands into the terminal? Did
+                  you misremember a flag causing an error making you pull out
+                  your hair for 2 minutes only to realize that flag doesn't
+                  exist? Well worry no more because I'll be showing you how to
+                  create aliases for all of those pesky hard-to-remember
+                  commands.
+                </p>
+              </section>
+            </a>
+          </div>
+          <div>
+            <a
+              class="card"
+              href="./articles/creating-your-own-deepfakes-without-coding-experience.html"
+            >
+              <section>
+                <h3>Creating Your Own Deepfakes Without Coding Experience</h3>
+                <p>August 13, 2020 | 6 min read</p>
+                <p>
+                  Creating your own deepfakes has been possible for a while now
+                  but the problem was that it required a lot of data, computing
+                  power, and time. But now, thanks to several AI researchers, we
+                  are now able to create deepfakes with a single image. Better
+                  yet, not only can we create deepfakes with a single image, but
+                  they also don't take hours or days to make, now they take only
+                  mere seconds and at most a couple of minutes.
+                </p>
+              </section>
+            </a>
+          </div>
+          <div>
+            <a
+              class="card"
+              href="./articles/keep-the-footer-at-the-bottom.html"
+            >
+              <section>
+                <h3>Keep the Footer at the Bottom</h3>
+                <p>February 22, 2020 | 11 min read</p>
+                <p>
+                  How do we keep that pesky footer at the bottom? Well, today
+                  I'll be showcasing three solutions to this problem. The first
+                  and simplest solution is using flexbox, the second solution is
+                  using grid, and the final solution is using a wrapper.
+                  Alright, let's get started.
+                </p>
+              </section>
+            </a>
+          </div>
+          <div>
+            <a
+              class="card"
+              href="./articles/5-simple-to-use-apis-for-beginners.html"
+            >
+              <section>
+                <h3>5 Simple-To-Use APIs for Beginners c</h3>
+                <p>February 9, 2020 | 6 min read</p>
+                <p>
+                  In this article I'll be talking about five simple-to-use APIs
+                  to help inspire project ideas. The goal of this post is to
+                  inspire you to create a project, whether it be simple or
+                  complex, and start using APIs.
+                </p>
+              </section>
+            </a>
+          </div>
+          <div>
+            <a
+              class="card"
+              href="./articles/creating-a-discord-bot-with-python.html"
+            >
+              <section>
+                <h3>Creating a Discord Bot With Python</h3>
+                <p>February 1, 2020 | 7 min read</p>
+                <p>
+                  In this article we'll create a Discord bot using Python. The
+                  bot we'll be creating today will have a simple purpose,
+                  telling jokes. We will give the bot a command and it will
+                  return a random joke. This should be simple enough, let's get
+                  started!
+                </p>
+              </section>
+            </a>
+          </div>
+          <div>
+            <a
+              class="card"
+              href="./articles/getting-started-with-the-terminal.html"
+            >
+              <section>
+                <h3>Getting Started With the Terminal</h3>
+                <p>January 12, 2020 | 16 min read</p>
+                <p>
+                  So, you want to learn how to use the Terminal. Great! As a
+                  developer, sooner or later, you’ll want to learn how to use
+                  the Terminal. Not only is this a handy tool to have under your
+                  belt, but it will also boost your productivity.
+                </p>
+              </section>
+            </a>
+          </div>
         </div>
-        <div class="container text-left">
-            <div class="row">
-                <div class="col margin-left-right">
-                    <article class="article-preview">
-                        <h1><a href="./articles/creating-your-own-deepfakes-without-coding-experience.html">
-                                Creating Your Own Deepfakes Without Coding Experience
-                            </a>
-                        </h1>
-                        <h2 class="article-info">August 13, 2020 | 6 min read</h2>
-                        <p>
-                            Creating your own deepfakes has been possible for a while now but the problem was that it
-                            required a lot of data, computing power, and time. But now, thanks to several AI
-                            researchers, we are now able to create deepfakes with a single image. Better yet, not only
-                            can we create deepfakes with a single image, but they also don&#39;t
-                            take hours or days to make,
-                            now they take only mere seconds and at most a couple of minutes.
-                        </p>
-                        <a href="./articles/creating-your-own-deepfakes-without-coding-experience.html"
-                            class="btn btn-outline-primary btn-continue-reading">Continue reading →</a>
-                    </article>
-                </div>
-            </div>
-        </div>
-        <div class="container text-left">
-            <div class="row">
-                <div class="col margin-left-right">
-                    <article class="article-preview">
-                        <h1><a href="./articles/water-your-plant-using-a-raspberry-pi-and-python.html">
-                                Water Your Plant Using a Raspberry Pi and Python
-                            </a>
-                        </h1>
-                        <h2 class="article-info">March 9, 2020 | 8 min read</h2>
-                        <p>
-                            I suck at taking care of plants, mostly because I forget to water them. So then I started
-                            thinking, "I'm sure
-                            someone out there has figured out a way to automate this process." Turns out, there are
-                            plenty of people who
-                            have. Namely in the form of using an Arduino or a Raspberry Pi to automatically water their
-                            plants. In this
-                            post, I'll be talking about how I used a Raspberry Pi and Python to automatically water my
-                            plant.
-                        </p>
-                        <a href="./articles/water-your-plant-using-a-raspberry-pi-and-python.html"
-                            class="btn btn-outline-primary btn-continue-reading">Continue reading →</a>
-                    </article>
-                </div>
-            </div>
-        </div>
-        <div class="container text-left">
-            <div class="row">
-                <div class="col margin-left-right">
-                    <article class="article-preview">
-                        <h1><a href="./articles/keep-the-footer-at-the-bottom.html">
-                                Keep the Footer at the Bottom
-                            </a>
-                        </h1>
-                        <h2 class="article-info">February 22, 2020 | 11 min read</h2>
-                        <p>
-                            How do we keep that pesky footer at the bottom? Well, today I'll be showcasing three
-                            solutions to this problem.
-                            The first and simplest solution is using flexbox, the second solution is using grid, and the
-                            final solution is
-                            using a wrapper. Alright, let's get started.
-                        </p>
-                        <a href="./articles/keep-the-footer-at-the-bottom.html"
-                            class="btn btn-outline-primary btn-continue-reading">Continue reading →</a>
-                    </article>
-                </div>
-            </div>
-        </div>
-        <div class="container text-left">
-            <div class="row">
-                <div class="col margin-left-right">
-                    <article class="article-preview">
-                        <h1><a href="./articles/5-simple-to-use-apis-for-beginners.html">
-                                5 Simple-To-Use APIs for Beginners
-                            </a>
-                        </h1>
-                        <h2 class="article-info">February 9, 2020 | 6 min read</h2>
-                        <p>
-                            In this article I'll be talking about five simple-to-use APIs to help inspire project
-                            ideas. The goal of this post is to inspire you to create a project, whether it be simple or
-                            complex, and start using APIs.
-                        </p>
-                        <a href="./articles/5-simple-to-use-apis-for-beginners.html"
-                            class="btn btn-outline-primary btn-continue-reading">Continue reading →</a>
-                    </article>
-                </div>
-            </div>
-        </div>
-        <div class="container text-left">
-            <div class="row">
-                <div class="col margin-left-right">
-                    <article class="article-preview">
-                        <h1><a href="./articles/creating-a-discord-bot-with-python.html">Creating a Discord
-                                Bot With Python</a></h1>
-                        <h2 class="article-info">February 1, 2020 | 7 min read</h2>
-                        <p>
-                            In this article we'll create a Discord bot using Python. The bot we'll be creating today
-                            will have a simple purpose, telling jokes. We will give the bot a command and it will return
-                            a random joke. This should be simple enough, let's get started!
-                        </p>
-                        <a href="./articles/creating-a-discord-bot-with-python.html"
-                            class="btn btn-outline-primary btn-continue-reading">Continue reading →</a>
-                    </article>
-                </div>
-            </div>
-        </div>
-        <div class="container text-left">
-            <div class="row">
-                <div class="col margin-left-right">
-                    <article class="article-preview">
-                        <h1><a href="./articles/getting-started-with-the-terminal.html">Getting Started
-                                With the Terminal</a></h1>
-                        <h2 class="article-info">January 12, 2020 | 16 min read</h2>
-                        <p>So, you want to learn how to use the Terminal. Great! As a developer, sooner or later,
-                            you’ll want to learn how to use the Terminal. Not only is this a handy tool to have
-                            under your belt, but it will also boost your productivity.</p>
-                        <a href="./articles/getting-started-with-the-terminal.html"
-                            class="btn btn-outline-primary btn-continue-reading">Continue reading →</a>
-                    </article>
-                </div>
-            </div>
-        </div>
+      </div>
     </main>
-
     <footer>
-        <div class="container text-center">
-            <div class="row">
-                <div class="col">
-                    <h2 class="go-to-links"><a href="#top">&uarr; Go back to top</a></h2>
-                </div>
-            </div>
+      <div class="container">
+        <div class="row">
+          <!-- <a href="#">&#8592; Back</a> -->
+          <a href="#top">&#8593; Top &#8593;</a>
+          <!-- <a href="#">Next &#8594;</a> -->
         </div>
+        <div class="row">
+          <p>&copy; AlanJC. All rights reserved.</p>
+        </div>
+      </div>
     </footer>
-
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-        crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/f1446561ad.js" crossorigin="anonymous"></script>
-</body>
-
+  </body>
 </html>

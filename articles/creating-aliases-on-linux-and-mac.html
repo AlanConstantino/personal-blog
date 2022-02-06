@@ -1,147 +1,204 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-153173414-2"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'UA-153173414-2');
-    </script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no, user-scalable=no">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="description" content="An article that talks about creating aliases on both Linux and MacOS.">
-    <meta name="robots" content="index, follow">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="../style.css">
-    <link rel="shortcut icon" href="../images/code.png">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, shrink-to-fit=no, user-scalable=no"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta
+      name="description"
+      content="An article that talks about creating aliases on both Linux and MacOS."
+    />
+    <meta name="robots" content="index, follow" />
+    <link rel="stylesheet" href="../css/normalize.css" />
+    <link rel="stylesheet" href="../css/skeleton.css" />
+    <link rel="stylesheet" href="../css/styles.css" />
     <link rel="canonical" href="https://blog.alanjc.com/" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="../images/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="../images/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="../images/favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="../images/favicon/site.webmanifest" />
+    <link
+      rel="mask-icon"
+      href="../images/favicon/safari-pinned-tab.svg"
+      color="#5bbad5"
+    />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ffffff" />
     <title>Creating Aliases on Linux and Mac</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <header id="top">
-        <div class="container text-center">
-            <div class="row">
-                <div class="col">
-                    <h2 class="go-to-links"><a href="../">&larr; Go back to posts</a></h2>
-                    <h1>Creating Aliases on Linux and Mac</h1>
-                    <h2 class="article-info">January 12, 2021 | 2 min read</h2>
-                </div>
-            </div>
-        </div>
+      <div class="container">
+        <h1>Creating Aliases on Linux and Mac</h1>
+        <h6>January 12, 2021 | 2 min read</h6>
+      </div>
     </header>
 
     <main>
-        <div class="container text-left">
-            <div class="row">
-                <div class="col margin-left-right">
-                    <article class="article" id="main-article">
-                        <p>
-                            <a href="https://www.patreon.com/alanjc" target="_blank" class="underline italic">
-                                If you found this article useful consider donating.
-                            </a>
-                        </p>
-                        <hr>
+      <div class="container">
+        <div class="row">
+          <p class="center">
+            <a href="../donate.html">
+              <em>If you've found this article useful consider donating.</em>
+            </a>
+          </p>
 
-                        <p><strong><em>Note: The following steps should also apply to MacOS as well.</em></strong></p>
-                        <p>Are you tired of typing long commands into the terminal? Did you misremember a flag causing an error making you pull
-                            out your hair for 2 minutes only to realize that flag doesn&#39;t exist? Well worry no more because I&#39;ll be
-                            showing you how to create aliases for all of those pesky hard-to-remember commands.</p>
-                        <h2 id="what-are-aliases">What are aliases?</h2>
-                        <p>An alias is just a fancy term for nicknaming a certain command.</p>
-                        <p>They are very useful because instead of typing out a long command with several flags and options, you can nickname it
-                            to a shorter command (i.e. give it an alias) and simply remember the shorter command.</p>
-                        <h2 id="editing-the-bashrc-file">Editing the &quot;.bashrc&quot; File</h2>
-                        <p>The first step in creating aliases is to open up a new terminal window and head over to your user&#39;s directory
-                            like so:</p>
-                        <pre><kbd class="language-bash">cd /home/&lt;username&gt;</kbd></pre>
-                        <p><strong><em>Note: By convention, you would usually define your aliases inside of the &quot;.bashrc&quot; file but
-                                    because defining all of your aliases here can get out of hand pretty quick, we&#39;ll be creating a separate
-                                    file in which we&#39;ll be defining our aliases.</em></strong></p>
-                        <p>From here, you&#39;ll want to open up the &quot;.bashrc&quot; file like so:</p>
-                        <pre><kbd class="language-bash">sudo nano .bashrc</kbd></pre>
-                        <p>Inside of &quot;.bashrc&quot; you&#39;ll want to paste in the following snippet of code:</p>
-                        <code class="text-left">
-                        # Alias<br>
-                        if [ -f ~/.bash_aliases ]; then<br>
-                            . ~/.bash_aliases<br>
-                        fi<br>
-                        </code>
-                        <p>The snippet of code above simply tells bash that if the file &quot;.bash_aliases&quot; exists then load it and run
-                            it.</p>
-                        <p>Now, enter <kbd>CTRL+X</kbd> &rarr; <kbd>Y</kbd> &rarr; <kbd>Enter</kbd> to save the file.</p>
-                        <h2 id="creating-aliases">Creating Aliases</h2>
-                        <p>Inside of the &quot;/home/&lt;username&gt;&quot; directory, you&#39;ll want to create a new file called
-                                &quot;.bash_aliases.&quot; You can do so with the following command:</p>
-                        <pre><kbd class="language-bash">touch .bash_aliases</kbd></pre>
-                        <p>It&#39;s in this file that you&#39;ll want to create your aliases. Open up the &quot;.bash_aliases&quot; file like
-                            so:</p>
-                        <pre><kbd class="language-bash">sudo nano .bash_aliases</kbd></pre>
-                        <p>Now, to create an alias you can do the following:</p>
-                        <code class="language-bash text-left">
-                        # MAKING AN ALIAS<br>
-                        ## alias &lt;name of alias&gt;=&quot;&lt;bash command&gt;&quot;<br>
-                        ##<br>
-                        ## Example:<br>
-                        ## alias l=&quot;ls -lah&quot;<br>
-                        ##<br>
-                        ## To apply changes run the following:<br>
-                        ## source ~/.bashrc<br>
-                        <br>
-                        alias l=&quot;ls -lah&quot;<br>
-                        </code>
-                        <p>To save your file you can do <kbd>CTRL+X</kbd> &rarr; <kbd>Y</kbd> &rarr; <kbd>Enter</kbd>.</p>
-                        <p>Now, enter one last command to load our aliases.</p>
-                        <pre><kbd class="language-bash">source ~/.bashrc</kbd></pre>
-                        <p>That&#39;s it!</p>
-                        <p>Now, if you type in your custom alias into the terminal, it would be like if you were actually typing the longer
-                            command that you aliased.</p>
-                        <p><strong><em>Note: Every time you edit the &quot;.bash_aliases&quot; file you will have to reload the
-                                    &quot;.bashrc&quot; file or start a new terminal session for the changes to take effect.</em></strong></p>
-                        <p>Thanks and have a good one!</p>
+          <hr />
 
-                        <hr>
-                        <p>
-                            <a href="https://www.patreon.com/alanjc" target="_blank" class="underline italic">
-                                If you found this article useful consider donating.
-                            </a>
-                        </p>
-                    </article>
-                </div>
-            </div>
+          <p>
+            <strong
+              ><em
+                >Note: The following steps should also apply to MacOS as
+                well.</em
+              ></strong
+            >
+          </p>
+
+          <p>
+            Are you tired of typing long commands into the terminal? Did you
+            misremember a flag causing an error making you pull out your hair
+            for 2 minutes only to realize that flag doesn't exist? Well worry no
+            more because I'll be showing you how to create aliases for all of
+            those pesky hard-to-remember commands.
+          </p>
+
+          <h3 id="what-are-aliases">What are aliases?</h3>
+          <p>An alias is just a fancy term for nicknaming a certain command.</p>
+          <p>
+            They are very useful because instead of typing out a long command
+            with several flags and options, you can nickname it to a shorter
+            command (i.e. give it an alias) and simply remember the shorter
+            command.
+          </p>
+          <h3 id="editing-the-bashrc-file">
+            Editing the <code>.bashrc</code> File
+          </h3>
+          <p>
+            The first step in creating aliases is to open up a new terminal
+            window and head over to your user&#39;s directory like so:
+          </p>
+          <pre><code>cd /home/&lt;username&gt;</code></pre>
+          <p>
+            <strong>
+              <em>
+                Note: By convention, you would usually define your aliases
+                inside of the <code>.bashrc</code> file but because defining all
+                of your aliases here can get out of hand pretty quick, we&#39;ll
+                be creating a separate file in which we&#39;ll be defining our
+                aliases.
+              </em>
+            </strong>
+          </p>
+          <p>
+            From here, you&#39;ll want to open up the <code>.bashrc</code> file
+            like so:
+          </p>
+          <pre><code>sudo nano .bashrc</code></pre>
+          <p>
+            Inside of <code>.bashrc</code> you&#39;ll want to paste in the
+            following snippet of code:
+          </p>
+          <pre><code># Alias
+if [ -f ~/.bash_aliases ]; then
+. ~/.bash_aliases
+fi</code></pre>
+          <p>
+            The snippet of code above simply tells bash that if the file
+            <code>.bash_aliases</code> exists then load it and run it.
+          </p>
+          <p>
+            Now, enter <code>CTRL + X</code> &rarr; <code>Y</code> &rarr;
+            <code>Enter</code> to save the file.
+          </p>
+          <h3 id="creating-aliases">Creating Aliases</h3>
+          <p>
+            Inside of the <code>/home/&lt;username&gt;</code> directory,
+            you&#39;ll want to create a new file called
+            <code>.bash_aliases</code> You can do so with the following command:
+          </p>
+          <pre><code >touch .bash_aliases</code></pre>
+          <p>
+            It&#39;s in this file that you&#39;ll want to create your aliases.
+            Open up the <code>.bash_aliases</code> file like so:
+          </p>
+          <pre><code>sudo nano .bash_aliases</code></pre>
+          <p>Now, to create an alias you can do the following:</p>
+          <pre><code># MAKING AN ALIAS
+## alias &lt;name of alias&gt;=&quot;&lt;bash command&gt;&quot;
+##
+## Example:
+## alias l=&quot;ls -lah&quot;
+##
+## To apply changes run the following:
+## source ~/.bashrc
+
+alias l=&quot;ls -lah&quot;
+</code></pre>
+          <p>
+            To save your file you can do <code>CTRL+X</code> &rarr;
+            <code>Y</code> &rarr; <code>Enter</code>.
+          </p>
+          <p>Now, enter one last command to load our aliases.</p>
+          <pre><code >source ~/.bashrc</code></pre>
+          <p>That&#39;s it!</p>
+          <p>
+            Now, if you type in your custom alias into the terminal, it would be
+            like if you were actually typing the longer command that you
+            aliased.
+          </p>
+          <p>
+            <strong
+              ><em
+                >Note: Every time you edit the <code>.bash_aliases</code> file
+                you will have to reload the <code>.bashrc</code> file or start a
+                new terminal session for the changes to take effect.</em
+              ></strong
+            >
+          </p>
+          <p>Thanks and have a good one!</p>
+
+          <hr />
+
+          <p class="center">
+            <a href="../donate.html">
+              <em>If you've found this article useful consider donating.</em>
+            </a>
+          </p>
         </div>
+      </div>
     </main>
 
     <footer>
-        <div class="container text-center">
-            <div class="row">
-                <div class="col-sm">
-                    <h2 class="go-to-links"><a href="../">&larr; Go back to posts</a></h2>
-                </div>
-                <div class="col-sm">
-                    <h2 class="go-to-links"><a href="#top">&uarr; Go back to top</a></h2>
-                </div>
-                <div class="col-sm">
-                    <h2 class="go-to-links"><a href="./creating-your-own-deepfakes-without-coding-experience.html">Next Article &rarr;</a>
-                    </h2>
-                </div>
-            </div>
+      <div class="container">
+        <div class="row">
+          <a href="../index.html">&#8592; Back</a>
+          <a href="#top">&#8593; Top &#8593;</a>
+          <a href="./creating-your-own-deepfakes-without-coding-experience.html"
+            >Next &#8594;</a
+          >
         </div>
+        <div class="row">
+          <p>&copy; AlanJC. All rights reserved.</p>
+        </div>
+      </div>
     </footer>
-    
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-        crossorigin="anonymous"></script>
-</body>
+  </body>
+</html>
