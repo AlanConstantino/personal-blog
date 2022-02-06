@@ -7,7 +7,6 @@ function calculateReadingTime(text) {
     const readingTime = Math.ceil(numberOfWords / averageWordsPerMinute);
     return readingTime;
 }
-
-const article = document.getElementById('main-article').innerText;
+const article = document.querySelector('main').innerText;
 const readingTime = calculateReadingTime(article);
 console.log(readingTime + ' minutes');
