@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Alan's Blog</title>
+    <description>A blog about programming and other miscellaneous topics.</description>
+    <language>en-us</language>
+    <link>https://blog.alanjc.com/rss.xml</link>
+    <atom:link href="https://blog.alanjc.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to Create and Host Your First Website With GitHub | February 6, 2022 | 4 min read</title>
+      <link>https://blog.alanjc.com/./articles/how-to-create-and-host-your-first-website-with-github.html</link>
+      <guid>https://blog.alanjc.com/./articles/how-to-create-and-host-your-first-website-with-github.html</guid>
+      <pubDate>Sun, 06 Feb 2022 08:00:00 PST</pubDate>
+      <description><![CDATA[
+        <p>
+          In this article I'll teach you how to create your very own
+          website and host it through GitHub completely for free.
+          Let's get started!
+        </p>]]>
+      </description>
+    </item>
+    <item>
+      <title>Creating Aliases on Linux and Mac | January 12, 2021 | 2 min read</title>
+      <link>https://blog.alanjc.com/./articles/creating-aliases-on-linux-and-mac.html</link>
+      <guid>https://blog.alanjc.com/./articles/creating-aliases-on-linux-and-mac.html</guid>
+      <pubDate>Tue, 12 Jan 2021 12:00:00 PST</pubDate>
+      <description><![CDATA[
+        <p>
+          Are you tired of typing long commands into the terminal? Did
+          you misremember a flag causing an error making you pull out
+          your hair for 2 minutes only to realize that flag doesn't
+          exist? Well worry no more because I'll be showing you how to
+          create aliases for all of those pesky hard-to-remember
+          commands.
+        </p>]]>
+      </description>
+    </item>
+    <item>
+      <title>Creating Your Own Deepfakes Without Coding Experience | August 13, 2020 | 6 min read</title>
+      <link>https://blog.alanjc.com/./articles/creating-your-own-deepfakes-without-coding-experience.html</link>
+      <guid>https://blog.alanjc.com/./articles/creating-your-own-deepfakes-without-coding-experience.html</guid>
+      <pubDate>Thu, 13 Aug 2020 12:00:00 PST</pubDate>
+      <description><![CDATA[
+        <p>
+          Creating your own deepfakes has been possible for a while now
+          but the problem was that it required a lot of data, computing
+          power, and time. But now, thanks to several AI researchers, we
+          are now able to create deepfakes with a single image. Better
+          yet, not only can we create deepfakes with a single image, but
+          they also don't take hours or days to make, now they take only
+          mere onds and at most a couple of minutes.
+        </p>]]>
+      </description>
+    </item>
+    <item>
+      <title>Water Your Plant Using a Raspberry Pi and Python | March 10, 2020 | 8 min read</title>
+      <link>https://blog.alanjc.com/./articles/water-your-plant-using-a-raspberry-pi-and-python.html</link>
+      <guid>https://blog.alanjc.com/./articles/water-your-plant-using-a-raspberry-pi-and-python.html</guid>
+      <pubDate>Tue, 10 Mar 2020 12:00:00 PST</pubDate>
+      <description><![CDATA[
+        <p>
+          I suck at taking care of plants, mostly because I forget to
+          water them. So then I started thinking, "I'm sure someone out
+          there has figured out a way to automate this process." Turns
+          out, there are plenty of people who have. Namely in the form
+          of using an Arduino or a Raspberry Pi to automatically water
+          their plants. In this post, I'll be talking about how I used a
+          Raspberry Pi and Python to automatically water my plant.
+        </p>]]>
+      </description>
+    </item>
+    <item>
+      <title>Keep the Footer at the Bottom | February 22, 2020 | 11 min read</title>
+      <link>https://blog.alanjc.com/./articles/keep-the-footer-at-the-bottom.html</link>
+      <guid>https://blog.alanjc.com/./articles/keep-the-footer-at-the-bottom.html</guid>
+      <pubDate>Sat, 22 Feb 2020 12:00:00 PST</pubDate>
+      <description><![CDATA[
+        <p>
+          How do we keep that pesky footer at the bottom? Well, today
+          I'll be showcasing three solutions to this problem. The first
+          and simplest solution is using flexbox, the second solution is
+          using grid, and the final solution is using a wrapper.
+          Alright, let's get started.
+        </p>]]>
+      </description>
+    </item>
+    <item>
+      <title>5 Simple-To-Use APIs for Beginners | February 9, 2020 | 6 min read</title>
+      <link>https://blog.alanjc.com/./articles/5-simple-to-use-apis-for-beginners.html</link>
+      <guid>https://blog.alanjc.com/./articles/5-simple-to-use-apis-for-beginners.html</guid>
+      <pubDate>Sun, 09 Feb 2020 12:00:00 PST</pubDate>
+      <description><![CDATA[
+        <p>
+          In this article I'll be talking about five simple-to-use APIs
+          to help inspire project ideas. The goal of this post is to
+          inspire you to create a project, whether it be simple or
+          complex, and start using APIs.
+        </p>]]>
+      </description>
+    </item>
+    <item>
+      <title>Creating a Discord Bot With Python | February 1, 2020 | 7 min read</title>
+      <link>https://blog.alanjc.com/./articles/creating-a-discord-bot-with-python.html</link>
+      <guid>https://blog.alanjc.com/./articles/creating-a-discord-bot-with-python.html</guid>
+      <pubDate>Sat, 01 Feb 2020 12:00:00 PST</pubDate>
+      <description><![CDATA[
+        <p>
+          In this article we'll create a Discord bot using Python. The
+          bot we'll be creating today will have a simple purpose,
+          telling jokes. We will give the bot a command and it will
+          return a random joke. This should be simple enough, let's get
+          started!
+        </p>]]>
+      </description>
+    </item>
+    <item>
+      <title>Getting Started With the Terminal | January 12, 2020 | 16 min read</title>
+      <link>https://blog.alanjc.com/./articles/getting-started-with-the-terminal.html</link>
+      <guid>https://blog.alanjc.com/./articles/getting-started-with-the-terminal.html</guid>
+      <pubDate>Sun, 12 Jan 2020 12:00:00 PST</pubDate>
+      <description><![CDATA[
+        <p>
+          So, you want to learn how to use the Terminal. Great! As a
+          developer, sooner or later, you’ll want to learn how to use
+          the Terminal. Not only is this a handy tool to have under your
+          belt, but it will also boost your productivity.
+        </p>]]>
+      </description>
+    </item>
+  </channel>
+</rss>

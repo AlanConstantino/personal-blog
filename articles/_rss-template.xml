@@ -1,0 +1,30 @@
+<!--
+Include the following tag in all article pages:
+
+<link rel="alternate" type="application/rss+xml" title="Alan's Blog RSS" href="/rss.xml">
+-->
+
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/css" href="rss.css" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+
+<channel>
+    <title>Alan's Blog</title>
+    <description>A blog about programming and other miscellaneous topics.</description>
+    <language>en-us</language>
+    <link>https://blog.alanjc.com/rss.xml</link>
+    <atom:link href="https://blog.alanjc.com/rss.xml" rel="self" type="application/rss+xml" />
+
+    <!-- content here -->
+    <item>
+        <title><!-- title of article here --></title>
+        <guid><!-- link to article here --></guid>
+        <link><!-- link to article here --></link>
+        <!-- https://www.ibm.com/docs/en/rtw/9.5?topic=reference-date-time-patterns -->
+        <!-- EEE, d MMM yyyy HH:mm:ss Z -->
+        <pubDate><!-- Mon, 4 Jul 2001 12:08:56 -0800 --></pubDate>
+        <description><![CDATA[ post body goes <strong>here</strong> ]]></description>
+    </item>
+
+</channel>
+</rss>
