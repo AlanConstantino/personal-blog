@@ -1,0 +1,51 @@
+#!/bin/bash
+#
+# This script assumes that the newly written article is already in the /articles
+# directory. All you have to do is run this script and select it the newly written
+# article to generate the new RSS feed.
+
+dir="/home/alan/GitHub/personal-blog/articles"
+rssDir="/home/alan/GitHub/personal-blog/rss.xml"
+url="https://blog.alanjc.com"
+
+# creates array of article names from /articles
+i=0
+for FILE in $dir/*.html; do
+    if [[ $FILE != *"_"* ]]; then
+        array[ $i ]="$FILE"
+        (( i++ ))
+    fi
+done
+
+# prints out the array of articles saved along with its index
+for i in "${!array[@]}"; do
+    name="`echo ${array[$i]} | cut -d '/' -f 7`"
+    printf "%s)     %s\n" "$i" "$name"
+done
+
+# allows user to select any article from the array of articles we previously saved
+read -rep $'\nSelect the newly added article: ' articleNumber
+
+# generate all necessary tags for RSS xml file
+title="`grep '<title>' ${array[$articleNumber]} | xargs | cut -d '<' -f 2 | cut -d '>' -f 2`"
+readtime="`grep '<h6>' ${array[$articleNumber]} | cut -d '|' -f 2 | cut -d '<' -f 1`"
+titleTag="<title>$title | $readtime<title>"
+urltitle="`grep '<title>' ${array[$articleNumber]} | xargs | cut -d '<' -f 2 | cut -d '>' -f 2 | tr '[:upper:]' '[:lower:]' | tr ' ' '-'`"
+linkTag="<link>$url/./articles/$urltitle.html</link>"
+guidTag="<guid>$url/./articles/$urltitle.html</guid>"
+day="`grep '<h6>' ${array[$articleNumber]} | cut -d '|' -f 1 | cut -d '>' -f 2 | cut -d ' ' -f 2 | cut -d ',' -f 1 | xargs`"
+month="`grep '<h6>' ${array[$articleNumber]} | cut -d '|' -f 1 | cut -d '>' -f 2 | cut -d ' ' -f 1 | xargs`"
+month=${month:0:3}
+year="`grep '<h6>' ${array[$articleNumber]} | cut -d '|' -f 1 | cut -d '>' -f 2 | cut -d ',' -f 2 | xargs`"
+pubDate="<pubDate>`date +'%a, %d %b %Y %T %Z'`</pubDate>"
+read -rep $'\nEnter the description for the article: \n\n' description && echo
+descriptionTag="<description><![CDATA[<p>$description</p>]]></description>"
+
+# generate RSS xml file
+head -8 $rssDir > temp.xml
+printf "\t\t<item>\n\t\t\t$titleTag\n\t\t\t$linkTag\n\t\t\t$guidTag\n\t\t\t$pubDate\n\t\t\t$descriptionTag\n\t\t</item>\n" >> temp.xml
+sed -n '9,$p' $rssDir >> temp.xml
+mv temp.xml $rssDir
+
+# status update
+echo "RSS has been generated!"
