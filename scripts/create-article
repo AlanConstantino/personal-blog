@@ -1,0 +1,36 @@
+#!/bin/bash
+#
+# Generate an article based on a markdown file into html
+
+YELLOW='\033[1;33m'
+NC='\033[0m' # No Color
+
+# change the directory to point to markdown file you want to use
+mddir="/home/alan/Programming/test-markdown-parser"
+markdownFile="readme.md"
+outputHtml="index.html"
+dir="/home/alan/GitHub/personal-blog/articles"
+
+marked --gfm -i $mddir/$markdownFile -o $mddir/$outputHtml
+echo "Converted markdown to HTML!"
+
+read -rep $'\nEnter short description for meta tag:\n\n' metaDescription && echo
+articleTitle="`head -1 $mddir/$markdownFile | cut -d '#' -f 2 | xargs`"
+urlTitle="`head -1 $mddir/$outputHtml | cut -d '"' -f 2`.html"
+
+# generate html file
+head -12 $dir/_template.html > temp.html
+echo -e "\t\t\tcontent=\"$metaDescription\"" >> temp.html
+sed -n '14,25p' ../articles/_template.html >> temp.html
+echo -e "\t\t<link rel=\"canonical\" href=\"https://blog.alanjc.com/articles/$urlTitle\" />" >> temp.html
+sed -n '27,52p' ../articles/_template.html >> temp.html
+echo -e "\t\t<title>$articleTitle</title>" >> temp.html
+sed -n '54,58p' ../articles/_template.html >> temp.html
+echo -e "\t\t\t\t<h1>$articleTitle</h1>" >> temp.html
+echo -e "\t\t\t\t<h6>`date +"%B %e, %Y"` | ??? min read</h6>" >> temp.html
+sed -n '61,74p' ../articles/_template.html >> temp.html
+sed 1d $mddir/$outputHtml >> temp.html
+sed -n '78,105p' ../articles/_template.html >> temp.html
+mv temp.html ../articles/$urlTitle
+
+echo -e "Finished generating HTML file!\n${YELLOW}Add the URL to the 'Next' anchor tag in the footer!${NC}"
