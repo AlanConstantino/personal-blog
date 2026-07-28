@@ -23,7 +23,7 @@ Short form:
 
 1. Add a Markdown file under `content/posts/`.
 2. Fill the front matter fields (`title`, `date`, `slug`, `description`).
-3. Run `python3 scripts/build.py`.
+3. Run `make build`.
 4. Check the generated HTML.
 5. Commit the Markdown source and the generated files.
 

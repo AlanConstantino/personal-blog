@@ -102,8 +102,10 @@ Set `draft: false` or remove the field when you want to publish.
 From the repository root, run:
 
 ```bash
-python3 scripts/build.py
+make build
 ```
+
+This command runs `python3 scripts/build.py`.
 
 The build reads every file in `content/posts/`.
 It writes:
@@ -149,7 +151,7 @@ GitHub Pages serves the HTML files in the repository.
 1. Open the Markdown file in `content/posts/`.
 2. Change the body or the front matter.
 3. Keep the `slug` the same unless you want a new URL.
-4. Run `python3 scripts/build.py`.
+4. Run `make build`.
 5. Check the HTML in a browser.
 6. Commit the Markdown file and the generated files.
 
@@ -232,7 +234,7 @@ Two posts cannot share the same slug.
 2. Fill `title`, `date`, `slug`, and `description`.
 3. Add optional `tags` and set `draft` if needed.
 4. Write the Markdown body.
-5. Run `python3 scripts/build.py`.
+5. Run `make build`.
 6. Check the HTML output in a browser.
 7. Commit the Markdown source and the generated HTML.
 8. Push the commit to publish.
