@@ -1,0 +1,120 @@
+---
+title: Creating Aliases on Linux and Mac
+date: 2021-01-12
+slug: creating-aliases-on-linux-and-mac
+description: Are you tired of typing long commands into the terminal? Did you misremember a flag causing an error making you pull out your hair for 2 minutes only to realize that flag doesn't exist? Well worry no more because I'll be showing you how to create aliases for all of those pesky hard-to-remember commands.
+tags: linux, macos, terminal
+draft: false
+---
+
+<p>
+  <strong
+    ><em
+      >Note: The following steps should also apply to MacOS as
+      well.</em
+    ></strong
+  >
+</p>
+
+<p>
+  Are you tired of typing long commands into the terminal? Did you
+  misremember a flag causing an error making you pull out your hair
+  for 2 minutes only to realize that flag doesn't exist? Well worry no
+  more because I'll be showing you how to create aliases for all of
+  those pesky hard-to-remember commands.
+</p>
+
+<h3 id="what-are-aliases">What are aliases?</h3>
+<p>An alias is just a fancy term for nicknaming a certain command.</p>
+<p>
+  They are very useful because instead of typing out a long command
+  with several flags and options, you can nickname it to a shorter
+  command (i.e. give it an alias) and simply remember the shorter
+  command.
+</p>
+<h3 id="editing-the-bashrc-file">
+  Editing the <code>.bashrc</code> File
+</h3>
+<p>
+  The first step in creating aliases is to open up a new terminal
+  window and head over to your user&#39;s directory like so:
+</p>
+<pre><code>cd /home/&lt;username&gt;</code></pre>
+<p>
+  <strong>
+    <em>
+      Note: By convention, you would usually define your aliases
+      inside of the <code>.bashrc</code> file but because defining all
+      of your aliases here can get out of hand pretty quick, we&#39;ll
+      be creating a separate file in which we&#39;ll be defining our
+      aliases.
+    </em>
+  </strong>
+</p>
+<p>
+  From here, you&#39;ll want to open up the <code>.bashrc</code> file
+  like so:
+</p>
+<pre><code>sudo nano .bashrc</code></pre>
+<p>
+  Inside of <code>.bashrc</code> you&#39;ll want to paste in the
+  following snippet of code:
+</p>
+<pre><code># Alias
+if [ -f ~/.bash_aliases ]; then
+. ~/.bash_aliases
+fi</code></pre>
+<p>
+  The snippet of code above simply tells bash that if the file
+  <code>.bash_aliases</code> exists then load it and run it.
+</p>
+<p>
+  Now, enter <code>CTRL + X</code> &rarr; <code>Y</code> &rarr;
+  <code>Enter</code> to save the file.
+</p>
+<h3 id="creating-aliases">Creating Aliases</h3>
+<p>
+  Inside of the <code>/home/&lt;username&gt;</code> directory,
+  you&#39;ll want to create a new file called
+  <code>.bash_aliases</code> You can do so with the following command:
+</p>
+<pre><code >touch .bash_aliases</code></pre>
+<p>
+  It&#39;s in this file that you&#39;ll want to create your aliases.
+  Open up the <code>.bash_aliases</code> file like so:
+</p>
+<pre><code>sudo nano .bash_aliases</code></pre>
+<p>Now, to create an alias you can do the following:</p>
+<pre><code># MAKING AN ALIAS
+## alias &lt;name of alias&gt;=&quot;&lt;bash command&gt;&quot;
+##
+## Example:
+## alias l=&quot;ls -lah&quot;
+##
+## To apply changes run the following:
+## source ~/.bashrc
+
+alias l=&quot;ls -lah&quot;
+</code></pre>
+<p>
+  To save your file you can do <code>CTRL+X</code> &rarr;
+  <code>Y</code> &rarr; <code>Enter</code>.
+</p>
+<p>Now, enter one last command to load our aliases.</p>
+<pre><code >source ~/.bashrc</code></pre>
+<p>That&#39;s it!</p>
+<p>
+  Now, if you type in your custom alias into the terminal, it would be
+  like if you were actually typing the longer command that you
+  aliased.
+</p>
+<p>
+  <strong
+    ><em
+      >Note: Every time you edit the <code>.bash_aliases</code> file
+      you will have to reload the <code>.bashrc</code> file or start a
+      new terminal session for the changes to take effect.</em
+    ></strong
+  >
+</p>
+<p>Thanks and have a good one!</p>

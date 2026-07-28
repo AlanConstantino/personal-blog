@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Alan's Blog</title>
+    <description>A blog about programming and other miscellaneous topics.</description>
+    <language>en-us</language>
+    <link>https://blog.alanjc.com/rss.xml</link>
+    <atom:link href="https://blog.alanjc.com/rss.xml" rel="self" type="application/rss+xml" />
+{{items}}
+  </channel>
+</rss>

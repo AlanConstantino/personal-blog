@@ -138,3 +138,70 @@ figcaption {
   font-style: oblique;
   padding-bottom: 5rem;
 }
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  margin: 0.5rem 0 0;
+}
+
+section .tags {
+  justify-content: flex-start;
+  padding-top: 0.5rem;
+}
+
+.post-card {
+  margin-bottom: 0;
+}
+
+.post-card > .tags {
+  justify-content: flex-start;
+  padding: 0.75rem 3rem 0;
+}
+
+a.tag,
+.tag-label {
+  display: inline-block;
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  background-color: #2a2a2a;
+  color: #c8c8c8;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+a.tag:hover {
+  color: #298dff;
+  background-color: #333333;
+}
+
+.tag-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 32rem;
+  text-align: left;
+}
+
+.tag-list li {
+  margin-bottom: 1rem;
+}
+
+.pager {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  padding: 2rem 0 1rem;
+}
+
+.browse-tags {
+  margin-bottom: 2rem;
+}
+
+.page-label {
+  color: #a8a8a8;
+}

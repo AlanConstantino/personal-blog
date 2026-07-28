@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, shrink-to-fit=no, user-scalable=no"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="description" content="Explaining software architecture in a non-boring way." />
+    <meta name="robots" content="index, follow" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="Alan's Blog RSS"
+      href="/rss.xml"
+    />
+    <link rel="stylesheet" href="../css/normalize.css" />
+    <link rel="stylesheet" href="../css/skeleton.css" />
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="canonical" href="https://blog.alanjc.com/articles/software-architecture-duh.html" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="../images/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="../images/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="../images/favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="../images/favicon/site.webmanifest" />
+    <link
+      rel="mask-icon"
+      href="../images/favicon/safari-pinned-tab.svg"
+      color="#5bbad5"
+    />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ffffff" />
+    <title>Software Architecture</title>
+  </head>
+
+  <body>
+    <header id="top">
+      <div class="container">
+        <h1>Software Architecture</h1>
+        <h6>July 24, 2026 | 10 min read</h6>
+                <p class="tags">
+          <a class="tag" href="../tags/software.html">software</a>
+          <a class="tag" href="../tags/architecture.html">architecture</a>
+          <a class="tag" href="../tags/engineer.html">engineer</a>
+          <a class="tag" href="../tags/software-engineer.html">software-engineer</a>
+        </p>
+      </div>
+    </header>
+
+    <main>
+      <div class="container">
+        <div class="row">
+          <p class="center">
+            <a href="../donate.html">
+              <em>If you've found this article useful consider donating.</em>
+            </a>
+          </p>
+
+          <hr />
+
+<h1 id="software-architecture">Software Architecture</h1>
+
+<h2 id="what-software-architecture-is">What software architecture is</h2>
+
+<p>Software architecture is the set of significant structural choices in a system. Those choices define the main parts, the relations between parts, the rules for change, and the way the system fails and recovers. Architecture is the shape that remains when you remove local coding detail.</p>
+
+<p>A decision is architectural when it is costly to reverse, when many teams must follow it, or when it controls a quality attribute such as latency, safety, or scale. The choice of a database engine can be architectural. The name of a private helper function is not.</p>
+
+<p>This article explains how architects and engineers think about structure. It covers quality attributes, views, styles, boundaries, data, evolution, and governance. The goal is practical judgment, not fashion.</p>
+
+<h2 id="why-architecture-matters">Why architecture matters</h2>
+
+<p>Structure decides how fast a team can change a product. A clear boundary lets one team ship without blocking another team. A tangled boundary turns every change into a negotiation. Structure also decides runtime behavior. A chatty set of remote calls can miss latency targets even when each function is correct.</p>
+
+<p>Architecture matters for cost. Cloud bills follow data movement, storage, and idle capacity. A design that copies large datasets between regions without need wastes money forever. Early structure choices set those cost curves.</p>
+
+<p>Architecture matters for risk. Security trust boundaries, single points of failure, and recovery paths are structural. You cannot bolt a clean failure model onto a ball of shared mutable state without a redesign.</p>
+
+<h2 id="quality-attributes-drive-structure">Quality attributes drive structure</h2>
+
+<p>Start architecture from the qualities the system must achieve. Functional features alone do not tell you enough. Two systems can implement the same features with opposite structures because their quality goals differ.</p>
+
+<p>Common quality attributes include:</p>
+
+<ul>
+<li>Performance: response time, throughput, and resource use</li>
+<li>Scalability: behavior as load or data size grows</li>
+<li>Availability: ability to serve useful work through failures</li>
+<li>Security: control of access, integrity, and confidentiality</li>
+<li>Modifiability: cost of correct change</li>
+<li>Testability: ease of proving behavior</li>
+<li>Observability: ability to explain runtime state</li>
+<li>Portability: ability to run in more than one environment</li>
+<li>Compliance: ability to meet legal and policy rules</li>
+</ul>
+
+<p>Quality attributes conflict. Strong consistency can reduce availability during a partition. Deep security checks can add latency. Extreme modularity can add operational complexity. Architecture is the explicit management of these conflicts.</p>
+
+<p>Write quality scenarios. A useful scenario names the source of stimulus, the environment, the artifact, the response, and a response measure. Example: under normal peak load, when a payment request arrives, the payment service authorizes or declines within 300 milliseconds at the 99th percentile. Scenarios turn slogans into design input.</p>
+
+<h2 id="architectural-views-and-documents">Architectural views and documents</h2>
+
+<p>No single diagram shows a whole system. Use views for different concerns.</p>
+
+<p>A logical view shows domain modules and responsibilities. A process view shows runtime flows, concurrency, and communication. A physical view shows hosts, networks, clusters, and zones. A development view shows code repos, build units, and team ownership. A data view shows stores, schemas, ownership, and retention.</p>
+
+<p>Documents should stay short enough that people read them. Capture context, containers, components, and key sequences for critical paths. Record decisions with context and consequences. Update the documents when the structure changes. A dead diagram is worse than a small honest note.</p>
+
+<p>Architecture is communication. If only one person understands the structure, the team cannot change the system safely. Walk new engineers through the main paths. Keep a glossary for shared terms.</p>
+
+<h2 id="boundaries-and-modules">Boundaries and modules</h2>
+
+<p>A module is a unit with a responsibility and an interface. Good modules hide internal detail. Callers depend on the interface, not on private storage layouts or helper routines.</p>
+
+<p>Draw boundaries around things that change together and around things that must scale or fail independently. Business capabilities often make better boundaries than technical layers alone. A "billing" boundary that owns invoices, tax rules, and billing data can evolve as one product area. A pure "database layer" shared by all product areas often becomes a bottleneck.</p>
+
+<p>Coupling is the degree of dependence between modules. Cohesion is the degree to which a module's internals belong together. Aim for high cohesion and low coupling. Prefer dependence on stable abstractions. Avoid hidden coupling through shared databases, global mutable config, or secret temporal order requirements.</p>
+
+<p>Synchronous calls create temporal coupling. The caller waits and fails when the callee is slow. Asynchronous messaging reduces temporal coupling but adds complexity in delivery guarantees, ordering, and duplicate handling. Choose the coupling style that matches the business tolerance for delay and inconsistency.</p>
+
+<h2 id="classic-architectural-styles">Classic architectural styles</h2>
+
+<p>A style is a reusable structural pattern with known properties.</p>
+
+<h3 id="layered-style">Layered style</h3>
+
+<p>Layers separate technical roles such as presentation, application logic, and persistence. Each layer talks mainly to the layer beside it. The style is simple to explain and fits many business apps. The risk is a rigid stack where every change touches all layers and where domain rules leak into the presentation or data tiers.</p>
+
+<h3 id="hexagonal-and-ports-and-adapters">Hexagonal and ports-and-adapters</h3>
+
+<p>The domain core sits in the center. Ports define intents. Adapters connect user interfaces, databases, and external vendors. Tests can drive the core without infrastructure. The style protects domain logic from framework churn. The cost is more types and wiring.</p>
+
+<h3 id="modular-monolith">Modular monolith</h3>
+
+<p>One deployable unit contains strong internal module boundaries and clear ownership. Teams get simple operations and transactional consistency inside one process. If module rules are enforced, a later split into services becomes easier. If module rules are weak, the monolith becomes a tangled whole.</p>
+
+<h3 id="service-oriented-and-microservice-styles">Service-oriented and microservice styles</h3>
+
+<p>Multiple deployable services own their logic and data. Teams can scale and release services on separate clocks. The benefits appear only with mature platform work: discovery, CI, observability, on-call, and data boundaries. Without that maturity, distributed systems add failure modes faster than they add speed.</p>
+
+<h3 id="event-driven-style">Event-driven style</h3>
+
+<p>Producers emit events. Consumers react. The style supports loose coupling and fan-out. Challenges include schema evolution, idempotency, replay, and causal order. Event-driven designs need strong conventions for event names, versioning, and ownership.</p>
+
+<h3 id="pipeline-and-batch-styles">Pipeline and batch styles</h3>
+
+<p>Data flows through stages that transform it. This style fits analytics, ETL, and stream processing. Backpressure, checkpointing, and exactly-once or effectively-once semantics dominate the design.</p>
+
+<p>No style is always right. Many real systems mix styles. A modular monolith may publish events to analytics pipelines. A service system may keep a layered structure inside each service.</p>
+
+<h2 id="data-architecture">Data architecture</h2>
+
+<p>Data shape often dominates system shape. Decide which module owns each dataset. Only the owner writes that dataset. Others read through APIs, events, or replicas that the owner defines. Shared write access to one database across teams creates hidden coupling and blocked releases.</p>
+
+<p>Choose consistency needs per workflow. A stock trade may need strong consistency. A social like counter may tolerate delay. Do not pay for global strong consistency where the business does not need it.</p>
+
+<p>Migrations need first-class design. Plan expand and contract steps for schema change. Support old and new readers during transition. Large data backfills can outlast code deploys. Treat migration as a product feature with monitoring and pause switches.</p>
+
+<p>Caching improves read latency and reduces load. Cache also creates stale reads and invalidation bugs. Document the freshness goal. Prefer cache as an optimization after a correct path exists.</p>
+
+<h2 id="integration-and-communication">Integration and communication</h2>
+
+<p>Systems integrate through APIs, files, streams, and shared stores. Prefer explicit contracts. A contract states payloads, error shapes, auth needs, idempotency keys, and compatibility rules.</p>
+
+<p>Synchronous HTTP or RPC fits request-response user flows with tight latency budgets. Messaging fits work that can complete later and work that multiple consumers must see. File exchange still fits bulk partner integrations when volume is high and timing is loose.</p>
+
+<p>Version APIs with care. Additive change is safer than breaking change. Consumers need time to move. Publish deprecation timelines. Measure remaining traffic on old versions before removal.</p>
+
+<p>Timeouts, retries, and backoff are part of architecture. Unlimited retries can amplify outages. Idempotent handlers make safe retries possible. Circuit breakers stop calls to a sick dependency so that the caller can degrade with purpose.</p>
+
+<h2 id="scale-and-performance-structure">Scale and performance structure</h2>
+
+<p>Scale vertically by giving one node more resources. Scale horizontally by adding nodes. Horizontal scale needs stateless app tiers or careful partition of state.</p>
+
+<p>Partition data by a key that spreads load and matches access paths. Poor partition keys create hot spots. Cross-partition transactions are expensive or impossible in many stores. Design workflows to stay inside a partition when you can.</p>
+
+<p>Queues absorb bursts. Workers drain queues at sustainable speed. This pattern protects user-facing latency when downstream work is heavy. Provide visibility into queue depth and age.</p>
+
+<p>Content delivery networks and edge caches move read-heavy static or semi-static content closer to users. Origin systems still need protection from cache misses and thundering herds.</p>
+
+<p>Measure before you split systems for scale. Many products die from complexity before they die from load. Profile hot paths. Fix algorithmic waste and needless round trips first.</p>
+
+<h2 id="availability-and-failure-design">Availability and failure design</h2>
+
+<p>Everything fails: disks, nodes, zones, regions, dependencies, and human processes. Architecture defines blast radius and recovery.</p>
+
+<p>Replicate state across failure domains that match your availability goal. Multi-zone setups handle common cloud faults. Multi-region setups handle larger disasters at higher cost and complexity.</p>
+
+<p>Health checks must test dependency needs that matter, not only process liveness. Graceful degradation keeps core flows alive when non-core features fail. A retail site may disable recommendations when the ranking service dies while checkout still works.</p>
+
+<p>Backups are useless without tested restores. Chaos experiments and game days prove that failover scripts work. Recovery time objectives and recovery point objectives turn vague hopes into design constraints.</p>
+
+<h2 id="security-structure">Security structure</h2>
+
+<p>Place controls at trust boundaries. Authenticate callers. Authorize actions on resources. Encrypt data in transit between untrusted networks. Encrypt sensitive data at rest. Keep administrative paths separate and audited.</p>
+
+<p>Threat models list assets, actors, entry points, and mitigations. Review models when you add a public API, a new vendor, or a new data class. Least privilege should apply to people, services, and tokens.</p>
+
+<p>Multi-tenant systems need hard isolation goals. Decide whether tenants share tables, schemas, or clusters. The stronger the isolation, the higher the cost. Match isolation to the threat and to contractual promises.</p>
+
+<h2 id="architecture-decision-process">Architecture decision process</h2>
+
+<p>Good architecture work is iterative. Explore options with spikes. Compare options against quality scenarios and cost. Choose the simplest structure that meets the scenarios with acceptable risk. Record the decision. Revisit when drivers change.</p>
+
+<p>Avoid resume-driven design. Do not adopt a distributed style to practice a tool if a modular monolith meets the needs. Avoid copy-paste of large company diagrams. Those companies often solved different scale problems with larger platform teams.</p>
+
+<p>Prototype the riskiest unknown. If the unknown is messaging latency under load, test that. If the unknown is domain boundary fit, build a thin vertical slice across the proposed modules.</p>
+
+<h2 id="team-topology-and-architecture">Team topology and architecture</h2>
+
+<p>Team structure and system structure interact. A team that owns a service end to end can move faster inside that boundary. A team that must edit five shared libraries and two central databases for every feature will stall.</p>
+
+<p>Platform teams reduce cognitive load by offering paved paths for deploy, observe, and authenticate. Product teams should not each invent a different mesh of sidecars and scripts. Clear platform interfaces are architectural assets.</p>
+
+<p>Inverse Conway maneuver means you design team boundaries to produce the software boundaries you want. This is organizational architecture. It needs leadership support, not only diagrams.</p>
+
+<h2 id="evolution-and-the-long-life-of-systems">Evolution and the long life of systems</h2>
+
+<p>Successful systems live for years. Architecture must allow change. Keep extension points where change is likely. Avoid speculative generality where change is unlikely. YAGNI still applies at system scale, but reversible decisions deserve preference when options are otherwise equal.</p>
+
+<p>The strangler approach replaces a legacy system by routing slices of behavior to new modules over time. The anti-corruption layer translates between legacy models and new models so that old concepts do not infect the new core.</p>
+
+<p>Deprecation needs product courage. Unused paths still cost security surface and mental load. Measure usage and remove dead structure.</p>
+
+<h2 id="governance-without-theater">Governance without theater</h2>
+
+<p>Architecture governance should enable consistent quality, not block delivery with ceremony. Lightweight review boards work when they focus on cross-cutting risk: data ownership, security boundaries, and operational readiness. They fail when they debate local naming for hours.</p>
+
+<p>Automated policy helps. Lint rules, scorecards, golden templates, and base images encode standards in tools. Humans handle exceptions and novel cases.</p>
+
+<p>Define non-negotiables. Examples may include "no shared writable database across team boundaries" or "all public endpoints require authn and authz checks" or "every service exposes health, metrics, and structured logs." Keep the list short so that it stays real.</p>
+
+<h2 id="practical-architecture-checklist">Practical architecture checklist</h2>
+
+<ol>
+<li>List the quality scenarios that can kill the product if missed.</li>
+<li>Draw the main runtime paths for the top user journeys.</li>
+<li>Name the owner of each major dataset.</li>
+<li>State the consistency and freshness needs per workflow.</li>
+<li>Identify trust boundaries and auth controls.</li>
+<li>Identify failure domains and degradation modes.</li>
+<li>Choose the fewest moving parts that meet the scenarios.</li>
+<li>Record decisions and the signals that would force a revisit.</li>
+<li>Align team ownership with module boundaries.</li>
+<li>Prove the riskiest assumption with a test or spike.</li>
+</ol>
+
+<h2 id="closing-summary">Closing summary</h2>
+
+<p>Software architecture is the deliberate structure of a system under quality constraints. It defines modules, data ownership, communication, and failure behavior. Styles and patterns offer starting points. They do not replace analysis of real scenarios.</p>
+
+<p>Strong architecture stays as simple as the problem allows. It makes change local, risk visible, and operations boring. It evolves with evidence. It is written down enough that a new engineer can find the center of the design in one sitting.</p>
+
+<p>If you set architecture for a product, anchor every major choice in a quality scenario and a cost model. If you inherit a system, map the real runtime paths and data owners before you propose a rewrite. Structure is destiny for delivery speed and for runtime trust. Treat it with the care you give to any decision that is expensive to reverse.</p>
+
+          <hr />
+
+          <p class="center">
+            <a href="../donate.html">
+              <em>If you've found this article useful consider donating.</em>
+            </a>
+          </p>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="row">
+          <a href="../">&#8592; Back</a>
+          <a href="#top">&#8593; Top &#8593;</a>
+          <a href="./how-to-create-and-host-your-first-website-with-github.html">Next &#8594;</a>
+        </div>
+        <div class="row">
+          <p>&copy; AlanJC. All rights reserved.</p>
+          <p>Subscribe via <a href="/rss.xml">RSS</a>.</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
